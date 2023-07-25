@@ -1,0 +1,1 @@
+// https://tailwinduikit.com/components/marketing/page_section/FAQ/faq_8
