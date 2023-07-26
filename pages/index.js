@@ -103,6 +103,7 @@ const FAQSection =  () => {
                 {
                     faqsList.map((item, idx) => (
                         <FaqsCard
+                            key={idx}
                             idx={idx}
                             faqsList={item}
                         />
@@ -178,7 +179,7 @@ const TestimonialsSection = () => {
                   <p className="my-4">{testimonial.review}</p>
               </blockquote>
               <div className="flex justify-center items-center space-x-3">
-                  <img className="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png" alt="profile picture" />
+                  <Image width={50} height={50} className="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png" alt="profile picture" />
                   <div className="space-y-0.5 font-medium dark:text-white text-left">
                       <div>{testimonial.name}</div>
                       <div className="text-sm font-light text-gray-500 dark:text-gray-400">{testimonial.job}</div>
@@ -438,7 +439,7 @@ const CourseCard = () => {
 const CourseDemo = ({ videoPath }) => {
   return (
     <section className="mx-auto p-6 max-w-screen">
-      <p className="text-3xl font-bold ml-6 p-4">Here's a glimpse</p>
+      <p className="text-3xl font-bold ml-6 p-4">Here&apos;s a glimpse</p>
       <div className="w-full">
         <div className="w-full">
           <video 
