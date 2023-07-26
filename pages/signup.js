@@ -45,7 +45,7 @@ const OTPVerifier = ({ phoneNumber, email }) => {
     catch (e) {
       console.error(e);
     }
-  }, []);
+  }, [phoneNumber]);
 
   const completeSignUp = async (e) => {
     e.preventDefault();
@@ -71,7 +71,7 @@ const OTPVerifier = ({ phoneNumber, email }) => {
   return (
     <form onSubmit={completeSignUp} className="mx-auto mt-4 w-1/3 flex flex-col space-y-4">
       { err ? <div className="bg-red-300 mx-auto p-4 text-center"><p className="text-red-500 text-center">Please solve the reCaptcha and try again.</p></div> : <div/> }
-      <p>We've sent an OTP to <b>{phoneNumber}</b></p>
+      <p>We&apos;ve sent an OTP to <b>{phoneNumber}</b></p>
         <div className="w-full mx-auto flex flex-row justify-evenly space-x-4">
           {
             [0, 1, 2, 3, 4, 5].map((n, i) => (
@@ -148,7 +148,7 @@ const PhoneNumberSpecial = ({ email }) => {
       >
         <div className="mt-4 p-2 space-y-2">
           <label className="text-2xl font-medium leading-none text-gray-800">Phone Number</label>
-          <p>We'll send an SMS to confirm.</p>
+          <p>We&apos;ll send an SMS to confirm.</p>
           <div className="flex flex-row space-x-2 items-center p-2">
             <select 
             onChange={(e) => {
@@ -228,11 +228,11 @@ const EmailAndPasswordArea = () => {
           className={`flex flex-col items-center justify-center ${showPhoneNumberModal ? "hidden" : ""}`}>
             
               <div className="bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-16">
-                  <p tabIndex={0} role="heading" aria-label="Login to your account" className="text-2xl font-extrabold leading-6 text-gray-800">
+                  <p tabIndex={0} role="heading" aria-label="Login to your account" aria-level={1} className="text-2xl font-extrabold leading-6 text-gray-800">
                       Sign Up for an account
                   </p>
                   <p className="text-sm mt-4 font-medium leading-none text-gray-500">
-                      We'll get things ready for you and notify you when we're ready to launch{" "}
+                      We&apos;ll get things ready for you and notify you when we&apos;re ready to launch{" "}
           
                   </p>
                   <button onClick={googleSignIn} type="button"

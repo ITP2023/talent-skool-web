@@ -208,12 +208,12 @@ const HeroSection = () => {
     <header className="absolute inset-x-0 top-0 z-50 h-screen">
       <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <div className="flex lg:flex-1">
               <h2 className="text-blue-700 text-4xl font-extrabold">Talent</h2>
               <h2 className="text-4xl font-extrabold">Skool</h2>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -224,14 +224,14 @@ const HeroSection = () => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <a href="/about" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">About Us</a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Teacher</a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Network</a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Courses</a>
+          <Link href="/about" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">About Us</Link>
+          <Link href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Teacher</Link>
+          <Link href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Network</Link>
+          <Link href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Courses</Link>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-2">
-          <a href="#" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Log In</a>
-          <a href="/signup" className="text-black border-solid border-2 border-black rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold shadow-sm"><p className="text-black">Sign Up</p></a>
+          <Link href="#" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Log In</Link>
+          <Link href="/signup" className="text-black border-solid border-2 border-black rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold shadow-sm"><p className="text-black">Sign Up</p></Link>
         </div>
       </nav>
       {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
@@ -250,13 +250,13 @@ const HeroSection = () => {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
+                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</Link>
+                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</Link>
+                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</Link>
+                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</Link>
               </div>
               <div className="py-6">
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</Link>
               </div>
             </div>
           </div>
