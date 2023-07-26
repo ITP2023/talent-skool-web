@@ -10,4 +10,4 @@ To run,
 2. Navigate into the cloned directory
 3. run `npm install`
 4. To start, run `npm run dev`
-5. access the content on [https://localhost:3000]
+5. access the content on [https://localhost:3000](https://localhost:3000)
