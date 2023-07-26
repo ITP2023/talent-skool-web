@@ -6,76 +6,187 @@ import { useInView } from "react-intersection-observer";
 import Footer from "../components/footer";
 
 
-const Testimonials = () => {
+const FaqsCard = (props) => {
+
+    const answerElRef = useRef()
+    const [state, setState] = useState(false)
+    const [answerH, setAnswerH] = useState('0px')
+    const { faqsList, idx } = props
+
+    const handleOpenAnswer = () => {
+        const answerElH = answerElRef.current.childNodes[0].offsetHeight
+        setState(!state)
+        setAnswerH(`${answerElH + 20}px`)
+    }
+
+    return (
+        <div 
+            className="space-y-3 mt-5 overflow-hidden border-b"
+            key={idx}
+            onClick={handleOpenAnswer}
+        >
+          <div className="flex flex-row w-full space-x-4 justify-between">
+            <div className="flex flex-row space-x-4">
+              <div className="rounded-full w-10 h-10 bg-indigo-500 text-center">
+                      <p className="text-center m-auto text-white text-2xl">{idx + 1}</p>
+              </div>
+              <h4 className="pb-5 flex items-center justify-between text-lg text-gray-700 font-medium">
+                  {faqsList.q}
+              </h4>
+            </div>
+                <div className="cursor-pointer">
+                  {
+                      state ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                          </svg>
+                      ) : (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                          </svg>
+                      )
+                  }
+                </div>
+          </div>
+            <div
+                ref={answerElRef} className="duration-300"
+                style={state ? {height: answerH } : {height: '0px'}}
+            >
+              <div className="flex flex-row justify-center space-x-4 ml-16">
+                <div className="w-1 bg-indigo-500">{' '}</div>
+               
+                    <p className="text-gray-500 w-full">
+                        {faqsList.a}
+                    </p>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const FAQSection =  () => {
+
+    const faqsList = [
+        {
+            q: "What are some random questions to ask?",
+            a: "That's exactly the reason we created this random question generator. There are hundreds of random questions to choose from so you're able to find the perfect random question."
+        },
+        {
+            q: "Do you include common questions?",
+            a: "This generator doesn't include most common questions. The thought is that you can come up with common questions on your own so most of the questions in this generator."
+        },
+        {
+            q: "Can I use this for 21 questions?",
+            a: "Yes! there are two ways that you can use this question generator depending on what you're after. You can indicate that you want 21 questions generated."
+        },
+        {
+            q: "Are these questions for girls or for boys?",
+            a: "The questions in this generator are gender neutral and can be used to ask either male of females (or any other gender the person identifies with)."
+        },
+        {
+            q: "What do you wish you had more talent doing?",
+            a: "If you've been searching for a way to get random questions, you've landed on the correct webpage. We created the Random Question Generator to ask you as many random questions as your heart desires."
+        }
+    ]
+  
+    return (
+        <section className="leading-relaxed max-w-screen-xl mt-12 mx-auto px-4 md:px-8">
+            <div className="space-y-3 text-center">
+                <h1 className="text-4xl text-gray-800 font-bold">
+                    Frequently Asked Questions
+                </h1>
+                <p className="text-gray-600 max-w-lg mx-auto text-lg">
+                    Answered all frequently asked questions, Still confused? feel free to contact us.
+                </p>
+            </div>
+            <div className="mt-14 max-w-2xl mx-auto">
+                {
+                    faqsList.map((item, idx) => (
+                        <FaqsCard
+                            idx={idx}
+                            faqsList={item}
+                        />
+                    ))
+                }
+            </div>
+            <p className="mx-auto text-center mt-6">Still have a question? <Link href="/contact" className="underline decoration-indigo-500 underline-offset-4">Contact Us</Link></p>
+        </section>
+    )
+}
+
+const TestimonialsSection = () => {
+
+  const testimonialsData = [
+    
+    {
+      id: 1,
+      review:
+        "The edtech platform helped me gain valuable skills that are directly applicable to my career. The instructors are knowledgeable and provide practical insights.",
+      avatar: "/path/to/avatar3.jpg",
+      name: "Sarah Johnson",
+      job: "Marketing Manager",
+    },
+    {
+      id: 2,
+      review:
+        "I love how user-friendly the edtech platform is. The interface is intuitive, and the content is well-organized, making it easy to find the courses I need.",
+      avatar: "/path/to/avatar4.jpg",
+      name: "Michael Brown",
+      job: "Business Analyst",
+    },
+    {
+      id: 3,
+      review:
+        "The edtech platform offers a vast library of courses to choose from. It's a one-stop solution for continuous learning and professional development.",
+      avatar: "/path/to/avatar5.jpg",
+      name: "Emily Rodriguez",
+      job: "Data Scientist",
+    },
+    {
+      id: 4,
+      review:
+        "I appreciate the flexibility of the edtech platform, allowing me to learn at my own pace. The interactive quizzes and assignments keep me engaged throughout the courses.",
+      avatar: "/path/to/avatar6.jpg",
+      name: "David Lee",
+      job: "Web Developer",
+    },
+    {
+      id: 5,
+      review:
+        "The edtech platform's community forums have been a valuable resource. I can connect with fellow learners, discuss topics, and seek help from instructors.",
+      avatar: "/path/to/avatar7.jpg",
+      name: "Ava Martinez",
+      job: "Student",
+    },
+    // Add more testimonials data here
+  ];
+
+
   return (
     <section className="bg-white dark:bg-gray-900">
-  <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+  <div className="py-8 px-4 mx-auto max-w-screen text-center lg:py-16 lg:px-6 w-[80%]">
       <div className="mx-auto max-w-screen-sm">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Testimonials</h2>
-          <p className="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Explore the whole collection of open-source web components and elements built with the utility classes from Tailwind</p>
+          <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Testimonials</h2>
+          <p className="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Here's what they say about us...</p>
       </div> 
       <div className="grid gap-4 mb-8 lg:mb-12 lg:grid-cols-2">
-          <figure className="flex flex-col justify-center items-center text-center bg-gray-50 border-b border-gray-200 md:p-12 lg:border-r dark:bg-gray-800 dark:border-gray-700">
-              <blockquote className="mx-auto mb-8 max-w-xl text-gray-500 dark:text-gray-400">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Speechless with how easy this was to integrate</h3>
-                  <p className="my-4">"I recently got my hands on Flowbite Pro, and holy crap, I'm speechless with how easy this was to integrate within my application. Most templates are a pain, code is scattered, and near impossible to theme.</p>
-                  <p className="my-4">Flowbite has code in one place and I'm not joking when I say it took me a matter of minutes to copy the code, customise it and integrate within a Laravel + Vue application.</p>
-                  <p className="my-4">If you care for your time, I hands down would go with this."</p>
+        {
+          testimonialsData.map(testimonial => (
+          <div key={testimonial.id} className="flex flex-col justify-center items-center text-center bg-gray-50 border-b border-gray-200 md:p-12 lg:border-r dark:bg-gray-800 dark:border-gray-700">
+              <blockquote className="mx-auto mb-8 max-w-lg text-gray-500 dark:text-gray-400">
+                  {/* <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Speechless with how easy this was to integrate</h3> */}
+                  <p className="my-4">{testimonial.review}</p>
               </blockquote>
-              <figcaption className="flex justify-center items-center space-x-3">
+              <div className="flex justify-center items-center space-x-3">
                   <img className="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png" alt="profile picture" />
                   <div className="space-y-0.5 font-medium dark:text-white text-left">
-                      <div>Bonnie Green</div>
-                      <div className="text-sm font-light text-gray-500 dark:text-gray-400">Developer at Open AI</div>
+                      <div>{testimonial.name}</div>
+                      <div className="text-sm font-light text-gray-500 dark:text-gray-400">{testimonial.job}</div>
                   </div>
-              </figcaption>    
-          </figure>
-          <figure className="flex flex-col justify-center items-center text-center bg-gray-50 border-b border-gray-200 md:p-12 dark:bg-gray-800 dark:border-gray-700">
-              <blockquote className="mx-auto mb-8 max-w-2xl text-gray-500 dark:text-gray-400">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Solid foundation for any project</h3>
-                  <p className="my-4">"FlowBite provides a robust set of design tokens and components based on the popular Tailwind CSS framework. From the most used UI components like forms and navigation bars to the whole app screens designed both for desktop and mobile, this UI kit provides a solid foundation for any project.</p>
-                  <p className="my-4">Designing with Figma components that can be easily translated to the utility classes of Tailwind CSS is a huge timesaver!"</p>
-              </blockquote>
-              <figcaption className="flex justify-center items-center space-x-3">
-                  <img className="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png" alt="profile picture" />
-                  <div className="space-y-0.5 font-medium dark:text-white text-left">
-                      <div>Roberta Casas</div>
-                      <div className="text-sm font-light text-gray-500 dark:text-gray-400">Lead designer at Dropbox</div>
-                  </div>
-              </figcaption>    
-          </figure>
-          <figure className="flex flex-col justify-center items-center text-center bg-gray-50 border-b border-gray-200 lg:border-b-0 md:p-12 lg:border-r dark:bg-gray-800 dark:border-gray-700">
-              <blockquote className="mx-auto mb-8 max-w-2xl text-gray-500 dark:text-gray-400">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Mindblowing workflow and variants</h3>
-                  <p className="my-4">"As someone who mainly designs in the browser, I've been a casual user of Figma, but as soon as I saw and started playing with FlowBite my mind was 🤯.</p>
-                  <p className="my-4">Everything is so well structured and simple to use (I've learnt so much about Figma by just using the toolkit).</p>
-                  <p className="my-4">Aesthetically, the well designed components are beautiful and will undoubtedly level up your next application."</p>
-              </blockquote>
-              <figcaption className="flex justify-center items-center space-x-3">
-                  <img className="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="profile picture" />
-                  <div className="space-y-0.5 font-medium dark:text-white text-left">
-                      <div>Jese Leos</div>
-                      <div className="text-sm font-light text-gray-500 dark:text-gray-400">Software Engineer at Facebook</div>
-                  </div>
-              </figcaption>    
-          </figure>
-          <figure className="flex flex-col justify-center items-center p-8 text-center bg-gray-50 border-gray-200 md:p-12 dark:bg-gray-800 dark:border-gray-700">
-              <blockquote className="mx-auto mb-8 max-w-2xl text-gray-500 dark:text-gray-400">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Efficient Collaborating</h3>
-                  <p className="my-4">"This is a very complex and beautiful set of elements. Under the hood it comes with the best things from 2 different worlds: Figma and Tailwind.</p>
-                  <p className="my-4">You have many examples that can be used to create a fast prototype for your team."</p>
-              </blockquote>
-              <figcaption className="flex justify-center items-center space-x-3">
-                  <img className="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png" alt="profile picture" />
-                  <div className="space-y-0.5 font-medium dark:text-white text-left">
-                      <div>Joseph McFall</div>
-                      <div className="text-sm font-light text-gray-500 dark:text-gray-400">CTO at Google</div>
-                  </div>
-              </figcaption>    
-          </figure>
-      </div>
-      <div className="text-center">
-          <a href="#" className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Show more...</a> 
+              </div>    
+          </div>
+          ))
+        }
       </div>
     </div>
 </section>
@@ -354,196 +465,6 @@ const CourseDemo = ({ videoPath }) => {
 }
 
 
-const FAQSection = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const faqData = [
-    {
-      question: "What TalentSkool",
-      answer: "TalentSkool is the arena for networking, learning and growing."
-    },
-    {
-      question: "How TalentSkool?",
-      answer:
-        "Talentskool is free. Install it on the google play store!"
-    },
-    {
-      question: "Why TalentSkool",
-      answer:
-        "Lorem ipsum, in graphical and textual context,refers     iller text that    placed in a document,simply dummy text of the priniting typeseeting."
-    },
-    // Add more questions and answers here
-  ];
-
-  const toggleAccordion = (index) => {
-    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
-  };
-
-  return (
-    <div className="max-w-screen mx-auto p-4 my-12">
-      <h2 className="text-2xl font-bold mb-4 text-center">Frequently Asked Questions</h2>
-      <ol className="w-full">
-        {faqData.map((faq, index) => (
-          <li key={index} className="w-1/2 mx-auto p-2">
-            <span className="w-auto h-auto"
-              onClick={() => toggleAccordion(index)}
-            >
-              <div className="mx-auto flex flex-row justify-between w-full">
-                <div className="w-3/4 flex flex-row justify-start space-x-4">
-                  <div className="rounded-full w-10 h-10 bg-indigo-500 text-center">
-                    <p className="text-center m-auto text-white text-2xl">{index + 1}</p>
-                  </div>
-                  <p className="text-left">{faq.question}</p>
-                </div>
-                <span>{activeIndex === index ? "-" : "+"}</span>
-              </div>
-              <div className="w-3/4 h-auto mx-auto flex flex-row justify-start">
-                <div className="w-1 bg-indigo-500">{' '}</div>
-                <span className={`${activeIndex === index ? "block" : "hidden"} w-3/4 mx-auto`}>
-                  {faq.answer}
-                </span>
-              </div>
-            </span>
-          </li>
-        ))}
-      </ol>
-      <p className="mx-auto text-center">Still have questions? <Link href="/contact" className="underline underline-offset-2 decoration-indigo-500">Contact Us</Link> </p>
-    </div>
-  );
-};
-
-
-// /**
-//  * @param {{ dir: "ltr" | "rtl" }} param0
-//  * @returns 
-//  */
-// const TestimonialCard = ({ dir }) => {
-//   if (dir === "ltr") {
-//     return (
-//       <div className="flex flex-row justify-evenly">
-//         <p className="w-3/4">Lorem ipsum, in graphical and textual context,refers     iller text that    placed in a document,simply dummy text of the priniting typeseeting.</p>
-//         <Image className="w-[100] h-[200]" width={100} height={200} alt="test1" src="/testimonial1.png" />
-//       </div>
-//     )
-//   }
-
-//   return (
-//     <div className="flex flex-row justify-evenly">
-//       <Image width={100} height={15} alt="test2" src="/testimonial2.png" />
-//       <p className="w-3/4">Lorem ipsum, in graphical and textual context,refers     iller text that    placed in a document,simply dummy text of the priniting typeseeting.</p>
-//     </div>
-//   )
-// }
-// const TestimonialsSection = () => {
-//   return (
-//     <div className="grid grid-rows-3 grid-cols-2 w-[80%] mx-auto gap-y-14 gap-x-2 my-10">
-//       <TestimonialCard dir="ltr" />
-//       <TestimonialCard dir="ltr" />
-//       <TestimonialCard dir="rtl" />
-//       <TestimonialCard dir="rtl" />
-//       <TestimonialCard dir="ltr" />
-//       <TestimonialCard dir="ltr" />
-//     </div>
-//   );
-// }
-
-
-
-
-const TestimonialsSection = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  
-  const testimonialsData = [
-    
-    {
-      id: 1,
-      review:
-        "The edtech platform helped me gain valuable skills that are directly applicable to my career. The instructors are knowledgeable and provide practical insights.",
-      avatar: "/path/to/avatar3.jpg",
-      name: "Sarah Johnson",
-      job: "Marketing Manager",
-    },
-    {
-      id: 2,
-      review:
-        "I love how user-friendly the edtech platform is. The interface is intuitive, and the content is well-organized, making it easy to find the courses I need.",
-      avatar: "/path/to/avatar4.jpg",
-      name: "Michael Brown",
-      job: "Business Analyst",
-    },
-    {
-      id: 3,
-      review:
-        "The edtech platform offers a vast library of courses to choose from. It's a one-stop solution for continuous learning and professional development.",
-      avatar: "/path/to/avatar5.jpg",
-      name: "Emily Rodriguez",
-      job: "Data Scientist",
-    },
-    {
-      id: 4,
-      review:
-        "I appreciate the flexibility of the edtech platform, allowing me to learn at my own pace. The interactive quizzes and assignments keep me engaged throughout the courses.",
-      avatar: "/path/to/avatar6.jpg",
-      name: "David Lee",
-      job: "Web Developer",
-    },
-    {
-      id: 5,
-      review:
-        "The edtech platform's community forums have been a valuable resource. I can connect with fellow learners, discuss topics, and seek help from instructors.",
-      avatar: "/path/to/avatar7.jpg",
-      name: "Ava Martinez",
-      job: "Student",
-    },
-    // Add more testimonials data here
-  ];
-  
-
-  const handleNextTab = () => {
-    setActiveTab((prev) => prev === Math.ceil(testimonialsData.length/2) - 1 ? 0 : prev + 2/12);
-  };
-
-  const handlePrevTab = () => {
-    setActiveTab((prevTab) => (prevTab === 0 ? Math.ceil(testimonialsData.length / 2) - 1 : prevTab - 2/12));
-  };
-
-  return (
-    <div className="max-w-[90%] mx-auto relative">
-      <button className="absolute top-1/2 -left-6 bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center text-gray-600 shadow-md focus:outline-none" onClick={handlePrevTab}>
-          &lt;
-        </button>
-        <button className="absolute top-1/2 -right-8 bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center text-gray-600 shadow-md focus:outline-none" onClick={handleNextTab}>
-          &gt;
-        </button>
-      <div className="relative overflow-hidden w-[95%] mx-auto">
-        <div
-          className="flex transition-transform ease-in-out duration-500 gap-x-4"
-          style={{
-            transform: `translateX(-${activeTab * 100}%)`,
-            width: `${Math.ceil(testimonialsData.length / 2) * 100}%`,
-          }}
-        >
-          {testimonialsData.map((testimonial, index) => (
-            <div key={testimonial.id} className={`w-[30%] p-4`}>
-              <div>
-                <p className="text-gray-800 text-2xl">{testimonial.review}</p>
-              </div>
-              <div className="flex items-center mt-4">
-                <div className="w-12 h-12 rounded-full bg-gray-400 mr-2"></div>
-                <div>
-                  <div className="font-semibold">{testimonial.name}</div>
-                  <div className="text-gray-600">{testimonial.job}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-    </div>
-  );
-};
-
 
 /**
  * 
@@ -591,12 +512,7 @@ export default function Home({ videoPath }) {
         />
       </div>
       <CourseDemo videoPath={videoPath} />
-      <p className="text-3xl font-bold ml-6 p-4">What others say about us</p>
       <TestimonialsSection/>
-      {/* <TestimonialsSection2/>
-      <TestimonialsSection3/>
-      <TestimonialsSection4/> */}
-      <Testimonials/>
       <FAQSection/>
       <Footer/>
     </>
