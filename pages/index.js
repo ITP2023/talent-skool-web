@@ -168,7 +168,7 @@ const TestimonialsSection = () => {
   <div className="py-8 px-4 mx-auto max-w-screen text-center lg:py-16 lg:px-6 w-[80%]">
       <div className="mx-auto max-w-screen-sm">
           <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Testimonials</h2>
-          <p className="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Here's what they say about us...</p>
+          <p className="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Here&apos;s what they say about us...</p>
       </div> 
       <div className="grid gap-4 mb-8 lg:mb-12 lg:grid-cols-2">
         {
@@ -283,7 +283,7 @@ const HeroSection = () => {
             {/* <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">From checkout to global sales tax compliance, companies around the world use Stripe to simplify their payment stack.</p> */}
             <button className="px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black">
               <div className="w-10">
-                <Image className="h-full w-full" width={90} height={90}  src="google-play-store-svgrepo-com.svg" />
+                <Image alt="play_icon" className="h-full w-full" width={90} height={90}  src="google-play-store-svgrepo-com.svg" />
               </div>
               <div className="">
                 <div className="text-sm font-extrabold text-white">Download on the</div>
