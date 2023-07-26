@@ -18,8 +18,6 @@ const firebaseConfig = {
 };
 
 
-console.log(firebaseConfig);
-
 const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope("openid");
 googleProvider.addScope("https://www.googleapis.com/auth/userinfo.email")
