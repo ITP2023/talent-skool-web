@@ -41,3 +41,5 @@ next-env.d.ts
 .firebaserc
 .firebaserc
 .firebaserc
+firestore.rules
+firestore.indexes.json
