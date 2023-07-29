@@ -1,16 +1,14 @@
 import Image from "next/image";
 
-const Bg = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1728" height="716" viewBox="0 0 1728 716" fill="none">
-    <path d="M0 0C819.437 299.311 1153.19 207.02 1728 0V716H0V0Z" fill="#3523FF"/>
-  </svg>
-);
 
 export default function Footer() {
   return (
     <div className="">
       <div className="relative flex justify-start md:justify-center md:items-end ">
-        <Image width={1728} height={716} className="absolute object-cover top-10 h-full w-full xl:mt-10 z-0" src="/footer.svg" alt="background" />
+        <Image width={1728} height={800} className="hidden lg:block lg:absolute lg:object-cover lg:top-10 lg:h-full lg:w-full xl:mt-10 z-0" src="/footer.svg" alt="background" />
+        <div
+          className="lg:hidden block absolute object-cover top-10 h-full w-full z-0 bg-indigo-600"
+        />
         <div className="flex pt-36 md:pt-32 lg:pt-40 xl:pt-96   px-4 md:px-6  xl:px-20 flex-col justify-start items-start md:justify-center md:items-center relative z-10">
           <div className="flex flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row">
             

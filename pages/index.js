@@ -4,7 +4,32 @@ import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 
+
+
+const CTASection = () => {
+  return (
+      <section className="py-24 relative my-16">
+          <div className="relative z-10 max-w-screen-xl mx-auto px-4 md:text-center md:px-8">
+              <div className="max-w-xl md:mx-auto">
+                  <p className="text-white text-3xl font-semibold sm:text-4xl">
+                      Build the future with us
+                  </p>
+                  <p className="text-blue-100 mt-3">
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident.
+                  </p>
+              </div>
+              <div className="mt-4">
+                  <Link href="/signup" className="inline-block py-2 px-4 text-gray-800 font-medium bg-white duration-150 hover:bg-gray-100 active:bg-gray-200 rounded-full">
+                      Get started
+                  </Link>
+              </div>
+          </div>
+          <div className="absolute top-0 w-full h-full" style={{ background: "linear-gradient(268.24deg, rgba(59, 130, 246, 0.76) 50%, rgba(59, 130, 246, 0.545528) 80.61%, rgba(55, 48, 163, 0) 117.35%)" }}></div>
+      </section>
+  )
+}
 
 const FaqsCard = (props) => {
 
@@ -14,9 +39,9 @@ const FaqsCard = (props) => {
     const { faqsList, idx } = props
 
     const handleOpenAnswer = () => {
-        const answerElH = answerElRef.current.childNodes[0].offsetHeight
-        setState(!state)
-        setAnswerH(`${answerElH + 20}px`)
+        const answerElH = answerElRef.current.childNodes[0].offsetHeight;
+        setState(!state);
+        setAnswerH(`${answerElH + 20}px`);
     }
 
     return (
@@ -27,9 +52,9 @@ const FaqsCard = (props) => {
         >
           <div className="flex flex-row w-full space-x-4 justify-between">
             <div className="flex flex-row space-x-4">
-              <div className="rounded-full w-10 h-10 bg-indigo-500 text-center">
-                      <p className="text-center m-auto text-white text-2xl">{idx + 1}</p>
-              </div>
+              <span className="inline-block text-white text-center px-2 py-1 font-semibold rounded-full w-[2.5em] h-[2.5em] bg-indigo-500">
+                {idx + 1}
+              </span>
               <h4 className="pb-5 flex items-center justify-between text-lg text-gray-700 font-medium">
                   {faqsList.q}
               </h4>
@@ -173,11 +198,11 @@ const TestimonialsSection = () => {
       <div className="grid gap-4 mb-8 lg:mb-12 lg:grid-cols-2">
         {
           testimonialsData.map(testimonial => (
-          <div key={testimonial.id} className="flex flex-col justify-center items-center text-center bg-gray-50 border-b border-gray-200 md:p-12 lg:border-r dark:bg-gray-800 dark:border-gray-700">
-              <blockquote className="mx-auto mb-8 max-w-lg text-gray-500 dark:text-gray-400">
+          <div key={testimonial.id} className="flex flex-col justify-center items-center text-center bg-gray-50 border-b border-gray-200 md:p-12 lg:border-r dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl">
+              <div className="mx-auto mb-8 max-w-lg text-gray-500 dark:text-gray-400">
                   {/* <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Speechless with how easy this was to integrate</h3> */}
                   <p className="my-4">{testimonial.review}</p>
-              </blockquote>
+              </div>
               <div className="flex justify-center items-center space-x-3">
                   <Image width={50} height={50} className="w-9 h-9 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png" alt="profile picture" />
                   <div className="space-y-0.5 font-medium dark:text-white text-left">
@@ -202,69 +227,9 @@ const HeroSection = () => {
 
 
 
-
-  const [ backdrop, setBackdrop ] = useState(false);
   return (
     <div className="bg-white h-screen">
-    <header className="absolute inset-x-0 top-0 z-50 h-screen">
-      <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <div className="flex lg:flex-1">
-              <h2 className="text-blue-700 text-4xl font-extrabold">Talent</h2>
-              <h2 className="text-4xl font-extrabold">Skool</h2>
-            </div>
-          </Link>
-        </div>
-        <div className="flex lg:hidden">
-          <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-            <span className="sr-only">Open main menu</span>
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          <Link href="/about" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">About Us</Link>
-          <Link href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Teacher</Link>
-          <Link href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Network</Link>
-          <Link href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:underline-offset-4 hover:decoration-indigo-500">Courses</Link>
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-2">
-          <Link href="#" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Log In</Link>
-          <Link href="/signup" className="text-black border-solid border-2 border-black rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold shadow-sm"><p className="text-black">Sign Up</p></Link>
-        </div>
-      </nav>
-      {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
-      <div className="lg:hidden" role="dialog" aria-modal="true">
-        {/* <!-- Background backdrop, show/hide based on slide-over state. --> */}
-        { backdrop ? <div className="fixed inset-0 z-50"></div> : ' '}
-        <div className={`fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 ${backdrop ? "hidden": ""}`}>
-          <div className="flex items-center justify-between">
-            <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700">
-              <span onClick={() => setBackdrop(true)} className="sr-only">Close menu</span>
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</Link>
-                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</Link>
-                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</Link>
-                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</Link>
-              </div>
-              <div className="py-6">
-                <Link href="#" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-  
+    <Navbar fixed />
     <div className="relative isolate px-6 pt-14 lg:px-8">
       <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
         <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style={{clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"}}></div>
@@ -291,7 +256,7 @@ const HeroSection = () => {
               </div>
             </button>
         </div>
-        <div className="lg:col-span-5 lg:flex">
+        <div className="lg:col-span-5 ml-14 lg:flex">
             <Image ref={ref} width={400} height={100} src="/hero.png" alt="mockup" className={inView ? "animate-fade-in-right" : "opacity-0"} />
         </div>                
     </div>
@@ -326,7 +291,7 @@ const FeatureCard = ({ direction, head, description, statone, stattwo, statthree
     return (
       <div style={{
         background: color
-      }} className="flex items-center justify-center h-full w-3/4 rounded-2xl py-4">
+      }} className="flex lg:flex-row flex-col items-center justify-center h-full w-3/4 rounded-2xl py-4">
   
   
       <div ref={ref} className={`w-500 h-500 bg-transperant flex-shrink-0 p-4 ${inView ? "animate-fade-in" :"opacity-0"}`}>
@@ -363,7 +328,7 @@ const FeatureCard = ({ direction, head, description, statone, stattwo, statthree
     return (
       <div style={{
         background: color
-      }} className="flex items-center justify-center h-full w-3/4 rounded-2xl py-4">
+      }} className="flex lg:flex-row flex-col items-center justify-center h-full w-3/4 rounded-2xl py-4">
   
   
       <div ref={ref} className={`ml-6 flex flex-col ${inView ? "animate-fade-in" : "opacity-0"}`}>
@@ -451,7 +416,7 @@ const CourseDemo = ({ videoPath }) => {
             <source src={videoPath} type="video/mp4" />
           </video>
         </div>
-        <div className="w-full px-2 py-4 mx-auto grid grid-cols-3 grid-rows-2 gap-2">
+        <div className="w-full flex flex-col px-2 py-4 mx-auto lg:grid lg:grid-cols-3 lg:grid-rows-2 gap-2">
           <CourseCard/>
           <CourseCard/>
           <CourseCard/>
@@ -515,6 +480,7 @@ export default function Home({ videoPath }) {
       <CourseDemo videoPath={videoPath} />
       <TestimonialsSection/>
       <FAQSection/>
+      <CTASection/>
       <Footer/>
     </>
   );

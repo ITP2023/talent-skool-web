@@ -15,8 +15,8 @@ Firstly, create a web app in firebase.
 1. [How to create a web app in firebase](https://firebase.google.com/docs/web/setup)
 
 or 
-2. Go to the console [here](https://console.firebase.google.com).
-3. To enable authentication and use it to connect your web app, you may view the video [https://youtu.be/rbuSx1yEgV8](https://youtu.be/rbuSx1yEgV8).
+1. Go to the console [here](https://console.firebase.google.com).
+2. To enable authentication and use it to connect your web app, you may view the video [https://youtu.be/rbuSx1yEgV8](https://youtu.be/rbuSx1yEgV8).
 
 
 
