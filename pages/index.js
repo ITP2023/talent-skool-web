@@ -257,7 +257,7 @@ const HeroSection = () => {
             </button>
         </div>
         <div className="lg:col-span-5 ml-14 lg:flex">
-            <Image ref={ref} width={400} height={100} src="/hero.png" alt="mockup" className={inView ? "animate-fade-in-right" : "opacity-0"} />
+            <Image ref={ref} width={400} height={100} src="/hero.png" alt="mockup" className={inView ? "animate-fade-in-right rounded-t-full" : "opacity-0"} />
         </div>                
     </div>
 </div>
