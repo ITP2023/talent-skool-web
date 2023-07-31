@@ -8,29 +8,6 @@ import Navbar from "../components/navbar";
 
 
 
-const CTASection = () => {
-  return (
-      <section className="py-24 relative my-16">
-          <div className="relative z-10 max-w-screen-xl mx-auto px-4 md:text-center md:px-8">
-              <div className="max-w-xl md:mx-auto">
-                  <p className="text-white text-3xl font-semibold sm:text-4xl">
-                      Build the future with us
-                  </p>
-                  <p className="text-blue-100 mt-3">
-                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident.
-                  </p>
-              </div>
-              <div className="mt-4">
-                  <Link href="/signup" className="inline-block py-2 px-4 text-gray-800 font-medium bg-white duration-150 hover:bg-gray-100 active:bg-gray-200 rounded-full">
-                      Get started
-                  </Link>
-              </div>
-          </div>
-          <div className="absolute top-0 w-full h-full" style={{ background: "linear-gradient(268.24deg, rgba(59, 130, 246, 0.76) 50%, rgba(59, 130, 246, 0.545528) 80.61%, rgba(55, 48, 163, 0) 117.35%)" }}></div>
-      </section>
-  )
-}
-
 const FaqsCard = (props) => {
 
     const answerElRef = useRef()
@@ -431,6 +408,74 @@ const CourseDemo = ({ videoPath }) => {
 }
 
 
+const CTASection =  () => {
+  return (
+      <section className="max-w-xl mt-12 mx-auto px-4 md:px-8">
+        <div className="w-[80%] h-auto mx-auto">
+          <div className="space-y-3 text-center">
+              <h3 className="text-3xl text-gray-800 font-bold">
+                  Subscribe to our newsletter
+              </h3>
+              <p className="text-gray-400 leading-relaxed">
+                Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.  
+              </p>
+          </div>
+          <div className="mt-6">
+              <form 
+                  onSubmit={(e) => e.preventDefault()}
+                  className="items-center justify-center sm:flex">
+                  <input 
+                      type="email"
+                      placeholder="Enter your email"
+                      className="text-gray-500 w-full p-3 rounded-md border outline-none focus:border-indigo-600"
+                  />
+                  <button
+                      className="w-full mt-3 px-5 py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 duration-150 outline-none shadow-md focus:shadow-none focus:ring-2 ring-offset-2 ring-indigo-600 sm:mt-0 sm:ml-3 sm:w-auto"
+                  >
+                      Subscribe
+                  </button>
+              </form>
+              <div className="w-full h-[10%] mx-auto">
+                <svg
+                  viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}
+                  className="aa ci dp ed oz ta vf"
+                  aria-hidden="true"
+                >
+                  <circle 
+                    cx="512" 
+                    cy="512" 
+                    r="512" 
+                    fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" 
+                    fillOpacity="0.7"
+                  ></circle>
+                  <defs>
+                    <radialGradient
+                      id="759c1415-0410-454c-8f7c-9a820de03641"
+                      cx="0"
+                      cy="0" 
+                      r="1" 
+                      gradientUnits="userSpaceOnUse"
+                      gradientTransform="translate(512 512) rotate(90) scale(512)"
+                    >
+                      <stop stopColor="#7775D6"></stop>
+                      <stop 
+                        offset="1" 
+                        stopColor="#E935C1" 
+                        stopOpacity="0"
+                      ></stop>
+                    </radialGradient>
+                  </defs>
+                </svg>
+              </div>
+              <p className="mt-3 mx-auto text-center max-w-lg text-[15px] text-gray-400">
+                  No spam ever, we are care about the protection of your data. 
+                  Read our <a className="text-indigo-600 underline" href="javascript:void(0)"> Privacy Policy </a>
+              </p>
+          </div>
+        </div>
+      </section>
+  )
+}
 
 /**
  * 
@@ -447,8 +492,7 @@ export default function Home({ videoPath }) {
       <div className="flex flex-col gap-4 items-center flex-grow max-w-screen">
         <FeatureCard 
           direction="ltr"
-          description="You are going to learn from a best teacher with 
-          good,environment, facilities, and quality"
+          description="You are going to learn from a best teacher with good,environment, facilities, and quality"
           head="Learn from the best teachers"
           statone="Teachers"
           stattwo="Students"
