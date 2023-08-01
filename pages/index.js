@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/firebaseMod";
 
 
 
@@ -407,70 +409,145 @@ const CourseDemo = ({ videoPath }) => {
 
 }
 
-
-const CTASection =  () => {
+const LoadingSpinner = () => {
   return (
-      <section className="max-w-xl mt-12 mx-auto px-4 md:px-8">
-        <div className="w-[80%] h-auto mx-auto">
+    
+<div role="status">
+    <svg aria-hidden="true" className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600 stroke-2 opacity-100" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+    </svg>
+    <span className="sr-only">Loading...</span>
+</div>
+
+  );
+}
+const CTASection =  () => {
+
+  const [ tab, setTab ] = useState(1);
+
+  const [ err, setErr ] = useState("");
+
+  const [ customerData, setCustomerData ] = useState({
+    name: "", email: "", phoneNumber: ""
+  });
+
+  const [ loading, setLoading ] = useState(false);
+
+  const [ success, setSuccess ] = useState(false);
+
+  const sendCustomerDetails = async (e) => {
+    e.preventDefault();
+    const { name, email, phoneNumber } = customerData;
+    console.log(err);
+    
+    if (!name) {
+          setErr("Please enter your name");
+          return;
+    }
+    if (!email) {
+      setErr("Please enter your email");
+      return;
+    }
+    
+    if (!phoneNumber) {
+      setErr("Please enter your Phone Number");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await addDoc(collection(db, "/customerData"), {
+        name, email, phoneNumber
+      });
+      setSuccess(true);
+    }
+    catch (e) {
+      setErr(e.message);
+    }
+    setLoading(false);
+  }
+
+  return (
+      <section className="max-w-screen mt-12 mx-auto px-4 md:px-8">
+        <div className={`${success ? "" : "hidden"} mx-auto w-full md:w-1/2`}>
+          <div className="bg-black flex flex-col items-center justify-between space-y-6 h-auto p-6 rounded-xl mx-auto">
+            <div className="h-1/2 w-full">
+              <Image alt="icon_success" width={100} height={100} src="/check.png" className="w-[100px] h-[100px] mx-auto" />
+            </div>
+            
+            <div className="h-1/2 w-full">
+              <p className="text-2xl text-white font-bold text-center">Success!</p>
+              <p className="mt-4 text-white text-center">We&apos;ve created your account and will notify you when we launch</p>
+            </div>
+          </div>
+        </div>
+        <div className={`shadow-lg w-11/12 mx-auto bg-black py-8 my-auto rounded-xl px-2 ${loading ? "opacity-40" : "opacity-100"} ${success ? "hidden" : ""}`}>
+          <div className={`${loading ? "opacity-100 ": "hidden "}absolute z-3 w-[80%] flex flex-row justify-center items-center mx-auto bg-transparent py-8 my-auto`}>
+            <LoadingSpinner/>
+          </div>
           <div className="space-y-3 text-center">
-              <h3 className="text-3xl text-gray-800 font-bold">
-                  Subscribe to our newsletter
+              <h3 className="text-3xl text-white font-bold">
+                  Get notified when we launch.
               </h3>
               <p className="text-gray-400 leading-relaxed">
                 Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.  
               </p>
           </div>
-          <div className="mt-6">
-              <form 
-                  onSubmit={(e) => e.preventDefault()}
-                  className="items-center justify-center sm:flex">
-                  <input 
-                      type="email"
-                      placeholder="Enter your email"
-                      className="text-gray-500 w-full p-3 rounded-md border outline-none focus:border-indigo-600"
+          <div className="mt-6 h-auto w-auto mx-auto">
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                  className="flex flex-col md:flex-row justify-center items-center px-3">
+                <div className={`text-gray-500 w-full md:w-1/3 p-3 outline-none`}>
+                  <input
+                    onChange={e => setCustomerData(({ email, phoneNumber }) => ({ name: e.target.value, email, phoneNumber }))}
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Enter your name"
+                    className={`text-gray-500 w-full p-3 rounded-md border outline-none focus:border-indigo-600`}
                   />
-                  <button
-                      className="w-full mt-3 px-5 py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 duration-150 outline-none shadow-md focus:shadow-none focus:ring-2 ring-offset-2 ring-indigo-600 sm:mt-0 sm:ml-3 sm:w-auto"
-                  >
-                      Subscribe
-                  </button>
-              </form>
-              <div className="w-full h-[10%] mx-auto">
-                <svg
-                  viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}
-                  className="aa ci dp ed oz ta vf"
-                  aria-hidden="true"
+                </div>
+                <div className={`text-gray-500 w-full md:w-1/3 p-3 outline-none`}>
+                  <div className={`relative`}>
+                    <div className="absolute inset-y-0 left-3 my-auto h-6 flex items-center border-r pr-2">
+                      <select name="country" className="text-sm bg-white outline-none rounded-lg h-full">
+                        <option value="+1">US +1</option>
+                        <option value="+44">UK +44</option>
+                        <option value="+91">India +91</option>
+                      </select>
+                    </div>
+                    <input
+                      onChange={e => setCustomerData(({ email, name }) => ({ phoneNumber: e.target.value, email, name }))}
+                      name="phone"
+                      type="text"
+                      placeholder="+1 (555) 000-000"
+                      required
+                      className="text-gray-500 w-full pl-[6.5rem] pr-3 py-3 rounded-md border outline-none focus:border-indigo-600"
+                    />
+                  </div>
+                </div>
+                <div className={`text-gray-500 w-full md:w-1/3 p-3 outline-none`}>
+                  <input
+                      onChange={e => setCustomerData(({ name, phoneNumber }) => ({ email: e.target.value, name, phoneNumber }) )}
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="Enter your email"
+                      className={`text-gray-500 w-full p-3 rounded-md border outline-none focus:border-indigo-600`}
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={sendCustomerDetails}
+                  className="w-11/12 px-5 py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 duration-150 outline-none shadow-md focus:shadow-none focus:ring-2 ring-offset-2 ring-indigo-600 md:w-fit"
                 >
-                  <circle 
-                    cx="512" 
-                    cy="512" 
-                    r="512" 
-                    fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" 
-                    fillOpacity="0.7"
-                  ></circle>
-                  <defs>
-                    <radialGradient
-                      id="759c1415-0410-454c-8f7c-9a820de03641"
-                      cx="0"
-                      cy="0" 
-                      r="1" 
-                      gradientUnits="userSpaceOnUse"
-                      gradientTransform="translate(512 512) rotate(90) scale(512)"
-                    >
-                      <stop stopColor="#7775D6"></stop>
-                      <stop 
-                        offset="1" 
-                        stopColor="#E935C1" 
-                        stopOpacity="0"
-                      ></stop>
-                    </radialGradient>
-                  </defs>
-                </svg>
+                  Notify
+                </button>
+              </form>
+              <div className={`${err !== "" ? "": "hidden"} text-center px-2 py-2 text-red-300 mx-auto`}>
+                {err}
               </div>
-              <p className="mt-3 mx-auto text-center max-w-lg text-[15px] text-gray-400">
-                  No spam ever, we are care about the protection of your data. 
-                  Read our <a className="text-indigo-600 underline" href="javascript:void(0)"> Privacy Policy </a>
-              </p>
           </div>
         </div>
       </section>
