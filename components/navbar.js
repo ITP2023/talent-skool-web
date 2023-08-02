@@ -117,6 +117,9 @@ const Navbar = ({ fixed }) => {
               <Link href="/signup" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Log in</Link>
               <Link href="/signup" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Sign Up</Link>
             </div>
+            <div>
+              <Link href="/contact" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Contact Us</Link>
+            </div>
           </div>
         </div>
       </div>
