@@ -8,13 +8,13 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyAZ3nkB_x9YxX7DDC1uyfCvPckeoAuehIY",
+  authDomain: "talentskool-landing.firebaseapp.com",
+  projectId: "talentskool-landing",
+  storageBucket: "talentskool-landing.appspot.com",
+  messagingSenderId: "173273038703",
+  appId: "1:173273038703:web:b9121ff9565c997f9cf29a",
+  measurementId: "G-5EX5NC50M1"
 };
 
 
