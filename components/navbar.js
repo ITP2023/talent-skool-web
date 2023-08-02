@@ -16,7 +16,7 @@ const Navbar = ({ fixed }) => {
       link: "/about"
     },
     {
-      text: "Teachers",
+      text: "Mentors",
       link: "/mentors",
     },
     {
@@ -24,8 +24,8 @@ const Navbar = ({ fixed }) => {
       link: "/network",
     },
     {
-      text: "Courses",
-      link: "/courses"
+      text: "Contact Us",
+      link: "/contact"
     }
   ];
   const router = useRouter();
@@ -108,17 +108,21 @@ const Navbar = ({ fixed }) => {
         <div className="mt-6 flow-root">
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="space-y-2 py-6">
-              <Link href="/about" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">About Us</Link>
-              <Link href="/mentors" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Teachers</Link>
-              <Link href="/network" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Network</Link>
-              <Link href="/courses" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Courses</Link>
+              {
+                ROUTES.map((r, i) => (
+                  <Link
+                    key={i}
+                    href={r.link}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4"
+                  >
+                    {r.text}
+                  </Link>
+                ))
+              }
             </div>
             <div className="py-6">
               <Link href="/signup" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Log in</Link>
               <Link href="/signup" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Sign Up</Link>
-            </div>
-            <div>
-              <Link href="/contact" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4">Contact Us</Link>
             </div>
           </div>
         </div>
