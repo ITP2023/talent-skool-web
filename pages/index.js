@@ -388,135 +388,69 @@ const FeatureCard = ({
     threshold: 0.5,
   });
 
-  if (direction === "ltr") {
-    return (
+  return (
+    <div
+      style={{
+        background: color,
+      }}
+      className={`flex flex-col ${direction === "ltr" ? "lg:flex-row" : "lg:flex-row-reverse"} items-center justify-center h-full w-full md:w-3/4 md:rounded-2xl py-4`}
+    >
       <div
-        style={{
-          background: color,
-        }}
-        className="flex lg:flex-row flex-col items-center justify-center h-full w-full md:w-3/4 rounded-2xl py-4"
+        ref={ref}
+        className={`w-500 h-500 bg-transperant flex-shrink-0 p-4 ${
+          inView ? "animate-fade-in" : "opacity-0"
+        }`}
       >
-        <div
-          ref={ref}
-          className={`w-500 h-500 bg-transperant flex-shrink-0 p-4 ${
-            inView ? "animate-fade-in" : "opacity-0"
-          }`}
-        >
-          {/* Image here */}
-          <Image
-            width={200}
-            height={200}
-            src={imgsrc}
-            alt="Hero Image"
-            className="w-full h-full object-cover"
-          />
+        {/* Image here */}
+        <Image
+          width={200}
+          height={200}
+          src={imgsrc}
+          alt="Hero Image"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div
+        ref={ref}
+        className={`ml-6 flex flex-col ${
+          inView ? "animate-fade-in-right" : "opacity-0"
+        }`}
+      >
+        <p className="text-3xl font-bold mb-2 text-white">{head}</p>
+        <p className="text-white">{description}</p>
+        <div className="mt-4">
+          <button
+            className={`${color === "black" ? "bg-white" : "bg-black"} ${
+              color === "black" ? "text-black" : "text-white"
+            } px-4 py-2 mx-2`}
+          >
+            Learn with us
+          </button>
+          <button
+            className={`${color === "black" ? "bg-white" : "bg-black"} ${
+              color === "black" ? "text-black" : "text-white"
+            } px-4 py-2 mx-2`}
+          >
+            Explore us
+          </button>
         </div>
-        <div
-          ref={ref}
-          className={`ml-6 flex flex-col ${
-            inView ? "animate-fade-in-right" : "opacity-0"
-          }`}
-        >
-          <p className="text-3xl font-bold mb-2 text-white">{head}</p>
-          <p className="text-white">{description}</p>
-          <div className="mt-4">
-            <button
-              className={`${color === "black" ? "bg-white" : "bg-black"} ${
-                color === "black" ? "text-black" : "text-white"
-              } px-4 py-2 mx-2`}
-            >
-              Learn with us
-            </button>
-            <button
-              className={`${color === "black" ? "bg-white" : "bg-black"} ${
-                color === "black" ? "text-black" : "text-white"
-              } px-4 py-2 mx-2`}
-            >
-              Explore us
-            </button>
+        <div className="mt-4 flex">
+          <div className="p-2 mr-2">
+            <p className="text-2xl font-bold text-orange-500">20+</p>
+            <p className="text-white">{statone}</p>
           </div>
-          <div className="mt-4 flex">
-            <div className="p-2 mr-2">
-              <p className="text-2xl font-bold text-orange-500">20+</p>
-              <p className="text-white">{statone}</p>
-            </div>
-            <div className="p-2 mr-2">
-              <p className="text-2xl font-bold text-orange-500">20K</p>
-              <p className="text-white">{stattwo}</p>
-            </div>
-            <div className="p-2">
-              <p className="text-2xl font-bold text-orange-500">30</p>
-              <p className="text-white">{statthree}</p>
-            </div>
+          <div className="p-2 mr-2">
+            <p className="text-2xl font-bold text-orange-500">20K</p>
+            <p className="text-white">{stattwo}</p>
+          </div>
+          <div className="p-2">
+            <p className="text-2xl font-bold text-orange-500">30</p>
+            <p className="text-white">{statthree}</p>
           </div>
         </div>
       </div>
-    );
-  } else {
-    return (
-      <div
-        style={{
-          background: color,
-        }}
-        className="flex lg:flex-row flex-col items-center justify-center h-full w-3/4 rounded-2xl py-4"
-      >
-        <div
-          ref={ref}
-          className={`ml-6 flex flex-col ${
-            inView ? "animate-fade-in" : "opacity-0"
-          }`}
-        >
-          <p className="text-3xl font-bold mb-2 text-white">{head}</p>
-          <p className="text-white">{description}</p>
-          <div className="mt-4">
-            <button
-              className={`${color === "black" ? "bg-white" : "bg-black"} ${
-                color === "black" ? "text-black" : "text-white"
-              } px-4 py-2 mx-2`}
-            >
-              Learn with us
-            </button>
-            <button
-              className={`${color === "black" ? "bg-white" : "bg-black"} ${
-                color === "black" ? "text-black" : "text-white"
-              } px-4 py-2 mx-2`}
-            >
-              Explore us
-            </button>
-          </div>
-          <div className="mt-4 flex">
-            <div className="p-2 mr-2">
-              <p className="text-2xl font-bold text-orange-500">20+</p>
-              <p className="text-white">{statone}</p>
-            </div>
-            <div className="p-2 mr-2">
-              <p className="text-2xl font-bold text-orange-500">20K</p>
-              <p className="text-white">{stattwo}</p>
-            </div>
-            <div className="p-2">
-              <p className="text-2xl font-bold text-orange-500">30</p>
-              <p className="text-white">{statthree}</p>
-            </div>
-          </div>
-        </div>
-        <div
-          className={`w-500 h-500 bg-transperant flex-shrink-0 p-4 ${
-            inView ? "animate-fade-in-right" : "opacity-0"
-          }`}
-        >
-          {/* Image here */}
-          <Image
-            ref={ref}
-            width={200}
-            height={200}
-            src={imgsrc}
-            alt="Hero Image"
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
 };
 
 const CourseCard = () => {
