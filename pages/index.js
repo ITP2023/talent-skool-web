@@ -352,7 +352,7 @@ const FeatureCard = ({
 }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.3,
   });
 
   return (
@@ -383,36 +383,36 @@ const FeatureCard = ({
           inView ? "animate-fade-in-right" : "opacity-0"
         }`}
       >
-        <p className="text-3xl font-bold mb-2 text-white">{head}</p>
-        <p className="text-white">{description}</p>
-        <div className="mt-4">
+        <p className="text-3xl font-bold mb-2 text-white text-center md:text-left">{head}</p>
+        <p className="text-white text-center md:text-left my-2 md:my-auto px-2">{description}</p>
+        <div className="mt-4 flex flex-row justify-evenly md:justify-start">
           <button
-            className={`${color === "black" ? "bg-white" : "bg-black"} ${
+            className={`rounded-lg ${color === "black" ? "bg-white" : "bg-black"} ${
               color === "black" ? "text-black" : "text-white"
             } px-4 py-2 mx-2`}
           >
             Learn with us
           </button>
           <button
-            className={`${color === "black" ? "bg-white" : "bg-black"} ${
+            className={`rounded-lg ${color === "black" ? "bg-white" : "bg-black"} ${
               color === "black" ? "text-black" : "text-white"
             } px-4 py-2 mx-2`}
           >
             Explore us
           </button>
         </div>
-        <div className="mt-4 flex">
+        <div className="mt-4 flex flex-row justify-evenly md:justify-start">
           <div className="p-2 mr-2">
-            <p className="text-2xl font-bold text-orange-500">20+</p>
-            <p className="text-white">{statone}</p>
+            <p className="text-2xl text-center font-bold text-orange-500">20+</p>
+            <p className="text-white whitespace-wrap">{statone}</p>
           </div>
           <div className="p-2 mr-2">
-            <p className="text-2xl font-bold text-orange-500">20K</p>
-            <p className="text-white">{stattwo}</p>
+            <p className="text-2xl text-center font-bold text-orange-500">20K</p>
+            <p className="text-white whitespace-wrap">{stattwo}</p>
           </div>
           <div className="p-2">
-            <p className="text-2xl font-bold text-orange-500">30</p>
-            <p className="text-white">{statthree}</p>
+            <p className="text-2xl text-center font-bold text-orange-500">30</p>
+            <p className="text-white whitespace-wrap">{statthree}</p>
           </div>
         </div>
       </div>
