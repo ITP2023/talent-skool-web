@@ -453,7 +453,12 @@ const FeatureCard = ({
   );
 };
 
-const CourseCard = () => {
+
+/**
+ * @param {CourseCardData} param0
+ * @returns 
+ */
+const CourseCard = ({ date_of_release, category, title, description, instructor, job_title, thumbnail_url }) => {
   return (
     <div className="max-w-md mx-auto p-4 my-4">
       {/* Image */}
@@ -461,45 +466,52 @@ const CourseCard = () => {
         <Image
           width={300}
           height={170}
-          src="/suit_dude.png"
+          src={thumbnail_url}
           alt="Image"
           className="w-full h-70 rounded-xl"
         />
       </div>
 
-      {/* Date and Marketing */}
+      {/* Date and Category */}
       <div className="flex items-center mb-2 w-full justify-start gap-4 my-4">
         <div className="mr-2">Mar 20, 2023</div>
         <div className="bg-gray-100 px-4 py-1 rounded-2xl hover:cursor-pointer hover:bg-gray-300">
-          Marketing
+          {category}
         </div>
       </div>
 
       {/* Heading */}
-      <h1 className="text-2xl font-bold mb-2">Your Heading</h1>
+      <h1 className="text-2xl font-bold mb-2">{title}</h1>
 
       {/* Random text paragraph */}
       <p className="text-left mb-2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis
-        lorem sit amet bibendum pulvinar.
+        {description}
       </p>
 
       {/* Author */}
       <div className="flex items-center mt-6">
         <div className="w-12 h-12 rounded-full bg-gray-400 mr-2"></div>
         <div>
-          <div className="font-semibold">John Doe</div>
-          <div className="text-gray-600">Web Designer</div>
+          <div className="font-semibold">{instructor}</div>
+          <div className="text-gray-600">{job_title}</div>
         </div>
       </div>
     </div>
   );
 };
 
-const CourseDemo = ({ videoPath }) => {
+/**
+ * 
+ * @param {{
+ * videoPath: string;
+ * courseCardData: CourseCardData[]
+ * }} param0 
+ * @returns 
+ */
+const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
     <section className="mx-auto p-6 max-w-screen">
-      <p className="text-3xl font-bold ml-6 p-4">Here&apos;s a glimpse</p>
+      <p className="text-3xl font-bold ml-6 p-4 my-8">Here&apos;s a glimpse</p>
       <div className="w-full">
         <div className="w-full">
           <video
@@ -508,18 +520,20 @@ const CourseDemo = ({ videoPath }) => {
             width={1000}
             height={700}
             disablePictureInPicture
-            className="w-3/4 mx-auto rounded-xl"
+            className="w-full md:w-3/4 mx-auto rounded-xl"
           >
             <source src={videoPath} type="video/mp4" />
           </video>
         </div>
         <div className="w-full flex flex-col px-2 py-4 mx-auto lg:grid lg:grid-cols-3 lg:grid-rows-2 gap-2">
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
+          {
+            courseCardData.map((course, i) => (
+              <CourseCard
+                key={i}
+                {...course}
+              />
+            ))
+          }
         </div>
       </div>
     </section>
@@ -770,10 +784,11 @@ const CTAModal = () => {
 };
 /**
  *
- * @param {{ videoPath: string }} param0
+ * @typedef {{ date_of_release: string, category: string, title: string, description: string, instructor: string, job_title: string, thumbnail_url: string }} CourseCardData
+ * @param {{ videoPath: string, courseCardData: CourseCardData[] }} param0
  * @returns
  */
-export default function Home({ videoPath }) {
+export default function Home({ videoPath, courseCardData }) {
   return (
     <>
       <Head>
@@ -783,7 +798,7 @@ export default function Home({ videoPath }) {
       <Navbar fixed />
       {/* <HeroSection /> */}
       <HeroBanner />
-      <div className="flex flex-col gap-4 items-center flex-grow max-w-screen w-full">
+      <div className="flex flex-col my-10 md:gap-4 items-center flex-grow max-w-screen w-full">
         <FeatureCard
           direction="ltr"
           description="You are going to learn from a best teacher with good,environment, facilities, and quality"
@@ -815,7 +830,7 @@ export default function Home({ videoPath }) {
           imgsrc="/network_hero.png"
         />
       </div>
-      <CourseDemo videoPath={videoPath} />
+      <CourseDemo courseCardData={courseCardData} videoPath={videoPath} />
       <TestimonialsSection />
       <FAQSection />
       <Footer />
@@ -823,10 +838,52 @@ export default function Home({ videoPath }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(ctx) {
+
+
+  const courseCardData = [
+    {
+      "date_of_release": "2023-09-01",
+      "category": "Computer Science",
+      "title": "Introduction to Artificial Intelligence",
+      "description": "Explore the fundamentals of Artificial Intelligence (AI), including machine learning, neural networks, and natural language processing. Learn how to apply AI techniques to real-world problems and build AI-powered applications.",
+      "instructor": "Dr. Sarah Johnson",
+      "job_title": "Senior AI Researcher",
+      "thumbnail_url": "/suit_dude.png"
+    },
+    {
+      "date_of_release": "2023-08-15",
+      "category": "Business",
+      "title": "Digital Marketing Strategies",
+      "description": "Master the art of digital marketing and discover strategies to reach and engage your target audience online. Learn about SEO, social media marketing, email campaigns, and data analytics to boost your business's online presence.",
+      "instructor": "John Smith",
+      "job_title": "Digital Marketing Consultant",
+      "thumbnail_url": "/suit_dude.png"
+    },
+    {
+      "date_of_release": "2023-09-30",
+      "category": "Health & Fitness",
+      "title": "Mindfulness Meditation",
+      "description": "Develop a mindfulness meditation practice to reduce stress, increase focus, and enhance overall well-being. Learn various meditation techniques, breathing exercises, and tips for integrating mindfulness into daily life.",
+      "instructor": "Dr. Emily Roberts",
+      "job_title": "Mental Health Counselor",
+      "thumbnail_url": "/suit_dude.png"
+    },
+    {
+      "date_of_release": "2023-08-25",
+      "category": "Language Learning",
+      "title": "Spanish for Beginners",
+      "description": "Begin your journey to learn Spanish, one of the most widely spoken languages in the world. Acquire essential vocabulary, grammar, and conversational skills to confidently communicate in everyday situations.",
+      "instructor": "Maria Gonzalez",
+      "job_title": "Language Instructor",
+      "thumbnail_url": "/suit_dude.png"
+    }
+  ];
+
   return {
     props: {
       videoPath: "./mov_bbb.mp4",
+      courseCardData
     },
   };
 }
