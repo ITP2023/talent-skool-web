@@ -35,7 +35,7 @@ const Navbar = ({ fixed }) => {
   const [ isScrolledDown, setIsScrolledDown ] = useState(false);
 
   const hideOnScroll = () => {
-    const heightToHideAfter = 700;
+    const heightToHideAfter = 10;
     const scrollHeight = document.body.scrollTop || document.documentElement.scrollTop;
 
     if (scrollHeight > heightToHideAfter) {
