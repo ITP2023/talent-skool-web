@@ -35,7 +35,7 @@ const Navbar = ({ fixed }) => {
   const [ isScrolledDown, setIsScrolledDown ] = useState(false);
 
   const hideOnScroll = () => {
-    const heightToHideAfter = 700;
+    const heightToHideAfter = 10;
     const scrollHeight = document.body.scrollTop || document.documentElement.scrollTop;
 
     if (scrollHeight > heightToHideAfter) {
@@ -96,7 +96,7 @@ const Navbar = ({ fixed }) => {
       {/* <!-- Background backdrop, show/hide based on slide-over state. --> */}
       { backdrop ? <div className="fixed inset-0 z-50 bg-black opacity-50"></div> : ' '}
       {/* { backdrop ?  */}
-      <div className={`fixed inset-y-0 right-0 z-50 w-6/12 overflow-y-auto bg-transparent px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-700 ${backdrop ? "translate-x-0" : "translate-x-[100%]"}`}>
+      <div className={`fixed inset-y-0 z-50 w-1/2 overflow-y-auto bg-transparent px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-700 ${backdrop ? "translate-y-0" : "translate-y-[-100%]"}`}>
         <div className="flex items-center justify-between">
           <button onClick={() => setBackdrop(false)} type="button" className="-m-2.5 rounded-md p-2.5 text-white">
             <span className="sr-only">Close menu</span>
@@ -105,7 +105,7 @@ const Navbar = ({ fixed }) => {
             </svg>
           </button>
         </div>
-        <div className="mt-6 flow-root">
+        <div className="mt-6">
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="space-y-2 py-6">
               {

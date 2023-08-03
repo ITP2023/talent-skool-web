@@ -3,13 +3,9 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="">
-      <div className="relative flex justify-start md:justify-center md:items-end ">
-        <Image width={1728} height={800} className="hidden lg:block lg:absolute lg:object-cover lg:top-10 lg:h-full lg:w-full xl:mt-10 z-0" src="/footer.svg" alt="background" />
-        <div
-          className="lg:hidden block absolute object-cover top-10 h-full w-full z-0 bg-indigo-600"
-        />
-        <div className="flex pt-36 md:pt-32 lg:pt-40 xl:pt-96   px-4 md:px-6  xl:px-20 flex-col justify-start items-start md:justify-center md:items-center relative z-10">
+    <section className="bg-indigo-600 lg:bg-[url('/footer.svg')] w-full">
+      <div className="relative flex justify-start md:justify-center md:items-end w-full">
+        <div className="flex pt-36 md:pt-32 lg:pt-40 xl:pt-96 px-4 md:px-6  xl:px-20 flex-col justify-start items-start md:justify-center md:items-center relative z-10">
           <div className="flex flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row">
             
             <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8">
@@ -87,7 +83,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
   );
 }

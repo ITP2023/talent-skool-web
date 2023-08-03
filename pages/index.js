@@ -260,7 +260,8 @@ const TestimonialsSection = () => {
     </section>
   );
 };
-const HeroSection = () => {
+
+const HeroBanner = () => {
   const [heroRef, inView] = useInView({
     triggerOnce: true,
     threshold: 0.5,
@@ -268,13 +269,13 @@ const HeroSection = () => {
 
   const [heroImageRef, heroImageInView] = useInView({
     triggerOnce: true,
-    threshold: 0.5
+    threshold: 0.5,
   });
 
   return (
-    <div className="bg-white h-screen">
-      <Navbar fixed />
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+    <div className="bg-white h-screen max-w-screen w-screen">
+      <div className="isolate md:flex md:flex-row md:justify-between mx-auto py-10 px-4 text-[5em] mt-16">
+        {/* Gradient BG */}
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -287,32 +288,34 @@ const HeroSection = () => {
             }}
           ></div>
         </div>
-        <div className="flex flex-row md:justify-between max-w-screen px-6 py-8 mx-auto lg:gap-10 xl:gap-0 lg:py-16 lg:grid-cols-12 md:grid-cols-8 my-10">
-          <div className="mr-auto place-self-center lg:col-span-7 md:text-4xl text-[6em]">
-            <h1
-              ref={heroRef}
-              className={`text-indigo-600 max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
-                inView ? "animate-fade-in" : "opacity-0"
-              }`}
-            >
-              Learn.
-            </h1>
+        {/* End of Gradient BG */}
+        <div className="place-self-center md:flex md:flex-col">
+          <h1
+            ref={heroRef}
+            className={`text-indigo-600 max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
+              inView ? "animate-fade-in" : "opacity-0"
+            }`}
+          >
+            Learn.
+          </h1>
 
-            <h1
-              className={`text-indigo-600 max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
-                inView ? "animate-fade-in" : "opacity-0"
-              }`}
-            >
-              Earn.
-            </h1>
-            <p
-              className={`max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
-                inView ? "animate-fade-in" : "opacity-0"
-              }`}
-            >
-              <span className="text-indigo-600">Net</span>work.
-            </p>
-            <br />
+          <h1
+            ref={heroRef}
+            className={`text-indigo-600 max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
+              inView ? "animate-fade-in" : "opacity-0"
+            }`}
+          >
+            Earn.
+          </h1>
+          <p
+            ref={heroRef}
+            className={`max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
+              inView ? "animate-fade-in" : "opacity-0"
+            }`}
+          >
+            <span className="text-indigo-600">Net</span>work.
+          </p>
+          <div className="mt-16">
             <a
               href="http://play.google.com/store/apps/details?id=com.google.android.apps.maps"
               rel="noopener noreferrer"
@@ -336,18 +339,21 @@ const HeroSection = () => {
               </div>
             </a>
           </div>
-          <div className="md:col-span-4 lg:col-span-5 ml-14 md:block hidden">
-            <Image
-              ref={heroImageRef}
-              width={400}
-              height={100}
-              src="/hero.png"
-              alt="mockup"
-              className={
-                heroImageInView ? "animate-fade-in-right rounded-t-full" : "opacity-0"
-              }
-            />
-          </div>
+        </div>
+
+        <div className="ml-32 md:block hidden">
+          <Image
+            ref={heroImageRef}
+            width={400}
+            height={100}
+            src="/hero.png"
+            alt="mockup"
+            className={
+              heroImageInView
+                ? "animate-fade-in-right rounded-t-full"
+                : "opacity-0"
+            }
+          />
         </div>
       </div>
     </div>
@@ -388,7 +394,7 @@ const FeatureCard = ({
         style={{
           background: color,
         }}
-        className="flex lg:flex-row flex-col items-center justify-center h-full w-3/4 rounded-2xl py-4"
+        className="flex lg:flex-row flex-col items-center justify-center h-full w-full md:w-3/4 rounded-2xl py-4"
       >
         <div
           ref={ref}
@@ -619,7 +625,7 @@ const CTAModal = () => {
     name: "",
     email: "",
     phoneNumber: "",
-    countryCode: ""
+    countryCode: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -673,8 +679,12 @@ const CTAModal = () => {
         onClick={() => setDisplay(false)}
       ></div>
       <div className="flex items-center min-h-screen px-4 py-8">
-        <div className={`${success ? "" : "hidden"} relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg`}>
-        <div className="flex justify-end">
+        <div
+          className={`${
+            success ? "" : "hidden"
+          } relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg`}
+        >
+          <div className="flex justify-end">
             <button
               className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
               onClick={() => setDisplay(false)}
@@ -704,7 +714,11 @@ const CTAModal = () => {
             </div>
           </div>
         </div>
-        <div className={`${success ? "hidden" : ""} relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg`}>
+        <div
+          className={`${
+            success ? "hidden" : ""
+          } relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg`}
+        >
           <div
             className={`${
               loading ? "opacity-100 " : "hidden "
@@ -735,7 +749,7 @@ const CTAModal = () => {
                       name: e.target.value,
                       email,
                       phoneNumber,
-                      countryCode
+                      countryCode,
                     }))
                   }
                   name="name"
@@ -749,9 +763,14 @@ const CTAModal = () => {
                 <div className="absolute inset-y-0 left-3 my-auto h-6 flex items-center border-r pr-2">
                   <select
                     required
-                    onChange={e => setCustomerData(({ name, phoneNumber, email }) => ({
-                      name, phoneNumber, email, countryCode: e.target.value
-                    }))}
+                    onChange={(e) =>
+                      setCustomerData(({ name, phoneNumber, email }) => ({
+                        name,
+                        phoneNumber,
+                        email,
+                        countryCode: e.target.value,
+                      }))
+                    }
                     name="country"
                     className="text-sm bg-white outline-none rounded-lg h-full"
                   >
@@ -766,7 +785,7 @@ const CTAModal = () => {
                       phoneNumber: e.target.value,
                       email,
                       name,
-                      countryCode
+                      countryCode,
                     }))
                   }
                   name="phone"
@@ -780,10 +799,14 @@ const CTAModal = () => {
               <div className="relative z-2 my-4">
                 <EmailIcon />
                 <input
-                  onChange={(e) => setCustomerData(({ name, phoneNumber, countryCode }) => ({
-                    email: e.target.value,
-                    phoneNumber, name, countryCode
-                  }))}
+                  onChange={(e) =>
+                    setCustomerData(({ name, phoneNumber, countryCode }) => ({
+                      email: e.target.value,
+                      phoneNumber,
+                      name,
+                      countryCode,
+                    }))
+                  }
                   type="text"
                   placeholder="Enter your email"
                   className="w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
@@ -823,8 +846,10 @@ export default function Home({ videoPath }) {
         <title>Welcome to TalentSkool</title>
       </Head>
       <CTAModal />
-      <HeroSection />
-      <div className="flex flex-col gap-4 items-center flex-grow max-w-screen">
+      <Navbar fixed />
+      {/* <HeroSection /> */}
+      <HeroBanner />
+      <div className="flex flex-col gap-4 items-center flex-grow max-w-screen w-full">
         <FeatureCard
           direction="ltr"
           description="You are going to learn from a best teacher with good,environment, facilities, and quality"
