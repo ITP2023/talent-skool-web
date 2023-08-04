@@ -10,8 +10,6 @@ import { db } from "@/firebaseMod";
 import CancelIcon from "@/components/cancel_icon";
 import EmailIcon from "@/components/email_icon";
 
-
-
 const FaqsCard = (props) => {
   const answerElRef = useRef();
   const [state, setState] = useState(false);
@@ -361,7 +359,9 @@ const FeatureCard = ({
       style={{
         background: color,
       }}
-      className={`flex flex-col ${direction === "ltr" ? "lg:flex-row" : "lg:flex-row-reverse"} items-center justify-center h-full w-full md:w-3/4 md:rounded-2xl py-4`}
+      className={`flex flex-col ${
+        direction === "ltr" ? "lg:flex-row" : "lg:flex-row-reverse"
+      } items-center justify-center h-full w-full sm:w-3/4 rounded-2xl py-4`}
     >
       <div
         ref={ref}
@@ -384,18 +384,26 @@ const FeatureCard = ({
           inView ? "animate-fade-in-right" : "opacity-0"
         }`}
       >
-        <p className="text-3xl font-bold mb-2 text-white text-center md:text-left">{head}</p>
-        <p className="text-white text-center md:text-left my-2 md:my-auto px-2">{description}</p>
+        <p className="text-3xl font-bold mb-2 text-white text-center md:text-left">
+          {head}
+        </p>
+        <p className="text-white text-center md:text-left my-2 md:my-auto px-2">
+          {description}
+        </p>
         <div className="mt-4 flex flex-row justify-evenly md:justify-start">
           <button
-            className={`rounded-lg ${color === "black" ? "bg-white" : "bg-black"} ${
+            className={`rounded-lg ${
+              color === "black" ? "bg-white" : "bg-black"
+            } ${
               color === "black" ? "text-black" : "text-white"
             } px-4 py-2 mx-2`}
           >
             Learn with us
           </button>
           <button
-            className={`rounded-lg ${color === "black" ? "bg-white" : "bg-black"} ${
+            className={`rounded-lg ${
+              color === "black" ? "bg-white" : "bg-black"
+            } ${
               color === "black" ? "text-black" : "text-white"
             } px-4 py-2 mx-2`}
           >
@@ -404,11 +412,15 @@ const FeatureCard = ({
         </div>
         <div className="mt-4 flex flex-row justify-evenly md:justify-start">
           <div className="p-2 mr-2">
-            <p className="text-2xl text-center font-bold text-orange-500">20+</p>
+            <p className="text-2xl text-center font-bold text-orange-500">
+              20+
+            </p>
             <p className="text-white whitespace-wrap">{statone}</p>
           </div>
           <div className="p-2 mr-2">
-            <p className="text-2xl text-center font-bold text-orange-500">20K</p>
+            <p className="text-2xl text-center font-bold text-orange-500">
+              20K
+            </p>
             <p className="text-white whitespace-wrap">{stattwo}</p>
           </div>
           <div className="p-2">
@@ -421,12 +433,19 @@ const FeatureCard = ({
   );
 };
 
-
 /**
  * @param {CourseCardData} param0
- * @returns 
+ * @returns
  */
-const CourseCard = ({ date_of_release, category, title, description, instructor, job_title, thumbnail_url }) => {
+const CourseCard = ({
+  date_of_release,
+  category,
+  title,
+  description,
+  instructor,
+  job_title,
+  thumbnail_url,
+}) => {
   return (
     <div className="max-w-md mx-auto p-4 my-4">
       {/* Image */}
@@ -452,9 +471,7 @@ const CourseCard = ({ date_of_release, category, title, description, instructor,
       <h1 className="text-2xl font-bold mb-2">{title}</h1>
 
       {/* Random text paragraph */}
-      <p className="text-left mb-2">
-        {description}
-      </p>
+      <p className="text-left mb-2">{description}</p>
 
       {/* Author */}
       <div className="flex items-center mt-6">
@@ -469,12 +486,12 @@ const CourseCard = ({ date_of_release, category, title, description, instructor,
 };
 
 /**
- * 
+ *
  * @param {{
  * videoPath: string;
  * courseCardData: CourseCardData[]
- * }} param0 
- * @returns 
+ * }} param0
+ * @returns
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
@@ -494,14 +511,9 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
           </video>
         </div>
         <div className="w-full flex flex-col px-2 py-4 mx-auto lg:grid lg:grid-cols-3 lg:grid-rows-2 gap-2">
-          {
-            courseCardData.map((course, i) => (
-              <CourseCard
-                key={i}
-                {...course}
-              />
-            ))
-          }
+          {courseCardData.map((course, i) => (
+            <CourseCard key={i} {...course} />
+          ))}
         </div>
       </div>
     </section>
@@ -766,7 +778,7 @@ export default function Home({ videoPath, courseCardData }) {
       <Navbar fixed />
       {/* <HeroSection /> */}
       <HeroBanner />
-      <div className="flex flex-col my-10 md:gap-4 items-center flex-grow max-w-screen w-full p-1.5">
+      <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-screen w-full p-5">
         <FeatureCard
           direction="ltr"
           description="You are going to learn from a best teacher with good,environment, facilities, and quality"
@@ -807,51 +819,53 @@ export default function Home({ videoPath, courseCardData }) {
 }
 
 export async function getStaticProps(ctx) {
-
-
   const courseCardData = [
     {
-      "date_of_release": "2023-09-01",
-      "category": "Computer Science",
-      "title": "Introduction to Artificial Intelligence",
-      "description": "Explore the fundamentals of Artificial Intelligence (AI), including machine learning, neural networks, and natural language processing. Learn how to apply AI techniques to real-world problems and build AI-powered applications.",
-      "instructor": "Dr. Sarah Johnson",
-      "job_title": "Senior AI Researcher",
-      "thumbnail_url": "/suit_dude.png"
+      date_of_release: "2023-09-01",
+      category: "Computer Science",
+      title: "Introduction to Artificial Intelligence",
+      description:
+        "Explore the fundamentals of Artificial Intelligence (AI), including machine learning, neural networks, and natural language processing. Learn how to apply AI techniques to real-world problems and build AI-powered applications.",
+      instructor: "Dr. Sarah Johnson",
+      job_title: "Senior AI Researcher",
+      thumbnail_url: "/suit_dude.png",
     },
     {
-      "date_of_release": "2023-08-15",
-      "category": "Business",
-      "title": "Digital Marketing Strategies",
-      "description": "Master the art of digital marketing and discover strategies to reach and engage your target audience online. Learn about SEO, social media marketing, email campaigns, and data analytics to boost your business's online presence.",
-      "instructor": "John Smith",
-      "job_title": "Digital Marketing Consultant",
-      "thumbnail_url": "/suit_dude.png"
+      date_of_release: "2023-08-15",
+      category: "Business",
+      title: "Digital Marketing Strategies",
+      description:
+        "Master the art of digital marketing and discover strategies to reach and engage your target audience online. Learn about SEO, social media marketing, email campaigns, and data analytics to boost your business's online presence.",
+      instructor: "John Smith",
+      job_title: "Digital Marketing Consultant",
+      thumbnail_url: "/suit_dude.png",
     },
     {
-      "date_of_release": "2023-09-30",
-      "category": "Health & Fitness",
-      "title": "Mindfulness Meditation",
-      "description": "Develop a mindfulness meditation practice to reduce stress, increase focus, and enhance overall well-being. Learn various meditation techniques, breathing exercises, and tips for integrating mindfulness into daily life.",
-      "instructor": "Dr. Emily Roberts",
-      "job_title": "Mental Health Counselor",
-      "thumbnail_url": "/suit_dude.png"
+      date_of_release: "2023-09-30",
+      category: "Health & Fitness",
+      title: "Mindfulness Meditation",
+      description:
+        "Develop a mindfulness meditation practice to reduce stress, increase focus, and enhance overall well-being. Learn various meditation techniques, breathing exercises, and tips for integrating mindfulness into daily life.",
+      instructor: "Dr. Emily Roberts",
+      job_title: "Mental Health Counselor",
+      thumbnail_url: "/suit_dude.png",
     },
     {
-      "date_of_release": "2023-08-25",
-      "category": "Language Learning",
-      "title": "Spanish for Beginners",
-      "description": "Begin your journey to learn Spanish, one of the most widely spoken languages in the world. Acquire essential vocabulary, grammar, and conversational skills to confidently communicate in everyday situations.",
-      "instructor": "Maria Gonzalez",
-      "job_title": "Language Instructor",
-      "thumbnail_url": "/suit_dude.png"
-    }
+      date_of_release: "2023-08-25",
+      category: "Language Learning",
+      title: "Spanish for Beginners",
+      description:
+        "Begin your journey to learn Spanish, one of the most widely spoken languages in the world. Acquire essential vocabulary, grammar, and conversational skills to confidently communicate in everyday situations.",
+      instructor: "Maria Gonzalez",
+      job_title: "Language Instructor",
+      thumbnail_url: "/suit_dude.png",
+    },
   ];
 
   return {
     props: {
       videoPath: "./mov_bbb.mp4",
-      courseCardData
+      courseCardData,
     },
   };
 }
