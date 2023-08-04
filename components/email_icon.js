@@ -1,7 +1,7 @@
-const EmailIcon = () => {
+const EmailIcon = ({ className }) => {
   return (
     <svg
-      className="w-6 h-6 text-gray-400 absolute left-3 inset-y-0 my-auto"
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

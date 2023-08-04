@@ -3,12 +3,12 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "@/firebaseMod";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 import CancelIcon from "@/components/cancel_icon";
 import EmailIcon from "@/components/email_icon";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/firebaseMod";
 
 const FaqsCard = (props) => {
   const answerElRef = useRef();
@@ -544,8 +544,7 @@ const LoadingSpinner = ({ opacity }) => {
   );
 };
 
-const CTAModal = () => {
-  const [display, setDisplay] = useState(true);
+const CTAModal = ({ display, setDisplay }) => {
 
   const [err, setErr] = useState("");
 
@@ -601,12 +600,12 @@ const CTAModal = () => {
   };
 
   return display ? (
-    <div className="fixed inset-0 z-10 overflow-y-auto">
+    <div className="fixed inset-0 z-20 overflow-hidden">
       <div
-        className="fixed inset-0 w-full h-full bg-black opacity-40"
+        className="fixed inset-0 w-full h-full bg-black opacity-40 z-10"
         onClick={() => setDisplay(false)}
       ></div>
-      <div className="flex items-center min-h-screen px-4 py-8">
+      <div className="flex z-30 items-center min-h-screen px-4 py-8">
         <div
           className={`${
             success ? "" : "hidden"
@@ -645,12 +644,12 @@ const CTAModal = () => {
         <div
           className={`${
             success ? "hidden" : ""
-          } relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg`}
+          } relative z-40 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg`}
         >
           <div
             className={`${
               loading ? "opacity-100 " : "hidden "
-            }absolute z-10 w-full h-full flex flex-row justify-center items-center bg-white/60 rounded-lg -ml-4 -mt-4`}
+            }absolute z-40 w-full h-full flex flex-row justify-center items-center bg-white/60 rounded-lg -ml-4 -mt-4`}
           >
             <LoadingSpinner opacity={loading ? 100 : 0} />
           </div>
@@ -687,58 +686,67 @@ const CTAModal = () => {
                   className={`text-gray-500 w-full px-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm`}
                 />
               </div>
-              <div className={`relative z-2 my-4 shadow-sm`}>
-                <div className="absolute inset-y-0 left-3 my-auto h-6 flex items-center border-r pr-2">
-                  <select
-                    required
-                    onChange={(e) =>
-                      setCustomerData(({ name, phoneNumber, email }) => ({
-                        name,
-                        phoneNumber,
+              <div className="block my-4">
+                <div className={`relative z-2 my-4`}>
+                  <div className="absolute left-3 top-2 my-auto h-6 flex items-center border-r pr-2">
+                    <select
+                      required
+                      onChange={(e) =>
+                        setCustomerData(({ name, phoneNumber, email }) => ({
+                          name,
+                          phoneNumber,
+                          email,
+                          countryCode: e.target.value,
+                        }))
+                      }
+                      name="country"
+                      className="text-sm bg-white outline-none rounded-lg h-full"
+                    >
+                      <option value="+1">US +1</option>
+                      <option value="+44">UK +44</option>
+                      <option value="+91">India +91</option>
+                    </select>
+                  </div>
+                  <input
+                    onInput={(e) =>
+                      setCustomerData(({ email, name, countryCode }) => ({
+                        phoneNumber: e.target.value,
                         email,
-                        countryCode: e.target.value,
+                        name,
+                        countryCode,
                       }))
                     }
-                    name="country"
-                    className="text-sm bg-white outline-none rounded-lg h-full"
-                  >
-                    <option value="+1">US +1</option>
-                    <option value="+44">UK +44</option>
-                    <option value="+91">India +91</option>
-                  </select>
+                    name="phone"
+                    type="text"
+                    placeholder="9999988888"
+                    required
+                    className="text-gray-500 w-full pl-[6.5rem] pr-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm"
+                  />
+                  <p className="hidden text-red-500 peer-invalid:block">
+                    Please enter a valid phone number
+                  </p>
                 </div>
-                <input
-                  onInput={(e) =>
-                    setCustomerData(({ email, name, countryCode }) => ({
-                      phoneNumber: e.target.value,
-                      email,
-                      name,
-                      countryCode,
-                    }))
-                  }
-                  name="phone"
-                  type="text"
-                  placeholder="9999988888"
-                  required
-                  className="text-gray-500 w-full pl-[6.5rem] pr-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm"
-                />
               </div>
-
-              <div className="relative z-2 my-4">
-                <EmailIcon />
-                <input
-                  onChange={(e) =>
-                    setCustomerData(({ name, phoneNumber, countryCode }) => ({
-                      email: e.target.value,
-                      phoneNumber,
-                      name,
-                      countryCode,
-                    }))
-                  }
-                  type="text"
-                  placeholder="Enter your email"
-                  className="w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
-                />
+              <div className="my-4 block">
+                <label className="relative z-2 my-4">
+                  <EmailIcon className="w-6 h-6 text-gray-400 absolute left-3 my-auto top-0" />
+                  <input
+                    type="email"
+                    onChange={(e) =>
+                      setCustomerData(({ name, phoneNumber, countryCode }) => ({
+                        email: e.target.value,
+                        phoneNumber,
+                        name,
+                        countryCode,
+                      }))
+                    }
+                    placeholder="Enter your email"
+                    className="peer w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg invalid:border-red-500"
+                  />
+                  <p className="invisible text-red-500 peer-invalid:visible">
+                    Please enter a valid email
+                  </p>
+                </label>
               </div>
               <button
                 type="submit"
@@ -762,6 +770,24 @@ const CTAModal = () => {
     ""
   );
 };
+
+const CTASection = ({ setDisplay }) => {
+
+  
+  return (
+    <section className="w-screen h-auto mt-10">
+      <div className="w-11/12 py-8 px-4 rounded-lg bg-black mx-auto flex flex-col">
+        <p className="text-2xl text-white text-center">Get Notified when we launch</p>
+        <p className="text-white text-center my-4">Sign Up and we&apos;ll notify you when we launch.</p>
+        <div className="mx-auto w-auto">
+          <button onClick={() => setDisplay(true)} className="bg-white py-2 px-4 mt-4 rounded-lg text-lg">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
 /**
  *
  * @typedef {{ date_of_release: string, category: string, title: string, description: string, instructor: string, job_title: string, thumbnail_url: string }} CourseCardData
@@ -769,12 +795,16 @@ const CTAModal = () => {
  * @returns
  */
 export default function Home({ videoPath, courseCardData }) {
+
+  const [ ctaModalShown, setCTAModalDisplay ] = useState(true);
+
   return (
     <>
       <Head>
         <title>Welcome to TalentSkool</title>
       </Head>
-      <CTAModal />
+      {/* <div className="w-screen h-full fixed z-50 inset-0 bg-black opacity-40" /> */}
+      <CTAModal display={ctaModalShown} setDisplay={setCTAModalDisplay} />
       <Navbar fixed />
       {/* <HeroSection /> */}
       <HeroBanner />
@@ -813,6 +843,7 @@ export default function Home({ videoPath, courseCardData }) {
       <CourseDemo courseCardData={courseCardData} videoPath={videoPath} />
       <TestimonialsSection />
       <FAQSection />
+      <CTASection setDisplay={setCTAModalDisplay} />
       <Footer />
     </>
   );
