@@ -7,7 +7,8 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
-
+import CancelIcon from "@/components/cancel_icon";
+import EmailIcon from "@/components/email_icon";
 
 
 
@@ -765,7 +766,7 @@ export default function Home({ videoPath, courseCardData }) {
       <Navbar fixed />
       {/* <HeroSection /> */}
       <HeroBanner />
-      <div className="flex flex-col my-10 md:gap-4 items-center flex-grow max-w-screen w-full">
+      <div className="flex flex-col my-10 md:gap-4 items-center flex-grow max-w-screen w-full p-1.5">
         <FeatureCard
           direction="ltr"
           description="You are going to learn from a best teacher with good,environment, facilities, and quality"
