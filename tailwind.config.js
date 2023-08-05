@@ -23,42 +23,42 @@ module.exports = {
         marquee2reverse: "marquee2reverse 5s linear infinite",
         bottom2top: "fadeInFromBottom 10s ease-in once"
       },
-    },
-    keyframes: {
-      marquee: {
-        "0%": {
-          transform: "translateX(0%)",
+      keyframes: {
+        marquee: {
+          "0%": {
+            transform: "translateX(0%)",
+          },
+          "100%": {
+            transform: "translateX(-100%)",
+          },
         },
-        "100%": {
-          transform: "translateX(-100%)",
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
         },
-      },
-      marquee2: {
-        "0%": { transform: "translateX(100%)" },
-        "100%": { transform: "translateX(0%)" },
-      },
-      marqueereverse: {
-        "0%": {
-          transform: "translateX(0%)",
+        marqueereverse: {
+          "0%": {
+            transform: "translateX(0%)",
+          },
+          "100%": {
+            transform: "translateX(100%)",
+          },
         },
-        "100%": {
-          transform: "translateX(100%)",
+        marquee2reverse: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0%)" },
         },
-      },
-      marquee2reverse: {
-        "0%": { transform: "translateX(-100%)" },
-        "100%": { transform: "translateX(0%)" },
-      },
-      fadeInFromBottom: {
-        "0%": {
-          opacity: "0",
-          transform: "translateY(-100%)"
-        },
-        "100%": {
-          opacity: "1",
-          transform: "translateY(0%)"
+        fadeInFromBottom: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-100%)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0%)"
+          }
         }
-      }
+      },
     },
   },
   plugins: [],
