@@ -4,7 +4,7 @@ import FacebookIcon from "./facebook_icon";
 
 export default function Footer() {
   return (
-    <section className="mt-20 md:pt-30 bg-indigo-600 bg-no-repeat lg:bg-cover lg:bg-[url('/footer.svg')] w-full max-w-screen">
+    <section className="mt-20 md:pt-30 bg-primary bg-no-repeat lg:bg-cover w-full max-w-screen">
       <div className="relative flex justify-start md:justify-center md:items-end w-full">
         <div className="flex py-14 md:pt-28 px-4 md:px-6  xl:px-20 flex-col justify-start items-start md:justify-center md:items-center relative z-10">
           <div className="flex flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row">

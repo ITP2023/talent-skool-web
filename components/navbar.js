@@ -68,7 +68,7 @@ const Navbar = ({ fixed }) => {
         >
           <Link href="/" className="-m-1.5 p-1.5">
             <div className="flex lg:flex-1">
-              <h2 className="text-blue-700 text-4xl font-extrabold">Talent</h2>
+              <h2 className="text-primary text-4xl font-extrabold">Talent</h2>
               <h2 className="text-4xl font-extrabold">Skool</h2>
             </div>
           </Link>
@@ -109,9 +109,9 @@ const Navbar = ({ fixed }) => {
             <Link
               key={i}
               href={item.link}
-              className={`lg:text-sm lg:font-semibold lg:leading-6 hover:underline hover:underline-offset-4 hover:decoration-indigo-500 hover:decoration-4 ${
+              className={`lg:text-sm lg:font-semibold lg:leading-6 hover:underline hover:underline-offset-4 hover:decoration-primary hover:decoration-4 ${
                 router.pathname === item.link
-                  ? "underline underline-offset-4 decoration-indigo-500 decoration-4"
+                  ? "underline underline-offset-4 decoration-primary decoration-4"
                   : ""
               }`}
             >
@@ -122,7 +122,7 @@ const Navbar = ({ fixed }) => {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-2">
           <Link
             href="/"
-            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Log In
           </Link>

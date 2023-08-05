@@ -7,8 +7,11 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import CancelIcon from "@/components/cancel_icon";
 import EmailIcon from "@/components/email_icon";
+import PrevIcon from "@/components/prev_icon";
+import NextIcon from "@/components/next_icon";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
+import AltHero from "./testing";
 
 const FaqsCard = (props) => {
   const answerElRef = useRef();
@@ -30,7 +33,7 @@ const FaqsCard = (props) => {
     >
       <div className="flex flex-row w-full space-x-4 justify-between">
         <div className="flex flex-row space-x-4">
-          <span className="inline-block text-white text-center px-2 py-1 font-semibold rounded-full w-[2.5em] h-[2.5em] bg-indigo-500">
+          <span className="inline-block text-white text-center px-2 py-1 font-semibold rounded-full w-[2.5em] h-[2.5em] bg-primary">
             {idx + 1}
           </span>
           <h4 className="pb-5 flex items-center justify-between text-lg text-gray-700 font-medium">
@@ -77,7 +80,7 @@ const FaqsCard = (props) => {
         style={state ? { height: answerH } : { height: "0px" }}
       >
         <div className="flex flex-row justify-center space-x-4 ml-16">
-          <div className="w-1 bg-indigo-500"> </div>
+          <div className="w-1 bg-primary"> </div>
 
           <p className="text-gray-500 w-full">{faqsList.a}</p>
         </div>
@@ -111,7 +114,7 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="leading-relaxed max-w-screen-xl mt-12 mx-auto px-4 md:px-8">
+    <section className="leading-relaxed max-w-screen-xl mt-32 mx-auto px-4 md:px-8">
       <div className="space-y-3 text-center">
         <h1 className="text-4xl text-gray-800 font-bold">
           Frequently Asked Questions
@@ -130,7 +133,7 @@ const FAQSection = () => {
         Still have a question?{" "}
         <Link
           href="/contact"
-          className="underline decoration-indigo-500 underline-offset-4"
+          className="underline decoration-primary underline-offset-4"
         >
           Contact Us
         </Link>
@@ -139,8 +142,33 @@ const FAQSection = () => {
   );
 };
 
+const TestimonialCard = ({ className, testimonial }) => {
+  return (
+    <div key={testimonial.id} className={className}>
+      <div className="grow mb-8 max-w-screen text-gray-500 text-xl italic leading-relaxed dark:text-gray-400">
+        <p className="my-4 px-4 w-screen md:w-full h-full">{testimonial.review}</p>
+      </div>
+      <div className="flex justify-center items-center space-x-3">
+        <Image
+          width={50}
+          height={150}
+          className="w-9 h-9 rounded-full"
+          src="/ai_person.png"
+          alt="profile picture"
+        />
+        <div className="space-y-0.5 font-medium dark:text-white text-left">
+          <div>{testimonial.name}</div>
+          <div className="text-sm font-light text-gray-500 dark:text-gray-400">
+            {testimonial.job}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const TestimonialsSection = () => {
-  const testimonialsData = [
+  const testimonialData = [
     {
       id: 1,
       review:
@@ -184,43 +212,51 @@ const TestimonialsSection = () => {
     // Add more testimonials data here
   ];
 
+  const [tab, setTab] = useState(0);
+
+  const handleNextTab = () => {
+    console.log(tab);
+    setTab((prev) => prev !== testimonialData.length - 1 ? prev + 1 : 0);
+  };
+
+  const handlePrevTab = () => {
+    console.log(tab);
+    setTab((prev) => prev !== 0 ? prev - 1 : testimonialData.length - 1);
+  };
+
   return (
-    <section className="bg-white dark:bg-gray-900">
-      <div className="py-8 px-4 mx-auto max-w-screen text-center lg:py-16 lg:px-6 w-[80%]">
-        <div className="mx-auto max-w-screen-sm">
-          <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
-            Testimonials
-          </h2>
-          <p className="mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
-            Here&apos;s what they say about us...
-          </p>
-        </div>
-        <div className="grid gap-4 mb-8 lg:mb-12 lg:grid-cols-2">
-          {testimonialsData.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="flex flex-col justify-center items-center text-center bg-gray-50 border-b border-gray-200 md:p-12 lg:border-r dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
-            >
-              <div className="mx-auto mb-8 max-w-lg text-gray-500 text-xl italic leading-relaxed dark:text-gray-400">
-                <p className="my-4">{testimonial.review}</p>
-              </div>
-              <div className="flex justify-center items-center space-x-3">
-                <Image
-                  width={50}
-                  height={150}
-                  className="w-9 h-9 rounded-full"
-                  src="/ai_person.png"
-                  alt="profile picture"
-                />
-                <div className="space-y-0.5 font-medium dark:text-white text-left">
-                  <div>{testimonial.name}</div>
-                  <div className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    {testimonial.job}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+    <section className="h-[40vh] w-screen max-w-screen mx-auto">
+      <p className="mx-auto text-center text-4xl font-bold">Here&apos;s what they say about us</p>
+      <div className="flex flex-row justify-evenly items-center w-full md:w-3/4 md:mx-auto h-full">
+        <span
+          className="absolute p-4 shadow-lg z-10 text-center w-auto h-auto left-0 rounded-full bg-gray-50"
+          onClick={() => handlePrevTab()}
+        >
+          <PrevIcon width={15} height={15} />
+        </span>
+        <span
+          className="absolute p-4 shadow-lg z-10 text-right w-auto h-auto right-0 rounded-full bg-gray-50"
+          onClick={() => handleNextTab()}
+        >
+          <NextIcon width={15} height={15} />
+        </span>
+        <div className="w-full ml-20 grow mx-auto overflow-x-hidden">
+          <div
+            className={`flex flex-row items-center transition-transform duration-300`}
+            style={{
+              transform: `translateX(-${tab * 100}vw)`,
+              width: `${Math.ceil(testimonialData.length) * 100}vw`
+            }}
+          >
+            {testimonialData.map((t, i) => (
+              <TestimonialCard
+                key={i}
+                testimonial={t}
+                id={i}
+                className="h-full w-screen md:justify-evenly md:mr-[30em] border flex flex-col items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -258,7 +294,7 @@ const HeroBanner = () => {
         <div className="place-self-center md:flex md:flex-col">
           <h1
             ref={heroRef}
-            className={`text-indigo-600 max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
+            className={`text-primary max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
               inView ? "animate-fade-in" : "opacity-0"
             }`}
           >
@@ -267,7 +303,7 @@ const HeroBanner = () => {
 
           <h1
             ref={heroRef}
-            className={`text-indigo-600 max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
+            className={`text-primary max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
               inView ? "animate-fade-in" : "opacity-0"
             }`}
           >
@@ -279,7 +315,7 @@ const HeroBanner = () => {
               inView ? "animate-fade-in" : "opacity-0"
             }`}
           >
-            <span className="text-indigo-600">Net</span>work.
+            <span className="text-primary">Conn</span>ect.
           </p>
           <div className="mt-16">
             <a
@@ -808,6 +844,7 @@ export default function Home({ videoPath, courseCardData }) {
       <Navbar fixed />
       {/* <HeroSection /> */}
       <HeroBanner />
+      {/* <AltHero/> */}
       <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-screen w-full p-5">
         <FeatureCard
           direction="ltr"
