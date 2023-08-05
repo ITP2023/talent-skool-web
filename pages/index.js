@@ -290,7 +290,7 @@ const HeroSection = () => {
         <div className="relative flex overflow-x-hidden">
           <div className="flex flex-row animate-marquee whitespace-nowrap">
           {_SKILL_ICONS.map((l, i) => (
-              <span key={i} className="w-[3rem] h-full mx-4 text-4xl">
+              <span key={i} className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl">
                 <Image alt="skill" width={100} height={100} src={l} />
               </span>
             ))}
@@ -298,7 +298,7 @@ const HeroSection = () => {
 
           <div className="absolute flex flex-row top-0 animate-marquee2 whitespace-nowrap">
           {_SKILL_ICONS.map((l, i) => (
-              <span key={i} className="w-[3rem] h-full mx-4 text-4xl">
+              <span key={i} className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl">
                 <Image alt="skill" width={100} height={100} src={l} />
               </span>
             ))}
@@ -307,7 +307,7 @@ const HeroSection = () => {
       </div>
       <div className="relative top-28 w-full px-4 py-10 my-auto mx-auto">
         <div className="mx-auto animation-bottom2top w-11/12 my-auto">
-          <h1 className="text-3xl text-center mx-auto leading-relaxed tracking-tight">
+          <h1 className="text-3xl lg:text-5xl text-center mx-auto leading-relaxed tracking-tight">
             Community which is full of talents. Making the world filled with{" "}
             <span className="underline decoration-primary underline-offset-4 decoration-4">
               talented
@@ -320,7 +320,7 @@ const HeroSection = () => {
         <div className="relative flex overflow-x-hidden">
           <div className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}>
             {_SKILL_ICONS.map((l, i) => (
-              <span key={i} className="w-[3rem] mx-4 text-4xl">
+              <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
                 <Image alt="skill" width={100} height={100} src={l} />
               </span>
             ))}
@@ -328,14 +328,14 @@ const HeroSection = () => {
 
           <div className="flex flex-row absolute top-0 animate-marquee2reverse lg:animation-none whitespace-nowrap">
             {_SKILL_ICONS.map((l, i) => (
-              <span key={i} className="w-[3rem] mx-4 text-4xl">
+              <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
                 <Image alt={"skill"} width={100} height={100} src={l} />
               </span>
             ))}
           </div>
         </div>
       </div>
-      <div className="animate-bounce relative top-[50vh] left-44 bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-200/20 shadow-lg rounded-full">
+      <div className="animate-bounce relative top-[50vh] lg:top-[40vh] left-[50vw] bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-200/20 shadow-lg rounded-full">
         <ScrollDownIndicator/>
       </div>
     </section>
