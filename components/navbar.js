@@ -69,7 +69,7 @@ const Navbar = ({ fixed }) => {
           <Link href="/" className="-m-1.5 p-1.5">
             <div className="flex lg:flex-1">
               <h2 className="text-primary text-4xl font-extrabold">Talent</h2>
-              <h2 className="text-4xl font-extrabold">Skool</h2>
+              <h2 className="text-4xl text-white font-extrabold">Skool</h2>
             </div>
           </Link>
         </div>
@@ -101,9 +101,7 @@ const Navbar = ({ fixed }) => {
           </button>
         </div>
         <div
-          className={`hidden lg:flex px-6 py-3 rounded-full lg:gap-x-12 ${
-            isScrolledDown ? "lg:bg-black lg:text-white" : "text-gray-900"
-          }`}
+          className={`hidden lg:flex px-6 py-3 rounded-full lg:gap-x-12 lg:bg-black lg:text-white`}
         >
           {ROUTES.map((item, i) => (
             <Link

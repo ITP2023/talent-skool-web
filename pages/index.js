@@ -11,7 +11,15 @@ import PrevIcon from "@/components/prev_icon";
 import NextIcon from "@/components/next_icon";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
-import AltHero from "./testing";
+
+const ScrollDownIndicator = () => {
+  return (
+    <svg className="w-6 h-6 text-violet-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+      <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+
+  );
+}
 
 const FaqsCard = (props) => {
   const answerElRef = useRef();
@@ -240,7 +248,7 @@ const TestimonialsSection = () => {
         >
           <NextIcon width={15} height={15} />
         </span>
-        <div className="w-full ml-20 grow mx-auto overflow-x-hidden">
+        <div className="w-full lg:ml-20 grow mx-auto overflow-x-hidden">
           <div
             className={`flex flex-row items-center transition-transform duration-300`}
             style={{
@@ -258,6 +266,77 @@ const TestimonialsSection = () => {
             ))}
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
+const HeroSection = () => {
+  const _SKILL_ICONS = [
+    "/piano.png",
+    "/artandcrafts.png",
+    "/chess.png",
+    "/violin.png",
+    "/writing.png",
+    "/suitcase.png",
+    "/salary.png",
+    "/education.png",
+    "/graphic-design.png",
+    "/film-slate.png",
+  ];
+
+  return (
+    <section className="bg-black text-white w-screen h-screen">
+      <div className="relative top-28 opacity-60 w-full h-2/12">
+        <div className="relative flex overflow-x-hidden">
+          <div className="flex flex-row animate-marquee whitespace-nowrap">
+          {_SKILL_ICONS.map((l, i) => (
+              <span key={i} className="w-[3rem] h-full mx-4 text-4xl">
+                <Image alt="skill" width={100} height={100} src={l} />
+              </span>
+            ))}
+          </div>
+
+          <div className="absolute flex flex-row top-0 animate-marquee2 whitespace-nowrap">
+          {_SKILL_ICONS.map((l, i) => (
+              <span key={i} className="w-[3rem] h-full mx-4 text-4xl">
+                <Image alt="skill" width={100} height={100} src={l} />
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="relative top-28 w-full px-4 py-10 my-auto mx-auto">
+        <div className="mx-auto animation-bottom2top w-11/12 my-auto">
+          <h1 className="text-3xl text-center mx-auto leading-relaxed tracking-tight">
+            Community which is full of talents. Making the world filled with{" "}
+            <span className="underline decoration-primary underline-offset-4 decoration-4">
+              talented
+            </span>{" "}
+            people.
+          </h1>
+        </div>
+      </div>
+      <div className="relative top-44 opacity-60 w-full h-2/12">
+        <div className="relative flex overflow-x-hidden">
+          <div className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}>
+            {_SKILL_ICONS.map((l, i) => (
+              <span key={i} className="w-[3rem] mx-4 text-4xl">
+                <Image alt="skill" width={100} height={100} src={l} />
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-row absolute top-0 animate-marquee2reverse lg:animation-none whitespace-nowrap">
+            {_SKILL_ICONS.map((l, i) => (
+              <span key={i} className="w-[3rem] mx-4 text-4xl">
+                <Image alt={"skill"} width={100} height={100} src={l} />
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="animate-bounce relative top-[50vh] left-44 bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-200/20 shadow-lg rounded-full">
+        <ScrollDownIndicator/>
       </div>
     </section>
   );
@@ -387,7 +466,7 @@ const FeatureCard = ({
 }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.3,
+    threshold: 0.2,
   });
 
   return (
@@ -842,8 +921,8 @@ export default function Home({ videoPath, courseCardData }) {
       {/* <div className="w-screen h-full fixed z-50 inset-0 bg-black opacity-40" /> */}
       <CTAModal display={ctaModalShown} setDisplay={setCTAModalDisplay} />
       <Navbar fixed />
-      {/* <HeroSection /> */}
-      <HeroBanner />
+      <HeroSection />
+      {/* <HeroBanner /> */}
       {/* <AltHero/> */}
       <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-screen w-full p-5">
         <FeatureCard
