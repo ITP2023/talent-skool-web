@@ -610,7 +610,7 @@ const CourseCard = ({
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
-    <section className="mx-auto p-6 max-w-screen">
+    <section className="mx-auto p-6 max-w-screen text-center">
       <p className="text-3xl font-bold ml-6 p-4 my-8">Here&apos;s a glimpse</p>
       <div className="w-full">
         <div className="w-full">

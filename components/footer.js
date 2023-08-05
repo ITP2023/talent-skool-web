@@ -1,10 +1,9 @@
-
 import TwitterIcon from "./twitter_icon";
 import FacebookIcon from "./facebook_icon";
 
 export default function Footer() {
   return (
-    <section className="mt-20 md:pt-30 bg-primary bg-no-repeat lg:bg-cover w-full max-w-screen">
+    <section className="mt-20 md:pt-30 bg-primary bg-no-repeat lg:bg-cover w-screen max-w-screen">
       <div className="relative flex justify-start md:justify-center md:items-end w-full">
         <div className="flex py-14 md:pt-28 px-4 md:px-6  xl:px-20 flex-col justify-start items-start md:justify-center md:items-center relative z-10">
           <div className="flex flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row">
@@ -18,34 +17,33 @@ export default function Footer() {
                   Talent Skool is best e-Learning hub with different types of
                   courses.{" "}
                 </p>
+                <div className="flex justify-center md:justify-end items-start mt-10 w-full md:w-auto md:items-center space-x-6 ">
+                  <button className="text-white hover:text-gray-200 w-6">
+                    <TwitterIcon />
+                  </button>
+                  <button className="text-white hover:text-gray-200 w-6">
+                    <FacebookIcon />
+                  </button>
+                </div>
               </div>
               <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
                 <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
-                  Courses
+                  Company
                 </h2>
                 <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                  App Design
+                  About Us
                 </button>
                 <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                  Web Design
+                  Privacy Policy
                 </button>
                 <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                  Creative Writing
-                </button>
-                <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                  Sports
-                </button>
-                <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
-                  Fashion Design
+                  Terms & Conditions
                 </button>
               </div>
               <div className=" xl:w-72 flex justify-start items-start flex-col space-y-6">
                 <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
-                  Company
+                  Quick Links
                 </h2>
-                <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
-                  About Us
-                </button>
                 <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
                   Reach us
                 </button>
@@ -59,12 +57,6 @@ export default function Footer() {
                   Leave a feedback
                 </button>
                 <button className="text-base leading-none text-white hover:text-gray-300">
-                  Terms of service
-                </button>
-                <button className="text-base leading-none text-white hover:text-gray-300">
-                  Privacy Policy
-                </button>
-                <button className="text-base leading-none text-white hover:text-gray-300">
                   Security
                 </button>
               </div>
@@ -74,14 +66,6 @@ export default function Footer() {
             <p className="mt-10 md:mt-12 xl:mt-0 text-sm leading-none text-white">
               2023 TalentSkool &copy; All Rights Reserved
             </p>
-            <div className="flex justify-center md:justify-end items-start mt-10 w-full md:w-auto md:items-center space-x-6 ">
-              <button className="text-white hover:text-gray-200 w-6">
-                <TwitterIcon />
-              </button>
-              <button className="text-white hover:text-gray-200 w-6">
-                <FacebookIcon />
-              </button>
-            </div>
           </div>
         </div>
       </div>
