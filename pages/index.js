@@ -355,7 +355,7 @@ const HeroBanner = () => {
 
   return (
     <div className="bg-white h-screen max-w-screen w-screen">
-      <div className="isolate md:flex md:flex-row md:justify-between mx-auto py-10 px-4 text-[5em] mt-16">
+      <div className="isolate md:flex md:flex-row justify-evenly mx-auto py-10 px-4 text-[5em] mt-16">
         {/* Gradient BG */}
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -377,7 +377,7 @@ const HeroBanner = () => {
               inView ? "animate-fade-in" : "opacity-0"
             }`}
           >
-            Learn.
+            ENHANCE &
           </h1>
 
           <h1
@@ -386,7 +386,7 @@ const HeroBanner = () => {
               inView ? "animate-fade-in" : "opacity-0"
             }`}
           >
-            Earn.
+            SHOWCASE
           </h1>
           <p
             ref={heroRef}
@@ -660,7 +660,6 @@ const LoadingSpinner = ({ opacity }) => {
 };
 
 const CTAModal = ({ display, setDisplay }) => {
-
   const [err, setErr] = useState("");
 
   const [customerData, setCustomerData] = useState({
@@ -887,22 +886,27 @@ const CTAModal = ({ display, setDisplay }) => {
 };
 
 const CTASection = ({ setDisplay }) => {
-
-  
   return (
     <section className="w-screen h-auto mt-10">
       <div className="w-11/12 py-8 px-4 rounded-lg bg-black mx-auto flex flex-col">
-        <p className="text-2xl text-white text-center">Get Notified when we launch</p>
-        <p className="text-white text-center my-4">Sign Up and we&apos;ll notify you when we launch.</p>
+        <p className="text-2xl text-white text-center">
+          Get Notified when we launch
+        </p>
+        <p className="text-white text-center my-4">
+          Sign Up and we&apos;ll notify you when we launch.
+        </p>
         <div className="mx-auto w-auto">
-          <button onClick={() => setDisplay(true)} className="bg-white py-2 px-4 mt-4 rounded-lg text-lg">
+          <button
+            onClick={() => setDisplay(true)}
+            className="bg-white py-2 px-4 mt-4 rounded-lg text-lg"
+          >
             Sign Up
           </button>
         </div>
       </div>
     </section>
   );
-}
+};
 /**
  *
  * @typedef {{ date_of_release: string, category: string, title: string, description: string, instructor: string, job_title: string, thumbnail_url: string }} CourseCardData
@@ -910,8 +914,7 @@ const CTASection = ({ setDisplay }) => {
  * @returns
  */
 export default function Home({ videoPath, courseCardData }) {
-
-  const [ ctaModalShown, setCTAModalDisplay ] = useState(true);
+  const [ctaModalShown, setCTAModalDisplay] = useState(true);
 
   return (
     <>

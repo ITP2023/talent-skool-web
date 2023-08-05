@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from "tailwindcss";
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,6 +14,9 @@ module.exports = {
       //   'gradient-conic':
       //     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       // },
+      boxShadow: {
+        neon: "0 0 5px theme('colors.purple.700'), 0 0 20px theme('colors.purple.500') ",
+      },
       colors: {
         primary: "#9343F2",
       },
@@ -21,7 +25,7 @@ module.exports = {
         marquee2: "marquee2 5s linear infinite",
         marqueereverse: "marqueereverse 5s linear infinite",
         marquee2reverse: "marquee2reverse 5s linear infinite",
-        bottom2top: "fadeInFromBottom 10s ease-in once"
+        bottom2top: "fadeInFromBottom 10s ease-in once",
       },
       keyframes: {
         marquee: {
@@ -51,13 +55,13 @@ module.exports = {
         fadeInFromBottom: {
           "0%": {
             opacity: "0",
-            transform: "translateY(-100%)"
+            transform: "translateY(-100%)",
           },
           "100%": {
             opacity: "1",
-            transform: "translateY(0%)"
-          }
-        }
+            transform: "translateY(0%)",
+          },
+        },
       },
     },
   },
