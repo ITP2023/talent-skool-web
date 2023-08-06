@@ -11,6 +11,7 @@ import PrevIcon from "@/components/prev_icon";
 import NextIcon from "@/components/next_icon";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
+import CountUp from "@/components/countup";
 
 const ScrollDownIndicator = () => {
   return (
@@ -332,19 +333,19 @@ const HeroSection = () => {
             people.
           </h1>
         </div>
-        <a rel="noopener noreferrer" class="mt-8 w-fit mx-auto px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black">
-          <div class="w-10">
+        <a rel="noopener noreferrer" className="mt-8 w-fit mx-auto px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black">
+          <div className="w-10">
             <Image
               alt="install"
-              class="h-full w-full"
+              className="h-full w-full"
               width={90}
               height={90}
               src="google-play-store-svgrepo-com.svg"
             />
           </div>
-          <div class="">
-            <div class="text-sm font-extrabold text-white">Download on the</div>
-            <div class="text-2xl text-white">Google Play</div>
+          <div className="">
+            <div className="text-sm font-extrabold text-white">Download on the</div>
+            <div className="text-2xl text-white">Google Play</div>
           </div>
         </a>
       </div>
@@ -368,9 +369,6 @@ const HeroSection = () => {
             ))}
           </div>
         </div>
-      </div>
-      <div className="animate-bounce relative top-[50vh] lg:top-[40vh] left-[50vw] bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-200/20 shadow-lg rounded-full">
-        <ScrollDownIndicator />
       </div>
     </section>
   );
@@ -529,7 +527,7 @@ const FeatureCard = ({
       </div>
       <div
         ref={ref}
-        className={`ml-6 flex flex-col ${
+        className={`flex flex-col ${
           inView ? "animate-fade-in-right" : "opacity-0"
         }`}
       >
@@ -562,18 +560,20 @@ const FeatureCard = ({
         <div className="mt-4 flex flex-row justify-evenly md:justify-start">
           <div className="p-2 mr-2">
             <p className="text-2xl text-center font-bold text-orange-500">
-              20+
+              <CountUp initial={0} end={20} skip={1} />
             </p>
             <p className="text-white whitespace-wrap">{statone}</p>
           </div>
           <div className="p-2 mr-2">
             <p className="text-2xl text-center font-bold text-orange-500">
-              20K
+              <CountUp initial={0} end={2000} skip={100} />
             </p>
             <p className="text-white whitespace-wrap">{stattwo}</p>
           </div>
           <div className="p-2">
-            <p className="text-2xl text-center font-bold text-orange-500">30</p>
+            <p className="text-2xl text-center font-bold text-orange-500">
+              <CountUp initial={0} end={30} skip={1} />
+            </p>
             <p className="text-white whitespace-wrap">{statthree}</p>
           </div>
         </div>
