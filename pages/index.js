@@ -306,8 +306,8 @@ const HeroSection = () => {
         </div>
       </div>
       <div className="relative top-28 w-full px-4 py-10 my-auto mx-auto">
-        <div className="mx-auto animation-bottom2top w-11/12 my-auto">
-          <h1 className="text-3xl lg:text-5xl text-center mx-auto leading-relaxed tracking-tight">
+        <div className="mx-auto animation-bottom2top w-10/12 my-auto">
+          <h1 className="text-3xl lg:text-5xl text-center mx-auto leading-relaxed tracking-tight font-bold">
             Community which is full of talents. Making the world filled with{" "}
             <span className="underline decoration-primary underline-offset-4 decoration-4">
               talented
