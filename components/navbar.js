@@ -67,7 +67,7 @@ const Navbar = ({ fixed }) => {
           }`}
         >
           <Link href="/" className="-m-1.5 p-1.5">
-            <div className="flex lg:flex-1 shadow-neon p-3 rounded-full bg-black">
+            <div className="flex lg:flex-1 shadow-neon p-3 rounded-full shadow-neon">
               <h2 className="text-primary text-4xl font-extrabold">Talent</h2>
               <h2 className="text-4xl text-white font-extrabold">Skool</h2>
             </div>

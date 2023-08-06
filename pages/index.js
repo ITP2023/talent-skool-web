@@ -122,7 +122,7 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="leading-relaxed max-w-screen-xl mt-32 mx-auto px-4 md:px-8">
+    <section className="leading-relaxed max-w-full-xl mt-32 mx-auto px-4 md:px-8">
       <div className="space-y-3 text-center">
         <h1 className="text-4xl text-gray-800 font-bold">
           Frequently Asked Questions
@@ -233,7 +233,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="h-[40vh] w-screen max-w-screen mx-auto">
+    <section className="h-[40vh] w-full max-w-full mx-auto">
       <p className="mx-auto text-center text-4xl font-bold">Here&apos;s what they say about us</p>
       <div className="flex flex-row justify-evenly items-center w-full md:w-3/4 md:mx-auto h-full">
         <span
@@ -285,7 +285,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="bg-black text-white w-screen h-screen">
+    <section className="bg-black text-white w-full h-screen">
       <div className="relative top-28 opacity-60 w-full h-2/12">
         <div className="relative flex overflow-x-hidden">
           <div className="flex flex-row animate-marquee whitespace-nowrap">
@@ -306,11 +306,11 @@ const HeroSection = () => {
         </div>
       </div>
       <div className="relative top-28 w-full px-4 py-10 my-auto mx-auto">
-        <div className="mx-auto animation-bottom2top w-10/12 my-auto">
-          <h1 className="text-3xl lg:text-5xl text-center mx-auto leading-relaxed tracking-tight font-bold">
+        <div className="mx-auto animation-bottom2top w-11/12 my-auto">
+          <h1 className="text-3xl lg:text-5xl text-center mx-auto leading-relaxed tracking-tight">
             Community which is full of talents. Making the world filled with{" "}
             <span className="underline decoration-primary underline-offset-4 decoration-4">
-              rich
+              talented
             </span>{" "}
             people.
           </h1>
@@ -610,7 +610,7 @@ const CourseCard = ({
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
-    <section className="mx-auto p-6 max-w-screen text-center">
+    <section className="mx-auto p-6 max-w-full text-center overflow-hidden">
       <p className="text-3xl font-bold ml-6 p-4 my-8">Here&apos;s a glimpse</p>
       <div className="w-full">
         <div className="w-full">
@@ -714,7 +714,7 @@ const CTAModal = ({ display, setDisplay }) => {
   };
 
   return display ? (
-    <div className="fixed inset-0 z-20 overflow-hidden">
+    <div className="fixed inset-0 z-20 overflow-hidden w-fulls">
       <div
         className="fixed inset-0 w-full h-full bg-black opacity-40 z-10"
         onClick={() => setDisplay(false)}
@@ -887,7 +887,7 @@ const CTAModal = ({ display, setDisplay }) => {
 
 const CTASection = ({ setDisplay }) => {
   return (
-    <section className="w-screen h-auto mt-10">
+    <section className="w-full h-auto mt-10">
       <div className="w-11/12 py-8 px-4 rounded-lg bg-black mx-auto flex flex-col">
         <p className="text-2xl text-white text-center">
           Get Notified when we launch
@@ -927,7 +927,7 @@ export default function Home({ videoPath, courseCardData }) {
       <HeroSection />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
-      <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-screen w-full p-5">
+      <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-screen w-full p-5 overflow-hidden">
         <FeatureCard
           direction="ltr"
           description="You are going to learn from a best teacher with good,environment, facilities, and quality"

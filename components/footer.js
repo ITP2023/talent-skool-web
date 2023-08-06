@@ -24,7 +24,7 @@ export default function Footer() {
 
 
   return (
-    <section className="mt-20 md:pt-30 bg-primary bg-no-repeat lg:bg-cover w-screen max-w-screen">
+    <section className="mt-20 md:pt-30 bg-primary bg-no-repeat lg:bg-cover w-full overflow-hidden">
       <div className="relative flex justify-start md:justify-center md:items-end w-full">
         <div className="flex py-14 md:pt-28 px-4 md:px-6  xl:px-20 flex-col justify-start items-start md:justify-center md:items-center relative z-10">
           <div className="flex flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row pl-3">
@@ -89,7 +89,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="flex xl:justify-between xl:flex-row flex-col items-center  w-full ">
+          <div className="flex xl:justify-between xl:flex-row flex-col items-center w-full ">
             <p className="mt-10 md:mt-12 xl:mt-0 text-sm leading-none text-white">
               2023 TalentSkool &copy; All Rights Reserved
             </p>
