@@ -35,6 +35,15 @@ const PolicySection = () => {
 
   return (
     <section className="flex flex-col mx-auto my-14 p-4 w-[80%] gap-10">
+      <div>
+        <p className="text-md p-2">
+          At Talent Skool , we are committed to protecting your privacy and
+          safeguarding your personal information. This Privacy Policy outlines
+          how we collect, use, disclose, and protect your information when you
+          use our mobile application and website services. By using Talent
+          Skool, you consent to the practices described in this policy.
+        </p>
+      </div>
       {ques.map((que) => (
         <div key={que.id}>
           <h3 className="font-bold text-2xl py-4">{que.question}</h3>

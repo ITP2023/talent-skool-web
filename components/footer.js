@@ -89,7 +89,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="flex xl:justify-between xl:flex-row flex-col items-center xl:items-start w-full ">
+          <div className="flex xl:justify-between xl:flex-row flex-col items-center  w-full ">
             <p className="mt-10 md:mt-12 xl:mt-0 text-sm leading-none text-white">
               2023 TalentSkool &copy; All Rights Reserved
             </p>
