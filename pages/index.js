@@ -298,7 +298,7 @@ const HeroSection = () => {
 
   return (
     <section className="bg-black text-white w-full h-screen">
-      <div className="relative top-28 opacity-60 w-full h-2/12">
+      <div className="relative top-48 opacity-60 w-full h-2/12">
         <div className="relative flex overflow-x-hidden">
           <div className="flex flex-row animate-marquee whitespace-nowrap">
             {_SKILL_ICONS.map((l, i) => (
@@ -323,7 +323,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="relative top-28 w-full px-4 py-10 my-auto mx-auto">
+      <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
         <div className="mx-auto animation-bottom2top w-11/12 my-auto">
           <h1 className="text-3xl lg:text-5xl text-center mx-auto leading-relaxed tracking-tight">
             Community which is full of talents. Making the world filled with{" "}
@@ -349,7 +349,7 @@ const HeroSection = () => {
           </div>
         </a>
       </div>
-      <div className="relative top-44 opacity-60 w-full h-2/12">
+      <div className="relative top-52 opacity-60 w-full h-2/12">
         <div className="relative flex overflow-x-hidden">
           <div
             className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}
@@ -498,7 +498,7 @@ const FeatureCard = ({
 }) => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.2,
+    threshold: [0.2, 0.8],
   });
 
   return (

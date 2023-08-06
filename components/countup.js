@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 /**
  * 
  * @param {{
- * initial: number, end: number, skip: number, inView: boolean, ref: React.Ref
+ * initial: number, end: number, skip: number, inView: boolean
  * }} param0 
  * @returns 
  */
-const CountUp = ({ initial, end, skip, inView, ref }) => {
+const CountUp = ({ initial, end, skip, inView }) => {
 
   const [ text, setText ] = useState(initial);
 
@@ -19,7 +19,7 @@ const CountUp = ({ initial, end, skip, inView, ref }) => {
   }, [text === end, inView]);
 
   return (
-    <span ref={ref}>
+    <span>
       {text}
     </span>
   )

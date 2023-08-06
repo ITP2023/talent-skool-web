@@ -136,13 +136,13 @@ const Navbar = ({ fixed }) => {
       <div className="lg:hidden" role="dialog" aria-modal="true">
         {/* <!-- Background backdrop, show/hide based on slide-over state. --> */}
         {backdrop ? (
-          <div className="fixed inset-0 z-50 bg-black opacity-50"></div>
+          <div className="fixed inset-0 z-50 bg-black opacity-40"></div>
         ) : (
           " "
         )}
         {/* { backdrop ?  */}
         <div
-          className={`fixed inset-y-0 z-50 w-1/4 overflow-y-auto bg-transparent px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-500 ${
+          className={`fixed inset-y-0 z-50 w-1/3 overflow-y-auto bg-transparent px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-500 ${
             backdrop ? "translate-y-0" : "translate-y-[-100%]"
           } top-0 right-0 flex flex-col justify-start items-end`}
         >
