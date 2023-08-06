@@ -26,6 +26,7 @@ module.exports = {
         marqueereverse: "marqueereverse 5s linear infinite",
         marquee2reverse: "marquee2reverse 5s linear infinite",
         bottom2top: "fadeInFromBottom 10s ease-in once",
+        herotextswap: "swapText 10s infinite"
       },
       keyframes: {
         marquee: {
@@ -52,16 +53,58 @@ module.exports = {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0%)" },
         },
-        fadeInFromBottom: {
+        swapText: {
           "0%": {
-            opacity: "0",
-            transform: "translateY(-100%)",
+            transform: "translate3d(0, 0, 0)"
+          },
+          "12.66%": {
+            transform: "translate3d(0, 0, 0)"
           },
           "100%": {
-            opacity: "1",
-            transform: "translateY(0%)",
+            transform: "translate3d(0, 0, 0)"
+          },
+          "16.66%": {
+            transform: "translate3d(0, -25%, 0)"
+          },
+          "29.32%": {
+            transform: "translate3d(0, -25%, 0)"
+          },
+          "33.32%": {
+            transform: "translate3d(0, -50%, 0)"
+          },
+          "45.98%": {
+            transform: "translate3d(0, -50%, 0)"
+          },
+          "49.98%": {
+            transform: "translate3d(0, -75%, 0)"
+          },
+          "62.64%": {
+            transform: "translate3d(0, -75%, 0)"
+          },
+          "66.64%": {
+            transform: "translate3d(0, -50%, 0)"
+          },
+          "79.3%": {
+            transform: "translate3d(0, -50%, 0)"
+          },
+          "83.3%": {
+            transform: "translate3d(0, -25%, 0)"
+          },
+          "95.96%": {
+            transform: "translate3d(0, -25%, 0)"
           },
         },
+        changeOpacity: {
+          "0%": {
+            opacity: "0"
+          },
+          "50%": {
+            opacity: "1"
+          },
+          "100%": {
+            opacity: "0"
+          }
+        }
       },
     },
   },
