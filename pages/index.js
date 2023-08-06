@@ -310,7 +310,7 @@ const HeroSection = () => {
           <h1 className="text-3xl lg:text-5xl text-center mx-auto leading-relaxed tracking-tight font-bold">
             Community which is full of talents. Making the world filled with{" "}
             <span className="underline decoration-primary underline-offset-4 decoration-4">
-              talented
+              rich
             </span>{" "}
             people.
           </h1>
