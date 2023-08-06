@@ -75,13 +75,13 @@ const Navbar = ({ fixed }) => {
         </div>
         <div
           onClick={() => setBackdrop(true)}
-          className={`flex lg:hidden bg-slate-50 rounded ${
-            backdrop ? "hidden" : ""
+          className={`flex lg:hidden bg-black rounded-full p-2 ${
+            backdrop ? "hidden" : "shadow-neon"
           }`}
         >
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-full p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-full p-2.5 text-primary"
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -101,7 +101,7 @@ const Navbar = ({ fixed }) => {
           </button>
         </div>
         <div
-          className={`hidden lg:flex px-6 py-3 rounded-full lg:gap-x-12 lg:bg-black lg:text-white`}
+          className={`hidden lg:flex px-6 py-3 rounded-full lg:gap-x-12 lg:bg-black lg:text-white shadow-neon`}
         >
           {ROUTES.map((item, i) => (
             <Link
