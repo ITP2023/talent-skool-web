@@ -527,7 +527,7 @@ const FeatureCard = ({
       </div>
       <div
         ref={ref}
-        className={`flex flex-col ${
+        className={`px-8 flex flex-col ${
           inView ? "animate-fade-in-right" : "opacity-0"
         }`}
       >
