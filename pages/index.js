@@ -673,6 +673,37 @@ const CTAModal = ({ display, setDisplay }) => {
 
   const [success, setSuccess] = useState(false);
 
+   // Phone number validation function
+   const validatePhoneNumber = (phoneNumber, countryCode) => {
+    // Normalize the phone number by removing spaces, dashes, and parentheses
+    const normalizedPhoneNumber = phoneNumber.replace(/[ -()]/g, "");
+  
+    if (countryCode === "+1") {
+      // US phone number validation (10 digits)
+      if (!/^[2-9]\d{2}[2-9]\d{2}\d{4}$/.test(normalizedPhoneNumber)) {
+        setErr("Please enter a valid US phone number");
+        return false;
+      }
+    } else if (countryCode === "+44") {
+      // UK phone number validation (10 digits)
+      if (!/^\+44\d{10}$|^[2-9]\d{9}$/.test(normalizedPhoneNumber)) {
+        setErr("Please enter a valid UK phone number");
+        return false;
+      }
+    } else if (countryCode === "+91") {
+      // India phone number validation (10 digits)
+      if (!/^\+91\d{10}$|^[7-9]\d{9}$/.test(normalizedPhoneNumber)) {
+        setErr("Please enter a valid India phone number");
+        return false;
+      }
+    }
+  
+    // Clear any existing error messages if validation passed
+    setErr("");
+    return true;
+  };
+  
+
   const sendCustomerDetails = async (e) => {
     e.preventDefault();
     const { name, email, phoneNumber, countryCode } = customerData;
@@ -690,6 +721,9 @@ const CTAModal = ({ display, setDisplay }) => {
 
     if (!phoneNumber) {
       setErr("Please enter your Phone Number");
+      return;
+    }else if(!validatePhoneNumber(phoneNumber, countryCode)){
+      setErr("Enter valid phone number");
       return;
     }
 
