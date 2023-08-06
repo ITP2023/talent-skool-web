@@ -1,3 +1,4 @@
+import Link from "next/link";
 import TwitterIcon from "./twitter_icon";
 import FacebookIcon from "./facebook_icon";
 import InstagramIcon from "./instagram_icon";
@@ -30,9 +31,9 @@ export default function Footer() {
           <div className="flex flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row pl-3">
             <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8">
               <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
-                <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white underline underline-offset-2">
+                <Link href="/" className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white underline underline-offset-2">
                   Talentskool
-                </h2>
+                </Link>
                 <p className="text-white">
                   {" "}
                   Talent Skool is best e-Learning hub with different types of
@@ -57,35 +58,35 @@ export default function Footer() {
                 <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
                   Company
                 </h2>
-                <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                <Link href="/about" className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
                   About Us
-                </button>
-                <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                </Link>
+                <Link href="/privacy-policy" className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
                   Privacy Policy
-                </button>
-                <button className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
+                </Link>
+                <Link href="/" className="text-left text-base hover:text-gray-400 leading-none text-gray-100">
                   Terms & Conditions
-                </button>
+                </Link>
               </div>
               <div className=" xl:w-72 flex justify-start items-start flex-col space-y-6">
                 <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
                   Quick Links
                 </h2>
-                <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                <Link href="/contact" className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
                   Reach us
-                </button>
-                <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                </Link>
+                <Link href="/contact" className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
                   Enquire
-                </button>
-                <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                </Link>
+                <Link href="/contact" className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
                   Complaint
-                </button>
-                <button className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
+                </Link>
+                <Link href="/contact" className="text-base text-left hover:text-gray-400 leading-none text-gray-100">
                   Leave a feedback
-                </button>
-                <button className="text-base leading-none text-white hover:text-gray-300">
+                </Link>
+                <Link href="/contact" className="text-base leading-none text-white hover:text-gray-300">
                   Security
-                </button>
+                </Link>
               </div>
             </div>
           </div>
