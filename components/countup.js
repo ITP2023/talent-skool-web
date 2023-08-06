@@ -3,23 +3,23 @@ import { useState, useEffect } from "react";
 /**
  * 
  * @param {{
- * initial: number, end: number, skip: number
+ * initial: number, end: number, skip: number, inView: boolean, ref: React.Ref
  * }} param0 
  * @returns 
  */
-const CountUp = ({ initial, end, skip }) => {
+const CountUp = ({ initial, end, skip, inView, ref }) => {
 
   const [ text, setText ] = useState(initial);
 
   useEffect(() => {
     let id = setInterval(() => {
-      setText(p => p !== end ? p + skip: end);
+      setText(p => inView ? (p !== end ? p + skip: end) : p);
     }, 100);
     return () => clearInterval(id);
-  }, [text === end]);
+  }, [text === end, inView]);
 
   return (
-    <span>
+    <span ref={ref}>
       {text}
     </span>
   )

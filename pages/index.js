@@ -130,7 +130,7 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="leading-relaxed max-w-full-xl mt-32 mx-auto px-4 md:px-8">
+    <section className="leading-relaxed max-w-full-xl mt-40 mx-auto px-4 md:px-8">
       <div className="space-y-3 text-center">
         <h1 className="text-4xl text-gray-800 font-bold">
           Frequently Asked Questions
@@ -243,19 +243,19 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="h-[40vh] w-full max-w-full mx-auto">
-      <p className="mx-auto text-center text-4xl font-bold">
+    <section className="h-[40vh] mt-24 w-full max-w-full mx-auto">
+      <p className="mx-auto my-8 text-center text-4xl font-bold">
         Here&apos;s what they say about us
       </p>
       <div className="flex flex-row justify-evenly items-center w-full md:w-3/4 md:mx-auto h-full">
         <span
-          className="absolute p-4 shadow-lg z-10 text-center w-auto h-auto left-0 rounded-full bg-gray-50"
+          className="cursor-pointer absolute p-4 shadow-lg z-10 text-center w-auto h-auto left-0 rounded-full bg-gray-50"
           onClick={() => handlePrevTab()}
         >
           <PrevIcon width={15} height={15} />
         </span>
         <span
-          className="absolute p-4 shadow-lg z-10 text-right w-auto h-auto right-0 rounded-full bg-gray-50"
+          className="cursor-pointer absolute p-4 shadow-lg z-10 text-right w-auto h-auto right-0 rounded-full bg-gray-50"
           onClick={() => handleNextTab()}
         >
           <NextIcon width={15} height={15} />
@@ -497,7 +497,7 @@ const FeatureCard = ({
   imgsrc,
 }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.2,
   });
 
@@ -558,21 +558,21 @@ const FeatureCard = ({
           </button>
         </div>
         <div className="mt-4 flex flex-row justify-evenly md:justify-start">
-          <div className="p-2 mr-2">
+          <div className="p-2 mr-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
-              <CountUp initial={0} end={20} skip={1} />
+              <CountUp ref={ref} initial={0} end={20} skip={1} inView={inView} />
             </p>
             <p className="text-white whitespace-wrap">{statone}</p>
           </div>
-          <div className="p-2 mr-2">
+          <div className="p-2 mr-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
-              <CountUp initial={0} end={2000} skip={100} />
+              <CountUp ref={ref} initial={0} end={2000} skip={100} inView={inView} />
             </p>
             <p className="text-white whitespace-wrap">{stattwo}</p>
           </div>
-          <div className="p-2">
+          <div className="p-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
-              <CountUp initial={0} end={30} skip={1} />
+              <CountUp ref={ref} initial={0} end={30} skip={1} inView={inView} />
             </p>
             <p className="text-white whitespace-wrap">{statthree}</p>
           </div>
