@@ -14,12 +14,19 @@ import { db } from "@/firebaseMod";
 
 const ScrollDownIndicator = () => {
   return (
-    <svg className="w-6 h-6 text-violet-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+    <svg
+      className="w-6 h-6 text-violet-500"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
       <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
     </svg>
-
   );
-}
+};
 
 const FaqsCard = (props) => {
   const answerElRef = useRef();
@@ -154,7 +161,9 @@ const TestimonialCard = ({ className, testimonial }) => {
   return (
     <div key={testimonial.id} className={className}>
       <div className="grow mb-8 max-w-screen text-gray-500 text-xl italic leading-relaxed dark:text-gray-400">
-        <p className="my-4 px-4 w-screen md:w-full h-full">{testimonial.review}</p>
+        <p className="my-4 px-4 w-screen md:w-full h-full">
+          {testimonial.review}
+        </p>
       </div>
       <div className="flex justify-center items-center space-x-3">
         <Image
@@ -224,17 +233,19 @@ const TestimonialsSection = () => {
 
   const handleNextTab = () => {
     console.log(tab);
-    setTab((prev) => prev !== testimonialData.length - 1 ? prev + 1 : 0);
+    setTab((prev) => (prev !== testimonialData.length - 1 ? prev + 1 : 0));
   };
 
   const handlePrevTab = () => {
     console.log(tab);
-    setTab((prev) => prev !== 0 ? prev - 1 : testimonialData.length - 1);
+    setTab((prev) => (prev !== 0 ? prev - 1 : testimonialData.length - 1));
   };
 
   return (
     <section className="h-[40vh] w-full max-w-full mx-auto">
-      <p className="mx-auto text-center text-4xl font-bold">Here&apos;s what they say about us</p>
+      <p className="mx-auto text-center text-4xl font-bold">
+        Here&apos;s what they say about us
+      </p>
       <div className="flex flex-row justify-evenly items-center w-full md:w-3/4 md:mx-auto h-full">
         <span
           className="absolute p-4 shadow-lg z-10 text-center w-auto h-auto left-0 rounded-full bg-gray-50"
@@ -253,7 +264,7 @@ const TestimonialsSection = () => {
             className={`flex flex-row items-center transition-transform duration-300`}
             style={{
               transform: `translateX(-${tab * 100}vw)`,
-              width: `${Math.ceil(testimonialData.length) * 100}vw`
+              width: `${Math.ceil(testimonialData.length) * 100}vw`,
             }}
           >
             {testimonialData.map((t, i) => (
@@ -289,16 +300,22 @@ const HeroSection = () => {
       <div className="relative top-28 opacity-60 w-full h-2/12">
         <div className="relative flex overflow-x-hidden">
           <div className="flex flex-row animate-marquee whitespace-nowrap">
-          {_SKILL_ICONS.map((l, i) => (
-              <span key={i} className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl">
+            {_SKILL_ICONS.map((l, i) => (
+              <span
+                key={i}
+                className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl"
+              >
                 <Image alt="skill" width={100} height={100} src={l} />
               </span>
             ))}
           </div>
 
           <div className="absolute flex flex-row top-0 animate-marquee2 whitespace-nowrap">
-          {_SKILL_ICONS.map((l, i) => (
-              <span key={i} className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl">
+            {_SKILL_ICONS.map((l, i) => (
+              <span
+                key={i}
+                className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl"
+              >
                 <Image alt="skill" width={100} height={100} src={l} />
               </span>
             ))}
@@ -315,10 +332,27 @@ const HeroSection = () => {
             people.
           </h1>
         </div>
+        <a rel="noopener noreferrer" class="mt-8 w-fit mx-auto px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black">
+          <div class="w-10">
+            <Image
+              alt="install"
+              class="h-full w-full"
+              width={90}
+              height={90}
+              src="google-play-store-svgrepo-com.svg"
+            />
+          </div>
+          <div class="">
+            <div class="text-sm font-extrabold text-white">Download on the</div>
+            <div class="text-2xl text-white">Google Play</div>
+          </div>
+        </a>
       </div>
       <div className="relative top-44 opacity-60 w-full h-2/12">
         <div className="relative flex overflow-x-hidden">
-          <div className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}>
+          <div
+            className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}
+          >
             {_SKILL_ICONS.map((l, i) => (
               <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
                 <Image alt="skill" width={100} height={100} src={l} />
@@ -336,7 +370,7 @@ const HeroSection = () => {
         </div>
       </div>
       <div className="animate-bounce relative top-[50vh] lg:top-[40vh] left-[50vw] bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-200/20 shadow-lg rounded-full">
-        <ScrollDownIndicator/>
+        <ScrollDownIndicator />
       </div>
     </section>
   );
@@ -589,7 +623,7 @@ const CourseCard = ({
       <p className="text-left mb-2">{description}</p>
 
       {/* Author */}
-      <div className="flex items-center mt-6">
+      <div className="flex mt-6">
         <div className="w-12 h-12 rounded-full bg-gray-400 mr-2"></div>
         <div>
           <div className="font-semibold">{instructor}</div>
@@ -673,11 +707,11 @@ const CTAModal = ({ display, setDisplay }) => {
 
   const [success, setSuccess] = useState(false);
 
-   // Phone number validation function
-   const validatePhoneNumber = (phoneNumber, countryCode) => {
+  // Phone number validation function
+  const validatePhoneNumber = (phoneNumber, countryCode) => {
     // Normalize the phone number by removing spaces, dashes, and parentheses
     const normalizedPhoneNumber = phoneNumber.replace(/[ -()]/g, "");
-  
+
     if (countryCode === "+1") {
       // US phone number validation (10 digits)
       if (!/^[2-9]\d{2}[2-9]\d{2}\d{4}$/.test(normalizedPhoneNumber)) {
@@ -697,12 +731,11 @@ const CTAModal = ({ display, setDisplay }) => {
         return false;
       }
     }
-  
+
     // Clear any existing error messages if validation passed
     setErr("");
     return true;
   };
-  
 
   const sendCustomerDetails = async (e) => {
     e.preventDefault();
@@ -722,7 +755,7 @@ const CTAModal = ({ display, setDisplay }) => {
     if (!phoneNumber) {
       setErr("Please enter your Phone Number");
       return;
-    }else if(!validatePhoneNumber(phoneNumber, countryCode)){
+    } else if (!validatePhoneNumber(phoneNumber, countryCode)) {
       setErr("Enter valid phone number");
       return;
     }
