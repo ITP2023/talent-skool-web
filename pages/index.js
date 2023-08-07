@@ -325,7 +325,7 @@ const HeroSection = () => {
       </div>
       <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
         <div className="mx-auto animation-bottom2top w-11/12 my-auto">
-          <h1 className="text-3xl lg:text-5xl text-center mx-auto leading-relaxed tracking-tight">
+          <h1 className="text-5xl text-bold lg:text-5xl text-center mx-auto leading-relaxed tracking-tight">
             Community which is full of talents. Making the world filled with{" "}
             <span className="underline decoration-primary underline-offset-4 decoration-4">
               talented
@@ -333,7 +333,10 @@ const HeroSection = () => {
             people.
           </h1>
         </div>
-        <a rel="noopener noreferrer" className="cursor-pointer mt-8 w-fit mx-auto px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black">
+        <a
+          rel="noopener noreferrer"
+          className="cursor-pointer mt-8 w-fit mx-auto px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black"
+        >
           <div className="w-10">
             <Image
               alt="install"
@@ -342,9 +345,11 @@ const HeroSection = () => {
               height={90}
               src="google-play-store-svgrepo-com.svg"
             />
-      </div>
+          </div>
           <div className="">
-            <div className="text-sm font-extrabold text-white">Download on the</div>
+            <div className="text-sm font-extrabold text-white">
+              Download on the
+            </div>
             <div className="text-2xl text-white">Google Play</div>
           </div>
         </a>
@@ -560,19 +565,37 @@ const FeatureCard = ({
         <div className="mt-4 flex flex-row justify-evenly md:justify-start">
           <div className="p-2 mr-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
-              <CountUp ref={ref} initial={0} end={20} skip={1} inView={inView} />
+              <CountUp
+                ref={ref}
+                initial={0}
+                end={20}
+                skip={1}
+                inView={inView}
+              />
             </p>
             <p className="text-white whitespace-wrap">{statone}</p>
           </div>
           <div className="p-2 mr-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
-              <CountUp ref={ref} initial={0} end={2000} skip={100} inView={inView} />
+              <CountUp
+                ref={ref}
+                initial={0}
+                end={2000}
+                skip={100}
+                inView={inView}
+              />
             </p>
             <p className="text-white whitespace-wrap">{stattwo}</p>
           </div>
           <div className="p-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
-              <CountUp ref={ref} initial={0} end={30} skip={1} inView={inView} />
+              <CountUp
+                ref={ref}
+                initial={0}
+                end={30}
+                skip={1}
+                inView={inView}
+              />
             </p>
             <p className="text-white whitespace-wrap">{statthree}</p>
           </div>

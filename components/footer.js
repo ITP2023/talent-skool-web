@@ -28,9 +28,9 @@ export default function Footer() {
   return (
     <section className="mt-20 md:pt-30 bg-primary bg-no-repeat lg:bg-cover w-full overflow-hidden">
       <div className="relative flex justify-start md:justify-center md:items-end w-full">
-        <div className="flex py-14 md:pt-28 px-4 md:px-6  xl:px-20 flex-col justify-start items-start md:justify-center md:items-center relative z-10">
-          <div className="flex flex-col items-start justify-start xl:justify-center xl:space-x-8 xl:flex-row pl-3">
-            <div className="mt-12 xl:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-y-0 w-full md:w-auto sm:gap-x-20 md:gap-x-28 xl:gap-8">
+        <div className="flex py-10 md:pt-20 px-4 md:px-6  xl:px-18 flex-col justify-start items-start md:justify-center md:items-center relative">
+          <div className="flex flex-col items-start justify-around xl:justify-around xl:space-x-8 xl:flex-row pl-3">
+            <div className="mt-12 xl:mt-0 grid grid-cols-1 md:grid-cols-4 gap-y-12 md:gap-y-10 w-full md:w-auto sm:gap-x-10 md:gap-x-10 xl:gap-8">
               <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
                 <Link
                   href="/"
@@ -102,60 +102,67 @@ export default function Footer() {
                   Security
                 </Link>
               </div>
+              <div className="cursor-pointer flex flex-col">
+                <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white justify-start">
+                  Download
+                </h2>
+                <a
+                  rel="noopener noreferrer"
+                  className="cursor-pointer mt-8 w-fit px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black"
+                >
+                  <div className="w-10">
+                    <Image
+                      alt="install"
+                      className="h-full w-full"
+                      width={90}
+                      height={90}
+                      src="google-play-store-svgrepo-com.svg"
+                    />
+                  </div>
+                  <div className="">
+                    <div className="text-sm font-extrabold text-white">
+                      Download on the
+                    </div>
+                    <div className="text-2xl text-white">Google Play</div>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
-          <div className="justify-start cursor-pointer">
-            <a
-              rel="noopener noreferrer"
-              className="mt-8 w-fit mx-auto px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black"
-            >
-              <div className="w-10">
-                <Image
-                  alt="install"
-                  className="h-full w-full"
-                  width={90}
-                  height={90}
-                  src="google-play-store-svgrepo-com.svg"
-                />
-              </div>
-              <div className="">
-                <div className="text-sm font-extrabold text-white">
-                  Download on the
-                </div>
-                <div className="text-2xl text-white">Google Play</div>
-              </div>
-            </a>
-          </div>
-          <div className="flex xl:justify-between xl:flex-row flex-col items-center w-full ">
-            <p className="mt-10 md:mt-12 xl:mt-0 text-sm leading-none text-white">
-              2023 TalentSkool &copy; All Rights Reserved
-            </p>
-          </div>
-          <div className="flex md:justify-end items-start mt-10 w-full md:w-auto md:items-center space-x-6 ">
-            <button
-              className="text-white hover:text-gray-200 w-6"
-              onClick={handleTwitterButtonClick}
-            >
-              <TwitterIcon />
-            </button>
-            <button
-              className="text-white hover:text-gray-200 w-6"
-              onClick={handleFacebookButtonClick}
-            >
-              <FacebookIcon />
-            </button>
-            <button
-              className="text-white hover:text-gray-200 w-6"
-              onClick={handleInstagramrButtonClick}
-            >
-              <InstagramIcon />
-            </button>
-            <button
-              className="text-white hover:text-gray-200 w-6"
-              onClick={handleLinkedinButtonClick}
-            >
-              <LinkedInIcon />
-            </button>
+
+          <div className="relative flex md-flex-row flex-col w-full p-3 justify-between gap-4">
+            <div className="relative flex xl:flex-row flex-col bottom-0 left-0">
+              <p className="text-sm leading-none text-white">
+                2023 TalentSkool &copy; All Rights Reserved
+              </p>
+            </div>
+
+            <div className="absolute flex flex-row w-full md:w-auto space-x-6 right-0 bottom-0">
+              <button
+                className="text-white hover:text-gray-200 w-6"
+                onClick={handleTwitterButtonClick}
+              >
+                <TwitterIcon />
+              </button>
+              <button
+                className="text-white hover:text-gray-200 w-6"
+                onClick={handleFacebookButtonClick}
+              >
+                <FacebookIcon />
+              </button>
+              <button
+                className="text-white hover:text-gray-200 w-6"
+                onClick={handleInstagramrButtonClick}
+              >
+                <InstagramIcon />
+              </button>
+              <button
+                className="text-white hover:text-gray-200 w-6"
+                onClick={handleLinkedinButtonClick}
+              >
+                <LinkedInIcon />
+              </button>
+            </div>
           </div>
         </div>
       </div>
