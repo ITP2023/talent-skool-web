@@ -130,7 +130,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="relative flex flex-col w-full p-3 justify-between gap-16 lg-gap-0 lg-flex-row">
+          <div className="relative  flex flex-col md-flex-row w-full p-3 justify-between gap-16 md-gap-0">
             <div className="relative flex xl:flex-row flex-col bottom-0 left-0">
               <p className="text-sm leading-none text-white">
                 2023 TalentSkool &copy; All Rights Reserved
