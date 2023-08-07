@@ -197,34 +197,29 @@ const Navbar = ({ fixed }) => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {ROUTES.map((r, i) => (
-                  <div className="p-1 rounded-lg flex items-center justify-center opacity-6">
-                    <Link
-                      key={i}
-                      href={r.link}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4 hover:scale-125 duration-300"
-                    >
-                      {r.text}
-                    </Link>
-                  </div>
+                  <Link
+                    key={i}
+                    href={r.link}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:decoration-white hover:underline hover:underline-offset-4 hover:scale-125 duration-300"
+                  >
+                    {r.text}
+                  </Link>
                 ))}
               </div>
               <div className="flex flex-col py-6 gap-4">
-                <div className="p-1 rounded-lg flex items-center justify-center">
-                  <Link
-                    href="/signup"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-white hover:decoration-primary hover:underline hover:underline-offset-4 hover:scale-125 duration-300"
-                  >
-                    Log in
-                  </Link>
-                </div>
-                <div className="p-1 rounded-lg flex items-center justify-center">
-                  <Link
-                    href="/signup"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-white hover:decoration-primary hover:underline hover:underline-offset-4 hover:scale-125 duration-300"
-                  >
-                    Sign Up
-                  </Link>
-                </div>
+                <Link
+                  href="/signup"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-white hover:decoration-primary hover:underline hover:underline-offset-4 hover:scale-125 duration-300"
+                >
+                  Log in
+                </Link>
+
+                <Link
+                  href="/signup"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-white hover:decoration-primary hover:underline hover:underline-offset-4 hover:scale-125 duration-300"
+                >
+                  Sign Up
+                </Link>
               </div>
             </div>
           </div>
