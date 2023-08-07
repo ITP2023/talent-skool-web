@@ -668,9 +668,9 @@ const CourseCard = ({
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
     <section className="mx-auto p-6 max-w-full text-center overflow-hidden">
-      <p className="text-3xl font-bold ml-6 p-4 my-8">Here&apos;s a glimpse</p>
+      {/* <p className="text-3xl font-bold ml-6 p-4 my-8">Here&apos;s a glimpse</p> */}
       <div className="w-full">
-        <div className="w-full">
+        {/* <div className="w-full">
           <video
             poster="/course_thumbnail.png"
             controls
@@ -681,7 +681,7 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
           >
             <source src={videoPath} type="video/mp4" />
           </video>
-        </div>
+        </div> */}
         <div className="w-full flex flex-col px-2 py-4 mx-auto lg:grid lg:grid-cols-3 lg:grid-rows-2 gap-2">
           {courseCardData.map((course, i) => (
             <CourseCard key={i} {...course} />
@@ -1046,7 +1046,7 @@ export default function Home({ videoPath, courseCardData }) {
           imgsrc="/network_hero.png"
         />
       </div>
-      <CourseDemo courseCardData={courseCardData} videoPath={videoPath} />
+      <CourseDemo courseCardData={courseCardData} />
       <TestimonialsSection />
       <FAQSection />
       <CTASection setDisplay={setCTAModalDisplay} />
