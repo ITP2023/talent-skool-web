@@ -161,10 +161,8 @@ const FAQSection = () => {
 const TestimonialCard = ({ className, testimonial }) => {
   return (
     <div key={testimonial.id} className={className}>
-      <div className="grow mb-8 max-w-screen text-gray-500 text-xl italic leading-relaxed dark:text-gray-400">
-        <p className="my-4 px-4 w-screen md:w-full h-full">
-          {testimonial.review}
-        </p>
+      <div className="grow mb-8 text-gray-500 text-xl italic leading-relaxed dark:text-gray-400">
+        <p className="my-4 px-4 md:w-full h-full">{testimonial.review}</p>
       </div>
       <div className="flex justify-center items-center space-x-3">
         <Image
@@ -185,51 +183,12 @@ const TestimonialCard = ({ className, testimonial }) => {
   );
 };
 
-const TestimonialsSection = () => {
-  const testimonialData = [
-    {
-      id: 1,
-      review:
-        "The edtech platform helped me gain valuable skills that are directly applicable to my career. The instructors are knowledgeable and provide practical insights.",
-      avatar: "/path/to/avatar3.jpg",
-      name: "Sarah Johnson",
-      job: "Marketing Manager",
-    },
-    {
-      id: 2,
-      review:
-        "I love how user-friendly the edtech platform is. The interface is intuitive, and the content is well-organized, making it easy to find the courses I need.",
-      avatar: "/path/to/avatar4.jpg",
-      name: "Michael Brown",
-      job: "Business Analyst",
-    },
-    {
-      id: 3,
-      review:
-        "The edtech platform offers a vast library of courses to choose from. It's a one-stop solution for continuous learning and professional development.",
-      avatar: "/path/to/avatar5.jpg",
-      name: "Emily Rodriguez",
-      job: "Data Scientist",
-    },
-    {
-      id: 4,
-      review:
-        "I appreciate the flexibility of the edtech platform, allowing me to learn at my own pace. The interactive quizzes and assignments keep me engaged throughout the courses.",
-      avatar: "/path/to/avatar6.jpg",
-      name: "David Lee",
-      job: "Web Developer",
-    },
-    {
-      id: 5,
-      review:
-        "The edtech platform's community forums have been a valuable resource. I can connect with fellow learners, discuss topics, and seek help from instructors.",
-      avatar: "/path/to/avatar7.jpg",
-      name: "Ava Martinez",
-      job: "Student",
-    },
-    // Add more testimonials data here
-  ];
-
+/**
+ * @param {{ testimonialData: TestimonialCardData[] }} param0
+ * @returns
+ */
+const TestimonialsSection = ({ testimonialData }) => {
+  /**
   const [tab, setTab] = useState(0);
 
   const handleNextTab = () => {
@@ -273,11 +232,25 @@ const TestimonialsSection = () => {
                 key={i}
                 testimonial={t}
                 id={i}
-                className="h-full w-screen md:justify-evenly md:mr-[30em] border flex flex-col items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+                className="col-span-1 h-full w-screen md:justify-evenly md:mr-[30em] border flex flex-col items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
               />
             ))}
           </div>
         </div>
+      </div>
+    </section>
+  );
+*/
+  return (
+    <section className="w-screen">
+      <div className="h-full overflow-y-hidden p-4 grid gap-8 auto-cols-fr md:auto-cols-none md:grid-cols-2 auto-rows-max">
+        {testimonialData.map((t, i) => (
+          <TestimonialCard
+            key={i}
+            testimonial={t}
+            className="h-full whitespace-normal w-full md:justify-evenly md:mr-[30em] border border-2 flex flex-col items-center text-center dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+          />
+        ))}
       </div>
     </section>
   );
@@ -565,12 +538,7 @@ const FeatureCard = ({
         <div className="mt-4 flex flex-row justify-evenly lg:justify-start">
           <div className="p-2 mr-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
-              <CountUp
-                initial={0}
-                end={20}
-                skip={1}
-                inView={inView}
-              />
+              <CountUp initial={0} end={20} skip={1} inView={inView} />
             </p>
             <p className="text-white whitespace-wrap">{statone}</p>
           </div>
@@ -669,8 +637,10 @@ const CourseCard = ({
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
-    <section className="w-full mx-auto py-8 my-16">
-      <p className="mx-auto text-center text-3xl my-16 font-bold">Some courses on our platform</p>
+    <section className="w-screen mx-auto py-8 my-16">
+      <p className="mx-auto text-center text-3xl my-16 font-bold">
+        Some courses on our platform
+      </p>
       <div className="h-auto w-full">
         <div className="relative h-full flex overflow-x-hidden">
           <div className="flex flex-row animate-coursemarquee">
@@ -957,7 +927,7 @@ const CTAModal = ({ display, setDisplay }) => {
               </div>
               <button
                 type="submit"
-                className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2"
+                className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-primary active:bg-primary rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2"
               >
                 Notify Me
               </button>
@@ -1003,10 +973,17 @@ const CTASection = ({ setDisplay }) => {
 /**
  *
  * @typedef {{ date_of_release: string, category: string, title: string, description: string, instructor: string, job_title: string, thumbnail_url: string }} CourseCardData
- * @param {{ videoPath: string, courseCardData: CourseCardData[] }} param0
+ * @typedef {{
+ * id: number,
+ * review: string,
+ * avatar: string,
+ * job: string,
+ * name: string
+ * }} TestimonialCardData
+ * @param {{ videoPath: string, courseCardData: CourseCardData[], testimonialData: TestimonialCardData[] }} param0
  * @returns
  */
-export default function Home({ videoPath, courseCardData }) {
+export default function Home({ videoPath, courseCardData, testimonialData }) {
   const [ctaModalShown, setCTAModalDisplay] = useState(true);
 
   return (
@@ -1053,7 +1030,7 @@ export default function Home({ videoPath, courseCardData }) {
         />
       </div>
       <CourseDemo courseCardData={courseCardData} />
-      <TestimonialsSection />
+      <TestimonialsSection testimonialData={testimonialData} />
       <FAQSection />
       <CTASection setDisplay={setCTAModalDisplay} />
       <Footer />
@@ -1105,10 +1082,55 @@ export async function getStaticProps(ctx) {
     },
   ];
 
+  const testimonialData = [
+    {
+      id: 1,
+      review:
+        "The edtech platform helped me gain valuable skills that are directly applicable to my career. The instructors are knowledgeable and provide practical insights.",
+      avatar: "/path/to/avatar3.jpg",
+      name: "Sarah Johnson",
+      job: "Marketing Manager",
+    },
+    {
+      id: 2,
+      review:
+        "I love how user-friendly the edtech platform is. The interface is intuitive, and the content is well-organized, making it easy to find the courses I need.",
+      avatar: "/path/to/avatar4.jpg",
+      name: "Michael Brown",
+      job: "Business Analyst",
+    },
+    {
+      id: 3,
+      review:
+        "The edtech platform offers a vast library of courses to choose from. It's a one-stop solution for continuous learning and professional development.",
+      avatar: "/path/to/avatar5.jpg",
+      name: "Emily Rodriguez",
+      job: "Data Scientist",
+    },
+    {
+      id: 4,
+      review:
+        "I appreciate the flexibility of the edtech platform, allowing me to learn at my own pace. The interactive quizzes and assignments keep me engaged throughout the courses.",
+      avatar: "/path/to/avatar6.jpg",
+      name: "David Lee",
+      job: "Web Developer",
+    },
+    {
+      id: 5,
+      review:
+        "The edtech platform's community forums have been a valuable resource. I can connect with fellow learners, discuss topics, and seek help from instructors.",
+      avatar: "/path/to/avatar7.jpg",
+      name: "Ava Martinez",
+      job: "Student",
+    },
+    // Add more testimonials data here
+  ];
+
   return {
     props: {
       videoPath: "./mov_bbb.mp4",
       courseCardData,
+      testimonialData,
     },
   };
 }
