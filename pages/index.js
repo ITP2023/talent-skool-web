@@ -606,20 +606,23 @@ const FeatureCard = ({
 };
 
 /**
- * @param {CourseCardData} param0
+ * @param {{data: CourseCardData}} param0
  * @returns
  */
 const CourseCard = ({
-  date_of_release,
-  category,
-  title,
-  description,
-  instructor,
-  job_title,
-  thumbnail_url,
+  data: {
+    thumbnail_url,
+    category,
+    title,
+    job_title,
+    description,
+    instructor,
+    date_of_release,
+  },
+  className,
 }) => {
   return (
-    <div className="max-w-md mx-auto p-4 my-4">
+    <div className={className}>
       {/* Image */}
       <div className="mb-2">
         <Image
@@ -643,12 +646,12 @@ const CourseCard = ({
       <h1 className="text-2xl font-bold mb-2">{title}</h1>
 
       {/* Random text paragraph */}
-      <p className="text-left mb-2">{description}</p>
+      <p className="text-left w-full mb-2">{description}</p>
 
       {/* Author */}
       <div className="flex mt-6">
         <div className="w-12 h-12 rounded-full bg-gray-400 mr-2"></div>
-        <div>
+        <div className="text-left">
           <div className="font-semibold">{instructor}</div>
           <div className="text-gray-600">{job_title}</div>
         </div>
@@ -667,25 +670,29 @@ const CourseCard = ({
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
-    <section className="mx-auto p-6 max-w-full text-center overflow-hidden">
-      {/* <p className="text-3xl font-bold ml-6 p-4 my-8">Here&apos;s a glimpse</p> */}
-      <div className="w-full">
-        {/* <div className="w-full">
-          <video
-            poster="/course_thumbnail.png"
-            controls
-            width={1000}
-            height={700}
-            disablePictureInPicture
-            className="w-full md:w-3/4 mx-auto rounded-xl"
-          >
-            <source src={videoPath} type="video/mp4" />
-          </video>
-        </div> */}
-        <div className="w-full flex flex-col px-2 py-4 mx-auto lg:grid lg:grid-cols-3 lg:grid-rows-2 gap-2">
-          {courseCardData.map((course, i) => (
-            <CourseCard key={i} {...course} />
-          ))}
+    <section className="w-screen mx-auto py-8 my-16">
+      <p className="mx-auto text-center text-3xl my-16 font-bold">Some courses on our platform</p>
+      <div className="h-auto w-full">
+        <div className="relative h-full flex overflow-x-hidden">
+          <div className="flex flex-row animate-coursemarquee">
+            {courseCardData.map((l, i) => (
+              <CourseCard
+                key={i}
+                data={l}
+                className="border-2 mx-4 w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl"
+              />
+            ))}
+          </div>
+
+          <div className="absolute flex flex-row top-0 animate-coursemarquee2">
+            {courseCardData.map((l, i) => (
+              <CourseCard
+                key={i}
+                data={l}
+                className="border-2 mx-4 w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

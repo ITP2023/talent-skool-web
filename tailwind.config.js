@@ -21,6 +21,8 @@ module.exports = {
         primary: "#9343F2",
       },
       animation: {
+        coursemarquee: "marquee 15s linear infinite",
+        coursemarquee2: "marquee2 15s linear infinite",
         marquee: "marquee 5s linear infinite",
         marquee2: "marquee2 5s linear infinite",
         marqueereverse: "marqueereverse 5s linear infinite",
