@@ -1023,7 +1023,7 @@ export default function Home({ videoPath, courseCardData }) {
           stattwo="Students"
           statthree="Courses"
           color="linear-gradient(135deg, rgba(255,6,206,1) 22%, rgba(162,53,113,1) 100%)"
-          imgsrc="/learn_hero.png"
+          imgsrc="/learn_hero_bg.png"
         />
         <FeatureCard
           direction="rtl"
@@ -1033,7 +1033,7 @@ export default function Home({ videoPath, courseCardData }) {
           stattwo="Freelancers"
           statthree="Recruiters"
           color="blue"
-          imgsrc="/earn_hero.png"
+          imgsrc="/earn_hero_bg.png"
         />
         <FeatureCard
           color="black"
