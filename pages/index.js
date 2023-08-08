@@ -325,7 +325,7 @@ const HeroSection = () => {
       </div>
       <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
         <div className="mx-auto animation-bottom2top w-11/12 my-auto">
-          <h1 className="text-5xl text-bold lg:text-5xl text-center mx-auto leading-relaxed tracking-tight">
+          <h1 className="text-3xl text-bold md:text-5xl text-center mx-auto leading-relaxed tracking-tight">
             Community which is full of talents. Making the world filled with{" "}
             <span className="underline decoration-primary underline-offset-4 decoration-4">
               talented
@@ -536,13 +536,13 @@ const FeatureCard = ({
           inView ? "animate-fade-in-right" : "opacity-0"
         }`}
       >
-        <p className="text-3xl font-bold mb-2 text-white text-center md:text-left">
+        <p className="text-3xl font-bold mb-2 text-white text-center lg:text-left">
           {head}
         </p>
-        <p className="text-white text-center md:text-left my-2 md:my-auto px-2">
+        <p className="text-white text-center lg:text-left my-2 lg:my-auto px-2">
           {description}
         </p>
-        <div className="mt-4 flex flex-row justify-evenly md:justify-start">
+        <div className="mt-4 flex flex-row justify-evenly lg:justify-start">
           <button
             className={`rounded-lg ${
               color === "black" ? "bg-white" : "bg-black"
@@ -562,11 +562,10 @@ const FeatureCard = ({
             Explore us
           </button>
         </div>
-        <div className="mt-4 flex flex-row justify-evenly md:justify-start">
+        <div className="mt-4 flex flex-row justify-evenly lg:justify-start">
           <div className="p-2 mr-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
               <CountUp
-                ref={ref}
                 initial={0}
                 end={20}
                 skip={1}
