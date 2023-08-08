@@ -44,29 +44,6 @@ export default function Footer() {
                   courses.{" "}
                 </p>
               </div>
-              <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
-                <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
-                  Company
-                </h2>
-                <Link
-                  href="/about"
-                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
-                >
-                  About Us
-                </Link>
-                <Link
-                  href="/privacy-policy"
-                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
-                >
-                  Privacy Policy
-                </Link>
-                <Link
-                  href="/"
-                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
-                >
-                  Terms & Conditions
-                </Link>
-              </div>
               <div className=" xl:w-72 flex justify-start items-start flex-col space-y-6">
                 <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
                   Quick Links
@@ -102,6 +79,29 @@ export default function Footer() {
                   Security
                 </Link>
               </div>
+              <div className="sm:w-40 md:w-auto xl:w-72 flex justify-start items-start flex-col space-y-6">
+                <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white">
+                  Company
+                </h2>
+                <Link
+                  href="/about"
+                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="/privacy-policy"
+                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  href="/"
+                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
+                >
+                  Terms & Conditions
+                </Link>
+              </div>
               <div className="cursor-pointer flex flex-col">
                 <h2 className="text-base xl:text-xl font-bold xl:font-semibold leading-4 xl:leading-5 text-white justify-start">
                   Download
@@ -130,15 +130,15 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="relative flex flex-col md:flex-row w-full p-3 justify-between gap-16 md-gap-0">
+          <div className="relative flex flex-col md:flex-row w-full p-3 justify-between gap-16">
             <div className="relative flex xl:flex-row flex-col bottom-0 left-0">
               <p className="text-sm leading-none text-white">
                 2023 TalentSkool &copy; All Rights Reserved
               </p>
             </div>
 
-            <div className="px-8">
-              <div className="absolute flex flex-row space-x-6 right-0 bottom-0">
+            <div className="relative px-8">
+              <div className="absolute flex flex-row space-x-6 left-0 md:right-0 bottom-0">
                 <button
                   className="text-white hover:text-gray-200 w-6"
                   onClick={handleTwitterButtonClick}

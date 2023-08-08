@@ -670,7 +670,7 @@ const CourseCard = ({
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
-    <section className="w-screen mx-auto py-8 my-16">
+    <section className="w-full mx-auto py-8 my-16">
       <p className="mx-auto text-center text-3xl my-16 font-bold">Some courses on our platform</p>
       <div className="h-auto w-full">
         <div className="relative h-full flex overflow-x-hidden">
