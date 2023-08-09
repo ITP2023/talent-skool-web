@@ -12,6 +12,7 @@ import NextIcon from "@/components/next_icon";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
 import CountUp from "@/components/countup";
+import DoubleQuotesIcon from "@/components/doublequotes_icon";
 
 const ScrollDownIndicator = () => {
   return (
@@ -161,8 +162,29 @@ const FAQSection = () => {
 const TestimonialCard = ({ className, testimonial }) => {
   return (
     <div key={testimonial.id} className={className}>
+      <div class="relative top-0 left-0 opacity-40">
+        <Image
+          width={50}
+          height={50}
+          className="w-9 h-9 rounded-full"
+          src="/quote_up.png"
+          alt="quote up"
+        />
+      </div>
+
       <div className="grow mb-8 text-gray-500 text-xl italic leading-relaxed dark:text-gray-400">
         <p className="my-4 px-4 md:w-full h-full">{testimonial.review}</p>
+      </div>
+      <div class="relative opacity-40">
+        <div class="absolute bottom-0 right-0">
+          <Image
+            width={50}
+            height={50}
+            className="w-9 h-9 rounded-full"
+            src="/quote_down.png"
+            alt="quote down"
+          />
+        </div>
       </div>
       <div className="flex justify-center items-center space-x-3">
         <Image
@@ -242,13 +264,13 @@ const TestimonialsSection = ({ testimonialData }) => {
   );
 */
   return (
-    <section className="w-screen">
+    <section className="w-full">
       <div className="h-full overflow-y-hidden p-4 grid gap-8 auto-cols-fr md:auto-cols-none md:grid-cols-2 auto-rows-max">
         {testimonialData.map((t, i) => (
           <TestimonialCard
             key={i}
             testimonial={t}
-            className="h-full whitespace-normal w-full md:justify-evenly md:mr-[30em] border border-2 flex flex-col items-center text-center dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+            className="h-full whitespace-normal w-full md:justify-evenly md:mr-[30em] border border-2 flex flex-col text-center dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
           />
         ))}
       </div>
@@ -637,7 +659,7 @@ const CourseCard = ({
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
-    <section className="w-screen mx-auto py-8 my-16">
+    <section className="w-full mx-auto py-8 my-16">
       <p className="mx-auto text-center text-3xl my-16 font-bold">
         Some courses on our platform
       </p>
@@ -997,7 +1019,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
       <HeroSection />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
-      <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-screen w-full p-5 overflow-hidden">
+      <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-full w-full p-5 overflow-hidden">
         <FeatureCard
           direction="ltr"
           description="You are going to learn from a best teacher with good,environment, facilities, and quality"
