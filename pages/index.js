@@ -12,7 +12,6 @@ import NextIcon from "@/components/next_icon";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
 import CountUp from "@/components/countup";
-import DoubleQuotesIcon from "@/components/doublequotes_icon";
 
 const ScrollDownIndicator = () => {
   return (
