@@ -69,7 +69,7 @@ const Navbar = ({ fixed }) => {
 
   return (
     <header
-      className={`${fixed ? "fixed" : ""} inset-x-0 top-0 z-10 ${
+      className={`${fixed ? "fixed" : "absolute"} inset-x-0 top-0 z-10 ${
         isScrolledDown
           ? "-translate-y-full opacity-0"
           : "translate-y-0 opacity-100"
@@ -154,13 +154,11 @@ const Navbar = ({ fixed }) => {
         </div>
       </nav>
       {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
-      <div className="lg:hidden h-screen" role="dialog" aria-modal="true">
+      <div className={`lg:hidden h-screen`} role="dialog" aria-modal="true">
         {/* <!-- Background backdrop, show/hide based on slide-over state. --> */}
-        {backdrop ? (
-          <div className="fixed inset-0 z-50 bg-black opacity-60 max-h-screen"></div>
-        ) : (
-          " "
-        )}
+
+        <div className={`opacity-60 relative inset-0 z-50 bg-black max-h-screen`}></div>
+
         {/* { backdrop ?  */}
         <div
           className={`fixed inset-y-0 z-50 max-h-screen w-2/4 overflow-y-auto bg-transparent px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-500 ${
