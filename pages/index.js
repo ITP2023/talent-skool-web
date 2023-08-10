@@ -920,17 +920,32 @@ const CTAModal = ({ display, setDisplay }) => {
                       <option value="RU">Russia +7</option>
                       <option value="JP">Japan +81</option>
                       <option value="CN">China +86</option>
-                      <option value="none">Select</option>
-                      <option value="IN">India +91</option>
-                      <option value="US">US +1</option>
-                      <option value="UK">UK +44</option>
-                      <option value="FR">France +33</option>
-                      <option value="DE">Germany +49</option>
-                      <option value="BR">Brazil +55</option>
-                      <option value="AU">Australia +61</option>
-                      <option value="RU">Russia +7</option>
-                      <option value="JP">Japan +81</option>
-                      <option value="CN">China +86</option>
+                      Pakistan: ^\+92\d{10}$ (12 digits)
+                      Bangladesh: ^\+880\d{10}$ (13 digits)
+                      Nepal: ^\+977\d{9}$ (12 digits)
+                      Sri Lanka: ^\+94\d{9}$ (12 digits)
+                      Bhutan: ^\+975\d{8}$ (12 digits)
+                      Myanmar: ^\+95\d{8}$ (12 digits)
+                      <option value="BD">Bangladesh +880</option>
+                      <option value="LK">Sri Lanka +94</option>
+                      <option value="BT">Bhutan +975</option>
+                      <option value="MM">Myanmar +95</option>
+                      <option value="AF">Afganistan +93</option>
+                      <option value="MV">Maldives +960</option>
+                      <option value="MY">Malaysia +60</option>
+                      
+                      <option value="AU">Saudi +966</option>
+                      <option value="RU">UAE +971</option>
+                      <option value="JP">Egypt +20</option>
+                      <option value="CN">Iraq +964</option>
+                      <option value="AU">Jordan +962</option>
+                      <option value="RU">Kuwait +965</option>
+                      <option value="JP">Lebanon +961</option>
+                      <option value="CN">Oman +968</option>
+                      <option value="AU">Saudi +61</option>
+                      <option value="RU">UAE +7</option>
+                      <option value="JP">Egypt +81</option>
+                      <option value="CN">Iraq +86</option>
                     </select>
                   </div>
                   <input
