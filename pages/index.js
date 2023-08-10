@@ -1117,7 +1117,7 @@ const CTAModal = ({ display, setDisplay }) => {
                 </div>
                 <button
                   type="submit"
-                  className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-primary active:bg-primary rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2"
+                  className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-black active:bg-primary rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2 shadow-neon"
                 >
                   Notify Me
                 </button>

@@ -50,31 +50,31 @@ export default function Footer() {
                 </h2>
                 <Link
                   href="/contact"
-                  className="text-base text-left hover:text-gray-400 leading-none text-gray-100"
+                  className="text-base text-left hover:text-white leading-none text-gray-300"
                 >
                   Reach us
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-base text-left hover:text-gray-400 leading-none text-gray-100"
+                  className="text-base text-left hover:text-white leading-none text-gray-300"
                 >
                   Enquire
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-base text-left hover:text-gray-400 leading-none text-gray-100"
+                  className="text-base text-left hover:text-white leading-none text-gray-300"
                 >
                   Complaint
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-base text-left hover:text-gray-400 leading-none text-gray-100"
+                  className="text-base text-left hover:text-white leading-none text-gray-300"
                 >
                   Leave a feedback
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-base leading-none text-white hover:text-gray-300"
+                  className="text-base leading-none text-gray-300 hover:text-white"
                 >
                   Security
                 </Link>
@@ -85,19 +85,19 @@ export default function Footer() {
                 </h2>
                 <Link
                   href="/about"
-                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
+                  className="text-left text-base hover:text-white leading-none text-gray-300"
                 >
                   About Us
                 </Link>
                 <Link
                   href="/privacy-policy"
-                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
+                  className="text-left text-base hover:text-white leading-none text-gray-300"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/"
-                  className="text-left text-base hover:text-gray-400 leading-none text-gray-100"
+                  className="text-left text-base hover:text-white leading-none text-gray-300"
                 >
                   Terms & Conditions
                 </Link>
