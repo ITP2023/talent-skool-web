@@ -744,6 +744,24 @@ const CTAModal = ({ display, setDisplay }) => {
       IN: /^\d{10}$/,
       RU: /^\d{10}$/,
       AU: /^\d{9}$/,
+      AF: /^\d{8,10}$/,
+      MV: /^\d{7}$/,
+      BD: /^\d{10}$/,
+      NP: /^\d{9}$/,
+      LK: /^\d{9}$/,
+      BT: /^\d{8}$/,
+      MM: /^\d{8}$/,
+      MY: /^\d{9,10}/,
+      SA: /^\d{9}/,
+      AE: /^\d{9}/,
+      EG: /^\d{10}/,
+      IQ: /^\d{10}/,
+      JO: /^\d{9}/,
+      KW: /^\d{8}/,
+      LB: /^\d{7}/,
+      OM: /^\d{8}/,
+      QA: /^\d{8}/,
+      TN: /^\d{7}/,
       // Add more countries and their regex patterns here
     };
 
@@ -805,9 +823,142 @@ const CTAModal = ({ display, setDisplay }) => {
     }
     setLoading(false);
   };
+  const countriesCode = [
+    {
+      country: "Select",
+      value: "None",
+      code: "",
+    },
+    {
+      country: "India",
+      value: "IN",
+      code: "+91",
+    },
+    {
+      country: "US",
+      value: "US",
+      code: "+1",
+    },
+    {
+      country: "UK",
+      value: "UK",
+      code: "+44",
+    },
+    {
+      country: "France",
+      value: "FR",
+      code: "+33",
+    },
+    {
+      country: "Germany",
+      value: "DE",
+      code: "+49",
+    },
+    {
+      country: "Brazil",
+      value: "BR",
+      code: "+55",
+    },
+    {
+      country: "Australia",
+      value: "AU",
+      code: "+61",
+    },
+    {
+      country: "Russia",
+      value: "RU",
+      code: "+7",
+    },
+    {
+      country: "Japan",
+      value: "JP",
+      code: "+81",
+    },
+    {
+      country: "Bangladesh",
+      value: "BD",
+      code: "+880",
+    },
+    {
+      country: "SriLanka",
+      value: "LK",
+      code: "+94",
+    },
+    {
+      country: "Bhutan",
+      value: "BT",
+      code: "+975",
+    },
+    {
+      country: "Myanmar",
+      value: "MM",
+      code: "+95",
+    },
+    {
+      country: "Afganistan",
+      value: "AF",
+      code: "+93",
+    },
+    {
+      country: "Maldives",
+      value: "MV",
+      code: "+960",
+    },
+    {
+      country: "Malaysia",
+      value: "MY",
+      code: "+60",
+    },
+
+    {
+      country: "Saudi",
+      value: "SA",
+      code: "+966",
+    },
+    {
+      country: "UAE",
+      value: "AE",
+      code: "+971",
+    },
+    {
+      country: "Egypt",
+      value: "EG",
+      code: "+20",
+    },
+    {
+      country: "Jordan",
+      value: "JO",
+      code: "+962",
+    },
+    {
+      country: "Kuwait",
+      value: "KW",
+      code: "+965",
+    },
+    {
+      country: "Lebanon",
+      value: "LB",
+      code: "+961",
+    },
+    {
+      country: "Oman",
+      value: "OM",
+      code: "+968",
+    },
+    {
+      country: "Qatar",
+      value: "QA",
+      code: "+974",
+    },
+    {
+      country: "Tunisia",
+      value: "TN",
+      code: "+216",
+    },
+  ];
 
   return display ? (
-    <div className="fixed inset-0 z-20 overflow-hidden w-fulls">
+    <div className="fixed inset-0 z-20 overflow-hidden w-fulls shadow-neon">
       <div
         className="fixed inset-0 w-full h-full bg-black opacity-40 z-10"
         onClick={() => setDisplay(false)}
@@ -816,7 +967,7 @@ const CTAModal = ({ display, setDisplay }) => {
         <div
           className={`${
             success ? "" : "hidden"
-          } relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg`}
+          } relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-neon`}
         >
           <div className="flex justify-end">
             <button
@@ -851,7 +1002,7 @@ const CTAModal = ({ display, setDisplay }) => {
         <div
           className={`${
             success ? "hidden" : ""
-          } relative z-40 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg`}
+          } relative z-40 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-neon`}
         >
           <div
             className={`${
@@ -909,43 +1060,13 @@ const CTAModal = ({ display, setDisplay }) => {
                       name="country"
                       className="text-sm bg-white outline-none rounded-lg h-full overflow-y-auto"
                     >
-                      <option value="none">Select</option>
-                      <option value="IN">India +91</option>
-                      <option value="US">US +1</option>
-                      <option value="UK">UK +44</option>
-                      <option value="FR">France +33</option>
-                      <option value="DE">Germany +49</option>
-                      <option value="BR">Brazil +55</option>
-                      <option value="AU">Australia +61</option>
-                      <option value="RU">Russia +7</option>
-                      <option value="JP">Japan +81</option>
-                      <option value="CN">China +86</option>
-                      Pakistan: ^\+92\d{10}$ (12 digits)
-                      Bangladesh: ^\+880\d{10}$ (13 digits)
-                      Nepal: ^\+977\d{9}$ (12 digits)
-                      Sri Lanka: ^\+94\d{9}$ (12 digits)
-                      Bhutan: ^\+975\d{8}$ (12 digits)
-                      Myanmar: ^\+95\d{8}$ (12 digits)
-                      <option value="BD">Bangladesh +880</option>
-                      <option value="LK">Sri Lanka +94</option>
-                      <option value="BT">Bhutan +975</option>
-                      <option value="MM">Myanmar +95</option>
-                      <option value="AF">Afganistan +93</option>
-                      <option value="MV">Maldives +960</option>
-                      <option value="MY">Malaysia +60</option>
-                      
-                      <option value="AU">Saudi +966</option>
-                      <option value="RU">UAE +971</option>
-                      <option value="JP">Egypt +20</option>
-                      <option value="CN">Iraq +964</option>
-                      <option value="AU">Jordan +962</option>
-                      <option value="RU">Kuwait +965</option>
-                      <option value="JP">Lebanon +961</option>
-                      <option value="CN">Oman +968</option>
-                      <option value="AU">Saudi +61</option>
-                      <option value="RU">UAE +7</option>
-                      <option value="JP">Egypt +81</option>
-                      <option value="CN">Iraq +86</option>
+                      {countriesCode.map((country, index) => (
+                        <option
+                          key={index}
+                          index={index}
+                          value={country.value}
+                        >{`${country.country} ${country.code}`}</option>
+                      ))}
                     </select>
                   </div>
                   <input
@@ -961,7 +1082,7 @@ const CTAModal = ({ display, setDisplay }) => {
                     type="text"
                     placeholder="Phone number"
                     required
-                    className="text-gray-500 w-full pl-[8.5rem] pr-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm"
+                    className="text-gray-500 w-full pl-[9.5rem] pr-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm"
                   />
                   <p className="hidden text-red-500 peer-invalid:block">
                     Please enter a valid phone number
