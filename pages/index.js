@@ -728,34 +728,44 @@ const CTAModal = ({ display, setDisplay }) => {
   const [success, setSuccess] = useState(false);
 
   // Phone number validation function
-  const validatePhoneNumber = (phoneNumber, countryCode) => {
-    // Normalize the phone number by removing spaces, dashes, and parentheses
-    const normalizedPhoneNumber = phoneNumber.replace(/[ -()]/g, "");
+  function validatePhoneNumber(phoneNumber, countryCode) {
+    // Remove non-numeric characters
+    const cleanNumber = phoneNumber.replace(/\D/g, "");
+    console.log(cleanNumber);
+    // Define regular expressions for each country
+    const countryFormats = {
+      US: /^\d{10}$/,
+      UK: /^\d{10}$/,
+      FR: /^\d{9}$/,
+      DE: /^\d{10}$/,
+      JP: /^\d{10}$/,
+      CN: /^\d{11}$/,
+      BR: /^\d{11}$/,
+      IN: /^\d{10}$/,
+      RU: /^\d{10}$/,
+      AU: /^\d{9}$/,
+      // Add more countries and their regex patterns here
+    };
 
-    if (countryCode === "+1") {
-      // US phone number validation (10 digits)
-      if (!/^[2-9]\d{2}[2-9]\d{2}\d{4}$/.test(normalizedPhoneNumber)) {
-        setErr("Please enter a valid US phone number");
-        return false;
-      }
-    } else if (countryCode === "+44") {
-      // UK phone number validation (10 digits)
-      if (!/^\+44\d{10}$|^[2-9]\d{9}$/.test(normalizedPhoneNumber)) {
-        setErr("Please enter a valid UK phone number");
-        return false;
-      }
-    } else if (countryCode === "+91") {
-      // India phone number validation (10 digits)
-      if (!/^\+91\d{10}$|^[7-9]\d{9}$/.test(normalizedPhoneNumber)) {
-        setErr("Please enter a valid India phone number");
+    // Validate based on the provided country code
+    if (countryCode in countryFormats) {
+      if (countryCode in countryFormats) {
+        const pattern = countryFormats[countryCode];
+        console.log(pattern.test(cleanNumber));
+        if (pattern.test(cleanNumber)) {
+          // Clear any existing error messages if validation passed
+          setErr(""); // Make sure setErr is defined and clears the error state
+          return true;
+        } else {
+          setErr("Enter a valid phone number with the correct format.");
+          return false;
+        }
+      } else {
+        setErr("Select a valid country code.");
         return false;
       }
     }
-
-    // Clear any existing error messages if validation passed
-    setErr("");
-    return true;
-  };
+  }
 
   const sendCustomerDetails = async (e) => {
     e.preventDefault();
@@ -773,7 +783,6 @@ const CTAModal = ({ display, setDisplay }) => {
     }
 
     if (!validatePhoneNumber(phoneNumber, countryCode)) {
-      setErr("Please enter your Phone Number");
       return;
     }
 
@@ -898,11 +907,30 @@ const CTAModal = ({ display, setDisplay }) => {
                         }))
                       }
                       name="country"
-                      className="text-sm bg-white outline-none rounded-lg h-full"
+                      className="text-sm bg-white outline-none rounded-lg h-full overflow-y-auto"
                     >
-                      <option value="+1">US +1</option>
-                      <option value="+44">UK +44</option>
-                      <option value="+91">India +91</option>
+                      <option value="none">Select</option>
+                      <option value="IN">India +91</option>
+                      <option value="US">US +1</option>
+                      <option value="UK">UK +44</option>
+                      <option value="FR">France +33</option>
+                      <option value="DE">Germany +49</option>
+                      <option value="BR">Brazil +55</option>
+                      <option value="AU">Australia +61</option>
+                      <option value="RU">Russia +7</option>
+                      <option value="JP">Japan +81</option>
+                      <option value="CN">China +86</option>
+                      <option value="none">Select</option>
+                      <option value="IN">India +91</option>
+                      <option value="US">US +1</option>
+                      <option value="UK">UK +44</option>
+                      <option value="FR">France +33</option>
+                      <option value="DE">Germany +49</option>
+                      <option value="BR">Brazil +55</option>
+                      <option value="AU">Australia +61</option>
+                      <option value="RU">Russia +7</option>
+                      <option value="JP">Japan +81</option>
+                      <option value="CN">China +86</option>
                     </select>
                   </div>
                   <input
@@ -918,7 +946,7 @@ const CTAModal = ({ display, setDisplay }) => {
                     type="text"
                     placeholder="Phone number"
                     required
-                    className="text-gray-500 w-full pl-[6.5rem] pr-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm"
+                    className="text-gray-500 w-full pl-[8.5rem] pr-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm"
                   />
                   <p className="hidden text-red-500 peer-invalid:block">
                     Please enter a valid phone number

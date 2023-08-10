@@ -131,14 +131,14 @@ export default function Footer() {
           </div>
 
           <div className="relative flex flex-col md:flex-row w-full p-3 justify-between gap-16">
-            <div className="relative flex xl:flex-row flex-col bottom-0 left-0">
+            <div className="relative flex xl:flex-row flex-col bottom-0 left-0 w-full md:w-2/4">
               <p className="text-sm leading-none text-white">
                 2023 TalentSkool &copy; All Rights Reserved
               </p>
             </div>
 
-            <div className="relative px-8">
-              <div className="absolute flex flex-row space-x-6 left-0 md:right-0 bottom-0">
+            <div className="flex relative px-8 w-full md:w-2/4 justify-end">
+              <div className="absolute flex flex-row space-x-6 left-0 md:right-0 bottom-0 justify-end align-end">
                 <button
                   className="text-white hover:text-gray-200 w-6"
                   onClick={handleTwitterButtonClick}
