@@ -13,6 +13,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
 import CountUp from "@/components/countup";
 
+
 const ScrollDownIndicator = () => {
   return (
     <svg
@@ -495,6 +496,7 @@ const FeatureCard = ({
   color,
   imgsrc,
 }) => {
+  const countUpRef = useRef(null);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: [0.2, 0.8],
@@ -559,14 +561,20 @@ const FeatureCard = ({
         <div className="mt-4 flex flex-row justify-evenly lg:justify-start">
           <div className="p-2 mr-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
-              <CountUp initial={0} end={20} skip={1} inView={inView} />
+              <CountUp
+                ref={countUpRef}
+                initial={0}
+                end={20}
+                skip={1}
+                inView={inView}
+              />
             </p>
             <p className="text-white whitespace-wrap">{statone}</p>
           </div>
           <div className="p-2 mr-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
               <CountUp
-                ref={ref}
+                ref={countUpRef}
                 initial={0}
                 end={2000}
                 skip={100}
@@ -578,7 +586,7 @@ const FeatureCard = ({
           <div className="p-2 text-center">
             <p className="text-2xl text-center font-bold text-orange-500">
               <CountUp
-                ref={ref}
+                ref={countUpRef}
                 initial={0}
                 end={30}
                 skip={1}
@@ -727,6 +735,10 @@ const CTAModal = ({ display, setDisplay }) => {
 
   const [success, setSuccess] = useState(false);
 
+  function validateName(name){
+    const nameRegex = /^[A-Za-z\s]{4,}$/;
+    return nameRegex.test(name);
+  }
   // Phone number validation function
   function validatePhoneNumber(phoneNumber, countryCode) {
     // Remove non-numeric characters
@@ -790,9 +802,9 @@ const CTAModal = ({ display, setDisplay }) => {
     const { name, email, phoneNumber, countryCode } = customerData;
     console.log(err);
     console.log(customerData);
-    if (!name) {
+    if (!validateName(name)) {
       console.log(name);
-      setErr("Please enter your name");
+      setErr("Name should have only Alphabets and minimum of 4.");
       return;
     }
     if (!email) {
@@ -964,174 +976,168 @@ const CTAModal = ({ display, setDisplay }) => {
         onClick={() => setDisplay(false)}
       ></div>
       <div className="flex z-30 items-center min-h-screen px-4 py-8">
+        <div
+          className={`${
+            success ? "" : "hidden"
+          } relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-neon bg-gradient-to-br from-fuchsia-400 via-blue-300 to-slate-50`}
+        >
+          <div className="flex justify-end">
+            <button
+              className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
+              onClick={() => setDisplay(false)}
+            >
+              <CancelIcon />
+            </button>
+          </div>
+          <div className="bg-white dark:bg-dark flex flex-col items-center justify-between space-y-6 h-auto p-6 rounded-xl mx-auto">
+            <div className="h-1/2 w-full">
+              <Image
+                alt="icon_success"
+                width={100}
+                height={100}
+                src="/check.png"
+                className="w-[100px] h-[100px] mx-auto"
+              />
+            </div>
 
+            <div className="h-1/2 w-full">
+              <p className="text-2xl dark:text-white font-bold text-center">
+                Success!
+              </p>
+              <p className="mt-4 dark:text-white text-center">
+                We&apos;ve created your account and will notify you when we
+                launch
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${
+            success ? "hidden" : ""
+          } relative z-40 w-full max-w-lg p-4 mx-auto bg-gradient-to-br from-fuchsia-400 via-blue-300 to-slate-50 rounded-md shadow-neon bg-gradient-to-br from-fuchsia-400 via-blue-300 to-slate-50`}
+        >
           <div
             className={`${
-              success ? "" : "hidden"
-            } relative z-2 w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-neon bg-gradient-to-br from-fuchsia-400 via-blue-300 to-slate-50`}
+              loading ? "opacity-100 " : "hidden "
+            }absolute z-40 w-full h-full flex flex-row justify-center items-center bg-white/60 rounded-lg -ml-4 -mt-4`}
           >
-            <div className="flex justify-end">
-              <button
-                className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                onClick={() => setDisplay(false)}
-              >
-                <CancelIcon />
-              </button>
-            </div>
-            <div className="bg-white dark:bg-dark flex flex-col items-center justify-between space-y-6 h-auto p-6 rounded-xl mx-auto">
-              <div className="h-1/2 w-full">
-                <Image
-                  alt="icon_success"
-                  width={100}
-                  height={100}
-                  src="/check.png"
-                  className="w-[100px] h-[100px] mx-auto"
+            <LoadingSpinner opacity={loading ? 100 : 0} />
+          </div>
+          <div className="flex justify-end">
+            <button
+              className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
+              onClick={() => setDisplay(false)}
+            >
+              <CancelIcon />
+            </button>
+          </div>
+          <div className="max-w-sm mx-auto py-3 space-y-4 text-center">
+            <h4 className="text-3xl font-medium text-gray-800">
+              Get notified when we launch
+            </h4>
+            <p className="text-md text-gray-600">
+              Sign Up and we&apos;ll notify you when we launch{"!"}
+            </p>
+            <form onSubmit={sendCustomerDetails}>
+              <div className="my-4 z-2">
+                <input
+                  onChange={(e) =>
+                    setCustomerData(({ phoneNumber, countryCode, email }) => ({
+                      name: e.target.value,
+                      email,
+                      phoneNumber,
+                      countryCode,
+                    }))
+                  }
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Enter your full name"
+                  className={`text-gray-500 w-full px-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm`}
                 />
               </div>
-
-              <div className="h-1/2 w-full">
-                <p className="text-2xl dark:text-white font-bold text-center">
-                  Success!
-                </p>
-                <p className="mt-4 dark:text-white text-center">
-                  We&apos;ve created your account and will notify you when we
-                  launch
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            className={`${
-              success ? "hidden" : ""
-            } relative z-40 w-full max-w-lg p-4 mx-auto bg-gradient-to-br from-fuchsia-400 via-blue-300 to-slate-50 rounded-md shadow-neon bg-gradient-to-br from-fuchsia-400 via-blue-300 to-slate-50`}
-          >
-            <div
-              className={`${
-                loading ? "opacity-100 " : "hidden "
-              }absolute z-40 w-full h-full flex flex-row justify-center items-center bg-white/60 rounded-lg -ml-4 -mt-4`}
-            >
-              <LoadingSpinner opacity={loading ? 100 : 0} />
-            </div>
-            <div className="flex justify-end">
-              <button
-                className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                onClick={() => setDisplay(false)}
-              >
-                <CancelIcon />
-              </button>
-            </div>
-            <div className="max-w-sm mx-auto py-3 space-y-4 text-center">
-              <h4 className="text-3xl font-medium text-gray-800">
-                Get notified when we launch
-              </h4>
-              <p className="text-md text-gray-600">
-                Sign Up and we&apos;ll notify you when we launch{"!"}
-              </p>
-              <form onSubmit={sendCustomerDetails}>
-                <div className="my-4 z-2">
-                  <input
-                    onChange={(e) =>
-                      setCustomerData(
-                        ({ phoneNumber, countryCode, email }) => ({
-                          name: e.target.value,
-                          email,
-                          phoneNumber,
-                          countryCode,
-                        })
-                      )
-                    }
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="Enter your full name"
-                    className={`text-gray-500 w-full px-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm`}
-                  />
-                </div>
-                <div className="block my-4">
-                  <div className={`relative z-2 my-4`}>
-                    <div className="absolute left-3 top-2 my-auto h-6 flex items-center border-r pr-2">
-                      <select
-                        required
-                        onChange={(e) =>
-                          setCustomerData(({ name, phoneNumber, email }) => ({
-                            name,
-                            phoneNumber,
-                            email,
-                            countryCode: e.target.value,
-                          }))
-                        }
-                        name="country"
-                        className="text-sm bg-white outline-none rounded-lg h-full overflow-y-auto"
-                      >
-                        {countriesCode.map((country, index) => (
-                          <option
-                            key={index}
-                            index={index}
-                            value={country.value}
-                          >{`${country.country} ${country.code}`}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <input
-                      onInput={(e) =>
-                        setCustomerData(({ email, name, countryCode }) => ({
-                          phoneNumber: e.target.value,
-                          email,
+              <div className="block my-4">
+                <div className={`relative z-2 my-4`}>
+                  <div className="absolute left-3 top-2 my-auto h-6 flex items-center border-r pr-2">
+                    <select
+                      required
+                      onChange={(e) =>
+                        setCustomerData(({ name, phoneNumber, email }) => ({
                           name,
-                          countryCode,
+                          phoneNumber,
+                          email,
+                          countryCode: e.target.value,
                         }))
                       }
-                      name="phone"
-                      type="text"
-                      placeholder="Phone number"
-                      required
-                      className="text-gray-500 w-full pl-[9.5rem] pr-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm"
-                    />
-                    <p className="hidden text-red-500 peer-invalid:block">
-                      Please enter a valid phone number
-                    </p>
+                      name="country"
+                      className="text-sm bg-white outline-none rounded-lg h-full overflow-y-auto"
+                    >
+                      {countriesCode.map((country, index) => (
+                        <option
+                          key={index}
+                          index={index}
+                          value={country.value}
+                        >{`${country.country} ${country.code}`}</option>
+                      ))}
+                    </select>
                   </div>
+                  <input
+                    onInput={(e) =>
+                      setCustomerData(({ email, name, countryCode }) => ({
+                        phoneNumber: e.target.value,
+                        email,
+                        name,
+                        countryCode,
+                      }))
+                    }
+                    name="phone"
+                    type="text"
+                    placeholder="Phone number"
+                    required
+                    className="text-gray-500 w-full pl-[9.5rem] pr-3 py-2 rounded-lg border outline-none focus:border-indigo-600 shadow-sm"
+                  />
+                  <p className="hidden text-red-500 peer-invalid:block">
+                    Please enter a valid phone number
+                  </p>
                 </div>
-                <div className="my-4 block">
-                  <label className="relative z-2 my-4">
-                    <EmailIcon className="w-6 h-6 text-gray-400 absolute left-3 my-auto top-0" />
-                    <input
-                      type="email"
-                      onChange={(e) =>
-                        setCustomerData(
-                          ({ name, phoneNumber, countryCode }) => ({
-                            email: e.target.value,
-                            phoneNumber,
-                            name,
-                            countryCode,
-                          })
-                        )
-                      }
-                      placeholder="Enter your email"
-                      className="peer w-full pl-12 pr-3 py-2 text-gray-500 outline-none border focus:border-indigo-600 shadow-sm rounded-lg invalid:border-red-500"
-                    />
-                    <p className="invisible text-red-500 peer-invalid:visible">
-                      Please enter a valid email
-                    </p>
-                  </label>
-                </div>
-                <button
-                  type="submit"
-                  className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-black active:bg-primary rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2 shadow-neon"
-                >
-                  Notify Me
-                </button>
-              </form>
-              <div
-                className={`${
-                  err !== "" ? "" : "hidden"
-                } text-center px-2 py-2 text-red-300 mx-auto`}
-              >
-                {err}
               </div>
+              <div className="my-4 block">
+                <label className="relative z-2 my-4">
+                  <EmailIcon className="w-6 h-6 text-gray-400 absolute left-3 my-auto top-0" />
+                  <input
+                    type="email"
+                    onChange={(e) =>
+                      setCustomerData(({ name, phoneNumber, countryCode }) => ({
+                        email: e.target.value,
+                        phoneNumber,
+                        name,
+                        countryCode,
+                      }))
+                    }
+                    placeholder="Enter your email"
+                    className="peer w-full pl-12 pr-3 py-2 text-gray-500 outline-none border focus:border-indigo-600 shadow-sm rounded-lg invalid:border-red-500"
+                  />
+                  <p className="invisible text-red-500 peer-invalid:visible">
+                    Please enter a valid email
+                  </p>
+                </label>
+              </div>
+              <button
+                type="submit"
+                className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-black active:bg-primary rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2 shadow-neon"
+              >
+                Notify Me
+              </button>
+            </form>
+            <div
+              className={`${
+                err !== "" ? "" : "hidden"
+              } text-center px-2 py-2 text-red-600 mx-auto`}
+            >
+              {err}
             </div>
           </div>
-        
+        </div>
       </div>
     </div>
   ) : (
@@ -1141,7 +1147,7 @@ const CTAModal = ({ display, setDisplay }) => {
 
 const CTASection = ({ setDisplay }) => {
   return (
-    <section className="w-full h-auto mt-10">
+    <section className="w-full h-auto mt-10 mb-20">
       <div className="w-11/12 py-8 px-4 rounded-lg bg-black mx-auto flex flex-col">
         <p className="text-2xl text-white text-center">
           Get Notified when we launch

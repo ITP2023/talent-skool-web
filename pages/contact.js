@@ -71,15 +71,27 @@ const Contact = () => {
       contact: "Bengaluru, Karnataka",
     },
   ];
-
+  
+  const [err, setErr] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
   const [submissionDisplay, setSubmissionDisplay] = useState("");
+  function validateName(name){
+    const nameRegex = /^[A-Za-z\s]{4,}$/;
+    return nameRegex.test(name);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.preventDefault();
+    if (!validateName(name)) {
+      setErr("Name should contins only Alphabets.");
+      return;
+    } else {
+      setErr(""); // Clear the error message if the input is valid
+    }
     setSubmissionDisplay(
       "Message sent successfully. Send another message if needed."
     );
@@ -105,9 +117,9 @@ const Contact = () => {
     }
   };
   return (
-    <main className="py-14 my-14">
+    <div className="py-14 my-28 ">
       <div className="max-w-screen-xl mx-auto px-4 text-slate-50 md:px-8">
-        <div className="max-w-lg mx-auto gap-12 justify-around lg:flex lg:max-w-none p-8 rounded-lg bg-black">
+        <div className="max-w-lg mx-auto gap-12 justify-around lg:flex lg:max-w-[80%] p-8 rounded-lg bg-black shadow-neon">
           <div className="flex flex-col items-center justify-center max-w-lg space-y-3 gap-4">
             <p className="text-slate-50 text-3xl  font-semibold sm:text-4xl">
               Let us know how we can help
@@ -142,6 +154,7 @@ const Contact = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
+                <p>{}</p>
               </div>
               <div>
                 <label className="font-medium">Email</label>
@@ -150,7 +163,7 @@ const Contact = () => {
                   name="email"
                   placeholder="jhon12@gmail.com"
                   required
-                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className="w-full mt-2 px-3 py-2 text-gray-500 appearance-none bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -162,7 +175,7 @@ const Contact = () => {
                   name="company"
                   placeholder="Talent-Skool"
                   required
-                  className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className="w-full mt-2 px-3 py-2 text-gray-500 appearance-none bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                 />
@@ -173,7 +186,6 @@ const Contact = () => {
                   type="text"
                   placeholder="Message"
                   name="message"
-                  required
                   className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -183,10 +195,17 @@ const Contact = () => {
                 Submit
               </button>
             </form>
+            <div
+              className={`${
+                err !== "" ? "" : "hidden"
+              } text-center px-2 py-2 text-red-600 mx-auto`}
+            >
+              {err}
+            </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
@@ -207,9 +226,14 @@ const ContactPage = () => {
       <Head>
         <title>Contact Us | TalentSkool</title>
       </Head>
-      <Navbar fixed={false} />
-      <Contact />
-      <Footer />
+      <div
+        className="relative top-0 w-full h-[1200px] lg:h-[900px] bg-cover bg-no-repeat bg-center p-0 m-0 overflow-hidden hide-scrollbar"
+        style={{ backgroundImage: `url('/contact_back.jpg')` }}
+      >
+        <Navbar />
+        <Contact />
+      </div>
+        <Footer className="mt-0" />
     </>
   );
 };

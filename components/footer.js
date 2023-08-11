@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <section className="mt-20 md:pt-30 bg-primary bg-no-repeat lg:bg-cover w-full overflow-hidden">
+    <section className="mt-0 md:pt-30 bg-primary bg-no-repeat lg:bg-cover w-full overflow-hidden">
       <div className="relative flex justify-start md:justify-center md:items-end w-full">
         <div className="flex py-10 md:pt-20 px-4 md:px-6  xl:px-18 flex-col justify-start items-start md:justify-center md:items-center relative gap-16">
           <div className="flex flex-col items-start justify-around xl:justify-around xl:space-x-8 xl:flex-row pl-3">

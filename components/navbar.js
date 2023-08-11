@@ -148,7 +148,7 @@ const Navbar = ({ fixed }) => {
         </div>
       </nav>
       {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
-      <div className={`lg:hidden h-screen`} role="dialog" aria-modal="true">
+      <div className={`h-screen ${backdrop ? "":"hidden"}`} role="dialog" aria-modal="true">
         {/* <!-- Background backdrop, show/hide based on slide-over state. --> */}
 
         <div className={`opacity-60 relative inset-0 z-50 bg-black max-h-screen`}></div>
