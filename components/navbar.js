@@ -33,56 +33,50 @@ const Navbar = ({ fixed }) => {
   const router = useRouter();
 
   const [backdrop, setBackdrop] = useState(false);
-  const [isScrolledDown, setIsScrolledDown] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [preventScroll, setPreventScroll] = useState(false); // New state
+  // const [isScrolledDown, setIsScrolledDown] = useState(false);
+  // const [prevScrollPos, setPrevScrollPos] = useState(0);
+  // const [preventScroll, setPreventScroll] = useState(false); // New state
 
-  const handleScroll = () => {
-    if (!preventScroll) {
-      const currentScrollPos = window.scrollY;
+  // const handleScroll = () => {
+  //   if (!preventScroll) {
+  //     const currentScrollPos = window.scrollY;
 
-      if (prevScrollPos > currentScrollPos) {
-        setIsScrolledDown(false);
-      } else {
-        setIsScrolledDown(true);
-      }
+  //     if (prevScrollPos > currentScrollPos) {
+  //       setIsScrolledDown(false);
+  //     } else {
+  //       setIsScrolledDown(true);
+  //     }
 
-      setPrevScrollPos(currentScrollPos);
-    }
-  };
+  //     setPrevScrollPos(currentScrollPos);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [prevScrollPos]);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [prevScrollPos]);
 
-  useEffect(() => {
-    if (preventScroll) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-  }, [preventScroll]);
+  // useEffect(() => {
+  //   if (preventScroll) {
+  //     document.body.classList.add("overflow-hidden");
+  //   } else {
+  //     document.body.classList.remove("overflow-hidden");
+  //   }
+  // }, [preventScroll]);
 
   return (
     <header
-      className={`${fixed ? "fixed" : "absolute"} inset-x-0 top-0 z-10 ${
-        isScrolledDown
-          ? "-translate-y-full opacity-0"
-          : "translate-y-0 opacity-100"
-      } transition-transform duration-300`}
+      className={`${fixed ? "fixed" : "absolute"} inset-x-0 top-0 z-10 transition-transform duration-300`}
     >
       <nav
         className="flex items-center lg:justify-between p-6 lg:px-8"
         aria-label="Global"
       >
         <div
-          className={`flex flex-grow justify-center lg:justify-start lg:flex-1 transition-opacity duration-300 ${
-            isScrolledDown ? "opacity-0" : "opacity-100"
-          }`}
+          className="flex flex-grow justify-center lg:justify-start lg:flex-1 transition-opacity duration-300"
         >
           <Link href="/" className="-m-1.5 p-1.5">
             <div className="flex lg:flex-1 shadow-neon p-3 rounded-full shadow-neon bg-black">
@@ -94,7 +88,7 @@ const Navbar = ({ fixed }) => {
         <div
           onClick={() => {
             setBackdrop(true);
-            setPreventScroll(true); // Set preventScroll to true when backdrop is clicked
+            // setPreventScroll(true); // Set preventScroll to true when backdrop is clicked
           }}
           className={`flex lg:hidden bg-black rounded-full p-2 ${
             backdrop ? "hidden" : "shadow-neon"
@@ -169,7 +163,7 @@ const Navbar = ({ fixed }) => {
             <button
               onClick={() => {
                 setBackdrop(false);
-                setPreventScroll(false);
+                // setPreventScroll(false);
               }}
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-white"

@@ -1184,7 +1184,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
       </Head>
       {/* <div className="w-screen h-full fixed z-50 inset-0 bg-black opacity-40" /> */}
       <CTAModal display={ctaModalShown} setDisplay={setCTAModalDisplay} />
-      <Navbar fixed />
+      <Navbar />
       <HeroSection />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
