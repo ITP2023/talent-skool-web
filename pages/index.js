@@ -161,7 +161,7 @@ const FAQSection = () => {
 const TestimonialCard = ({ className, testimonial }) => {
   return (
     <div key={testimonial.id} className={className}>
-      <div class="relative top-0 left-0 opacity-40">
+      <div className="relative top-0 left-0 opacity-40">
         <Image
           width={50}
           height={50}
@@ -174,8 +174,8 @@ const TestimonialCard = ({ className, testimonial }) => {
       <div className="grow mb-8 text-gray-500 text-xl italic leading-relaxed dark:text-gray-400">
         <p className="my-4 px-4 md:w-full h-full">{testimonial.review}</p>
       </div>
-      <div class="relative opacity-40">
-        <div class="absolute bottom-0 right-0">
+      <div className="relative opacity-40">
+        <div className="absolute bottom-0 right-0">
           <Image
             width={50}
             height={50}

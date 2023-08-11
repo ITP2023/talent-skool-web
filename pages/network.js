@@ -10,6 +10,7 @@ const PersonCard = ({ avatar, name, description }) => {
     <div className="flex flex-col bg-white p-8 space-y-8 shadow-neon rounded-xl">
       <div className="mx-auto text-center">
         <Image
+          alt=""
           width={100}
           height={100}
           src={avatar}
@@ -26,6 +27,7 @@ const PersonCard = ({ avatar, name, description }) => {
         </button>
         <button className="rounded-full border border-black w-8 h-8 text-center">
           <Image
+            alt=""
             width={20} height={20}
             src="/chat.png"
             className="text-center mx-auto"
@@ -68,6 +70,7 @@ const PeopleSection = () => {
         {
           peopleData.map(({ avatar, name, description }, i) => (
             <PersonCard
+              key={i}
               avatar={avatar}
               name={name}
               description={description}
