@@ -132,7 +132,7 @@ const FAQSection = () => {
   return (
     <section className="leading-relaxed max-w-full-xl mt-40 mx-auto px-4 md:px-8">
       <div className="space-y-3 text-center">
-        <h1 className="text-4xl text-gray-800 font-bold">
+        <h1 className="text-4xl text-gray-800 font-bold font-sans">
           Frequently Asked Questions
         </h1>
         <p className="text-gray-600 max-w-lg mx-auto text-lg">
@@ -242,7 +242,7 @@ const TestimonialsSection = ({ testimonialData }) => {
 
   return (
     <section className=" mt-24 w-full max-w-full mx-auto">
-      <p className="mx-auto my-8 text-center text-4xl font-bold">
+      <p className="mx-auto my-8 text-center text-4xl font-bold font-sans">
         Here&apos;s what they say about us
       </p>
       <div className="flex flex-row justify-evenly items-center w-full md:mx-auto h-full">
@@ -260,10 +260,10 @@ const TestimonialsSection = ({ testimonialData }) => {
         </span>
         <div className="w-full ml-5 mr-5 grow mx-auto overflow-hidden">
           <div
-            className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-16 p-5 md:gap-14`}
+            className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-24 p-5 md:gap-14`}
             style={{
-              transform: `translateX(-${tab * (isMdScreen ? 100 : 32)}vw)`,
-              width: `${Math.ceil(testimonialData.length) * (isMdScreen ? 100 : 32)}vw`,
+              transform: `translateX(-${tab * (isMdScreen ? 98 : 32)}vw)`,
+              width: `${Math.ceil(testimonialData.length) * (isMdScreen ? 98 : 32)}vw`,
             }}
           >
             {testimonialData.map((t, i) => (
@@ -271,7 +271,7 @@ const TestimonialsSection = ({ testimonialData }) => {
                 key={i}
                 testimonial={t}
                 id={i}
-                className="w-[300px] h-[450px] md:w-[435px] border flex flex-col flex-shrink-0 items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+                className="w-[300px] h-[400px] md:w-[435px] border flex flex-col flex-shrink-0 items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
               />
             ))}
           </div>
@@ -685,7 +685,7 @@ const CourseCard = ({
 const CourseDemo = ({ videoPath, courseCardData }) => {
   return (
     <section className="w-full mx-auto py-8 my-16">
-      <p className="mx-auto text-center text-3xl my-16 font-bold">
+      <p className="mx-auto text-center text-3xl my-16 font-bold font-sans">
         Some courses on our platform
       </p>
       <div className="h-auto w-full">
