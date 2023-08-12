@@ -1,12 +1,12 @@
 // import { useState, useEffect } from "react";
 
-// /**
-//  * 
-//  * @param {{
-//  * initial: number, end: number, skip: number, inView: boolean
-//  * }} param0 
-//  * @returns 
-//  */
+/**
+ * 
+ * @param {{
+ * initial: number, end: number, skip: number, inView: boolean
+ * }} param0 
+ * @returns 
+ */
 // const CountUp = ({ initial, end, skip, inView }) => {
 
 //   const [ text, setText ] = useState(initial);

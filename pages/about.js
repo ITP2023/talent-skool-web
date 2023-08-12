@@ -20,7 +20,7 @@ const HeroSection = () => {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <button className="px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black">
               <div className="w-10">
-                <Image className="h-full w-full" width={90} height={90}  src="google-play-store-svgrepo-com.svg" />
+                <Image alt="" className="h-full w-full" width={90} height={90}  src="google-play-store-svgrepo-com.svg" />
               </div>
               <div className="">
                 <div className="text-sm font-extrabold text-white">Download on the</div>

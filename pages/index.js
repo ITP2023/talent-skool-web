@@ -13,7 +13,6 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
 import CountUp from "@/components/countup";
 
-
 const ScrollDownIndicator = () => {
   return (
     <svg
@@ -210,25 +209,43 @@ const TestimonialCard = ({ className, testimonial }) => {
  * @returns
  */
 const TestimonialsSection = ({ testimonialData }) => {
-  /**
+  // const scrollContainerRef = useRef(null);
   const [tab, setTab] = useState(0);
-
+  const [len, setLen] = useState(testimonialData.length);
+  const [isMdScreen, setIsMdScreen] = useState(false);
   const handleNextTab = () => {
+    console.log("length "+len);
     console.log(tab);
-    setTab((prev) => (prev !== testimonialData.length - 1 ? prev + 1 : 0));
+    setTab((prev) => (prev !== len ? prev + 1 : 0));
   };
 
   const handlePrevTab = () => {
     console.log(tab);
-    setTab((prev) => (prev !== 0 ? prev - 1 : testimonialData.length - 1));
+    setTab((prev) => (prev !== 0 ? prev - 1 : len));
   };
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMdScreen(window.innerWidth < 1060);
+      setLen(testimonialData.length - (isMdScreen ? 1 : 3));
+    };
+
+    checkScreenSize(); // Initial check
+
+    // Attach an event listener to update the screen size and length when the window is resized
+    window.addEventListener('resize', checkScreenSize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, [isMdScreen]);
 
   return (
-    <section className="h-[40vh] mt-24 w-full max-w-full mx-auto">
+    <section className=" mt-24 w-full max-w-full mx-auto">
       <p className="mx-auto my-8 text-center text-4xl font-bold">
         Here&apos;s what they say about us
       </p>
-      <div className="flex flex-row justify-evenly items-center w-full md:w-3/4 md:mx-auto h-full">
+      <div className="flex flex-row justify-evenly items-center w-full md:mx-auto h-full">
         <span
           className="cursor-pointer absolute p-4 shadow-lg z-10 text-center w-auto h-auto left-0 rounded-full bg-gray-50"
           onClick={() => handlePrevTab()}
@@ -241,12 +258,12 @@ const TestimonialsSection = ({ testimonialData }) => {
         >
           <NextIcon width={15} height={15} />
         </span>
-        <div className="w-full lg:ml-20 grow mx-auto overflow-x-hidden">
+        <div className="w-full ml-5 mr-5 grow mx-auto overflow-hidden">
           <div
-            className={`flex flex-row items-center transition-transform duration-300`}
+            className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-14 p-5 md:gap-14`}
             style={{
-              transform: `translateX(-${tab * 100}vw)`,
-              width: `${Math.ceil(testimonialData.length) * 100}vw`,
+              transform: `translateX(-${tab * (isMdScreen ? 85 : 32)}vw)`,
+              width: `${Math.ceil(testimonialData.length) * (isMdScreen ? 85 : 32)}vw`,
             }}
           >
             {testimonialData.map((t, i) => (
@@ -254,7 +271,7 @@ const TestimonialsSection = ({ testimonialData }) => {
                 key={i}
                 testimonial={t}
                 id={i}
-                className="col-span-1 h-full w-screen md:justify-evenly md:mr-[30em] border flex flex-col items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+                className="w-[300px] h-[400px] md:w-[435px] border flex flex-col flex-shrink-0 items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
               />
             ))}
           </div>
@@ -262,21 +279,22 @@ const TestimonialsSection = ({ testimonialData }) => {
       </div>
     </section>
   );
-*/
-  return (
-    <section className="w-full">
-      <div className="h-full overflow-y-hidden p-4 grid gap-8 auto-cols-fr md:auto-cols-none md:grid-cols-2 auto-rows-max">
-        {testimonialData.map((t, i) => (
-          <TestimonialCard
-            key={i}
-            testimonial={t}
-            className="h-full whitespace-normal w-full md:justify-evenly md:mr-[30em] border border-2 flex flex-col text-center dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
-          />
-        ))}
-      </div>
-    </section>
-  );
 };
+
+//   return (
+//     <section className="w-full">
+//       <div className="h-full overflow-y-hidden p-4 grid gap-8 auto-cols-fr md:auto-cols-none md:grid-cols-2 auto-rows-max">
+//         {testimonialData.map((t, i) => (
+//           <TestimonialCard
+//             key={i}
+//             testimonial={t}
+//             className="h-full whitespace-normal w-full md:justify-evenly md:mr-[30em] border border-2 flex flex-col text-center dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+//           />
+//         ))}
+//       </div>
+//     </section>
+//   );
+// };
 const HeroSection = () => {
   const _SKILL_ICONS = [
     "/piano.png",
@@ -735,7 +753,7 @@ const CTAModal = ({ display, setDisplay }) => {
 
   const [success, setSuccess] = useState(false);
 
-  function validateName(name){
+  function validateName(name) {
     const nameRegex = /^[A-Za-z\s]{4,}$/;
     return nameRegex.test(name);
   }
@@ -1311,6 +1329,14 @@ export async function getStaticProps(ctx) {
       avatar: "/path/to/avatar6.jpg",
       name: "David Lee",
       job: "Web Developer",
+    },
+    {
+      id: 5,
+      review:
+        "The edtech platform's community forums have been a valuable resource. I can connect with fellow learners, discuss topics, and seek help from instructors.",
+      avatar: "/path/to/avatar7.jpg",
+      name: "Ava Martinez",
+      job: "Student",
     },
     {
       id: 5,
