@@ -260,10 +260,10 @@ const TestimonialsSection = ({ testimonialData }) => {
         </span>
         <div className="w-full ml-5 mr-5 grow mx-auto overflow-hidden">
           <div
-            className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-14 p-5 md:gap-14`}
+            className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-16 p-5 md:gap-14`}
             style={{
-              transform: `translateX(-${tab * (isMdScreen ? 85 : 32)}vw)`,
-              width: `${Math.ceil(testimonialData.length) * (isMdScreen ? 85 : 32)}vw`,
+              transform: `translateX(-${tab * (isMdScreen ? 100 : 32)}vw)`,
+              width: `${Math.ceil(testimonialData.length) * (isMdScreen ? 100 : 32)}vw`,
             }}
           >
             {testimonialData.map((t, i) => (
@@ -271,7 +271,7 @@ const TestimonialsSection = ({ testimonialData }) => {
                 key={i}
                 testimonial={t}
                 id={i}
-                className="w-[300px] h-[400px] md:w-[435px] border flex flex-col flex-shrink-0 items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+                className="w-[300px] h-[450px] md:w-[435px] border flex flex-col flex-shrink-0 items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
               />
             ))}
           </div>
