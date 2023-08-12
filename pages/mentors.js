@@ -71,7 +71,7 @@ const MentorsSection = () => {
       <SearchBar/>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto">
         {mentorsData.map(({ avatar, name, description }, i) => (
-          <MentorCard name={name} description={description} avatar={avatar} />
+          <MentorCard key={i} name={name} description={description} avatar={avatar} />
         ))}
       </div>
     </section>
