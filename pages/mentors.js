@@ -66,7 +66,7 @@ const MentorsSection = () => {
 
 
   return (
-    <section className="w-10/12 h-auto px-4 mx-auto mt-32">
+    <section className="bg-black w-10/12 h-auto px-4 mx-auto mt-32">
       <p className="text-center mx-auto text-3xl text-white">Network with Like Minded People</p>
       <SearchBar/>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto">
@@ -79,7 +79,7 @@ const MentorsSection = () => {
 };
 const MentorsPage = () => {
   return (
-    <div className="absolute bg-black w-full h-full">
+    <div className="bg-black w-full h-full">
       <Head>
         <title>Mentors | TalentSkool</title>
       </Head>

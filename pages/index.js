@@ -13,7 +13,6 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
 import CountUp from "@/components/countup";
 
-
 const DeviceMockup = () => {
   return (
     <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
@@ -268,7 +267,9 @@ const TestimonialsSection = ({ testimonialData }) => {
             className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-24 p-5 md:gap-14`}
             style={{
               transform: `translateX(-${tab * (isMdScreen ? 98 : 32)}vw)`,
-              width: `${Math.ceil(testimonialData.length) * (isMdScreen ? 98 : 32)}vw`,
+              width: `${
+                Math.ceil(testimonialData.length) * (isMdScreen ? 98 : 32)
+              }vw`,
             }}
           >
             {testimonialData.map((t, i) => (
@@ -316,98 +317,104 @@ const HeroSection = () => {
 
   return (
     <div className="bg-black h-screen">
-    <DesktopHeroBanner/>
-    <section className="lg:hidden bg-black text-white w-full h-screen">
-      <div className="relative top-48 opacity-60 w-full h-2/12">
-        <div className="relative flex overflow-x-hidden">
-          <div className="flex flex-row animate-marquee whitespace-nowrap">
-            {_SKILL_ICONS.map((l, i) => (
-              <span
-                key={i}
-                className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl"
-              >
-                <Image alt="skill" width={100} height={100} src={l} />
-              </span>
-            ))}
-          </div>
-
-          <div className="absolute flex flex-row top-0 animate-marquee2 whitespace-nowrap">
-            {_SKILL_ICONS.map((l, i) => (
-              <span
-                key={i}
-                className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl"
-              >
-                <Image alt="skill" width={100} height={100} src={l} />
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
-        <div className="mx-auto animation-bottom2top w-11/12 my-auto">
-          <h1 className="text-3xl text-bold md:text-5xl text-center mx-auto leading-relaxed tracking-tight">
-            Community which is full of talents. Making the world filled with{" "}
-            <span className="underline decoration-primary underline-offset-4 decoration-4">
-              talented
-            </span>{" "}
-            people.
-          </h1>
-        </div>
-        <a
-          rel="noopener noreferrer"
-          className="cursor-pointer mt-8 w-fit mx-auto px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black"
-        >
-          <div className="w-10">
-            <Image
-              alt="install"
-              className="h-full w-full"
-              width={90}
-              height={90}
-              src="google-play-store-svgrepo-com.svg"
-            />
-          </div>
-          <div className="">
-            <div className="text-sm font-extrabold text-white">
-              Download on the
+      <DesktopHeroBanner />
+      <section className="lg:hidden bg-black text-white w-full h-screen">
+        {/* <div className="relative top-48 opacity-60 w-full h-2/12">
+          <div className="relative flex overflow-x-hidden">
+            <div className="flex flex-row animate-marquee whitespace-nowrap">
+              {_SKILL_ICONS.map((l, i) => (
+                <span
+                  key={i}
+                  className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl"
+                >
+                  <Image alt="skill" width={100} height={100} src={l} />
+                </span>
+              ))}
             </div>
-            <div className="text-2xl text-white">Google Play</div>
-          </div>
-        </a>
-      </div>
-      <div className="relative top-52 opacity-60 w-full h-2/12">
-        <div className="relative flex overflow-x-hidden">
-          <div
-            className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}
-          >
-            {_SKILL_ICONS.map((l, i) => (
-              <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
-                <Image alt="skill" width={100} height={100} src={l} />
-              </span>
-            ))}
-          </div>
 
-          <div className="flex flex-row absolute top-0 animate-marquee2reverse lg:animation-none whitespace-nowrap">
-            {_SKILL_ICONS.map((l, i) => (
-              <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
-                <Image alt={"skill"} width={100} height={100} src={l} />
-              </span>
-            ))}
+            <div className="absolute flex flex-row top-0 animate-marquee2 whitespace-nowrap">
+              {_SKILL_ICONS.map((l, i) => (
+                <span
+                  key={i}
+                  className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl"
+                >
+                  <Image alt="skill" width={100} height={100} src={l} />
+                </span>
+              ))}
+            </div>
+          </div>
+        </div> */}
+        <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
+          <div className="mx-auto animation-bottom2top w-11/12 my-auto">
+            <h1 className="text-3xl text-bold md:text-5xl text-center mx-auto leading-relaxed tracking-tight">
+              Community which is full of talents. Making the world filled with{" "}
+              <span class="before:block before:absolute before:-inset-[0.2rem] before:-skew-y-3 before:bg-primary relative inline-block">
+                <span class="relative text-white">talented</span>
+              </span>{" "}
+              people.
+            </h1>
+          </div>
+          <a
+            rel="noopener noreferrer"
+            className="cursor-pointer mt-8 w-fit mx-auto px-3 py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black"
+          >
+            <div className="w-10">
+              <Image
+                alt="install"
+                className="h-full w-full"
+                width={90}
+                height={90}
+                src="google-play-store-svgrepo-com.svg"
+              />
+            </div>
+            <div className="">
+              <div className="text-sm font-extrabold text-white">
+                Download on the
+              </div>
+              <div className="text-2xl text-white">Google Play</div>
+            </div>
+          </a>
+          <div className="mx-auto w-full text-center">
+            <button className="mx-auto p-4 bg-black border-2 border-primary w-1/2 rounded-lg mt-8 leading-relaxed">
+              Get Started
+            </button>
           </div>
         </div>
-      </div>
-    </section>
+        {/* <div className="relative top-52 opacity-60 w-full h-2/12">
+          <div className="relative flex overflow-x-hidden">
+            <div
+              className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}
+            >
+              {_SKILL_ICONS.map((l, i) => (
+                <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
+                  <Image alt="skill" width={100} height={100} src={l} />
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-row absolute top-0 animate-marquee2reverse lg:animation-none whitespace-nowrap">
+              {_SKILL_ICONS.map((l, i) => (
+                <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
+                  <Image alt={"skill"} width={100} height={100} src={l} />
+                </span>
+              ))}
+            </div>
+          </div>
+        </div> */}
+      </section>
     </div>
   );
 };
 
 const DesktopHeroBanner = () => {
   return (
-    <section className="hidden lg:block w-screen h-screen bg-black">
+    <section className="absolute hidden lg:block w-screen h-screen bg-black">
+      {/* <div className="bg-black w-full h-full"> */}
       <div
         id="wrapper"
         className="mt-28 flex flex-row justify-between w-full h-full"
       >
-        <div className="mt-44 text-white w-1/2 p-4">
+        <div className="mt-32 text-white w-1/2 p-4">
           <p className="text-5xl my-8">
             A community building <span className="text-primary">talented</span>{" "}
             people.
@@ -435,6 +442,7 @@ const DesktopHeroBanner = () => {
         </div>
         <DeviceMockup />
       </div>
+      {/* </div> */}
     </section>
   );
 };
@@ -582,10 +590,14 @@ const CourseCard = ({
   },
   className,
   onMouseEnter,
-  onMouseLeave
+  onMouseLeave,
 }) => {
   return (
-    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={className}>
+    <div
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={className}
+    >
       {/* Image */}
       <div className="mb-2">
         <Image
@@ -632,8 +644,7 @@ const CourseCard = ({
  * @returns
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
-
-  const [ hovering, setHovering ] = useState(false);
+  const [hovering, setHovering] = useState(false);
 
   return (
     <section className="w-full mx-auto py-8 my-16">
@@ -642,7 +653,11 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
       </p>
       <div className="h-auto w-full">
         <div className="relative h-full flex overflow-x-hidden">
-          <div className={`flex flex-row animate-coursemarquee ${ hovering ? "pause-animation" : "play-animation" }`}>
+          <div
+            className={`flex flex-row animate-coursemarquee ${
+              hovering ? "pause-animation" : "play-animation"
+            }`}
+          >
             {courseCardData.map((l, i) => (
               <CourseCard
                 key={i}
@@ -658,7 +673,11 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
             ))}
           </div>
 
-          <div className={`absolute flex flex-row top-0 animate-coursemarquee2 ${hovering ? "pause-animation" : "play-animation"}`}>
+          <div
+            className={`absolute flex flex-row top-0 animate-coursemarquee2 ${
+              hovering ? "pause-animation" : "play-animation"
+            }`}
+          >
             {courseCardData.map((l, i) => (
               <CourseCard
                 key={i}
@@ -1172,7 +1191,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
       </Head>
       {/* <div className="w-screen h-full fixed z-50 inset-0 bg-black opacity-40" /> */}
       <CTAModal display={ctaModalShown} setDisplay={setCTAModalDisplay} />
-      <Navbar />
+      <Navbar fixed={true} />
       <HeroSection />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
