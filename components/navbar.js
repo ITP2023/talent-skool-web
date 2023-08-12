@@ -69,7 +69,7 @@ const Navbar = ({ fixed }) => {
 
   return (
     <header
-      className={`${fixed ? "fixed" : "absolute"} inset-x-0 top-0 z-10 transition-transform duration-300`}
+      className={`${fixed ? "fixed" : "absolute"} lg:bg-black inset-x-0 top-0 z-10 transition-transform duration-300`}
     >
       <nav
         className="flex items-center lg:justify-between p-6 lg:px-8"
