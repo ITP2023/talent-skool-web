@@ -7,7 +7,7 @@ import SearchBar from "@/components/searchbar";
 
 const MentorCard = ({ name, description, avatar }) => {
   return (
-    <div className="flex flex-col bg-white p-8 space-y-8 shadow-neon rounded-xl">
+    <div className="flex flex-col items-center justify-between bg-white p-8 space-y-8 shadow-neon rounded-xl">
       <div className="mx-auto text-center">
         <Image
           alt="mentor"
@@ -18,11 +18,11 @@ const MentorCard = ({ name, description, avatar }) => {
         />
       </div>
       <div>
-        <p className="text-center mx-auto text-lg font-bold">{name}</p>
+        <p className="text-center text-lg font-bold f">{name}</p>
         <p>{description}</p>
       </div>
-      <div className="flex flex-row items-center gap-2 w-full">
-        <button className="text-lg text-white bg-primary w-10/12 rounded-lg shadow-xl py-1">
+      <div className="mx-auto w-full">
+        <button className="text-lg text-white bg-primary w-full rounded-lg shadow-xl py-1">
           Contact
         </button>
       </div>
@@ -66,8 +66,8 @@ const MentorsSection = () => {
 
 
   return (
-    <section className="bg-black w-10/12 h-auto px-4 mx-auto mt-32">
-      <p className="text-center mx-auto text-3xl text-white">Network with Like Minded People</p>
+    <section className="bg-black w-10/12 h-auto px-4 mx-auto my-32">
+      <p className="text-center mx-auto text-3xl text-white">Find the best mentors of their craft</p>
       <SearchBar/>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto">
         {mentorsData.map(({ avatar, name, description }, i) => (
