@@ -248,7 +248,7 @@ const TestimonialsSection = ({ testimonialData }) => {
   return (
     <section className=" mt-24 w-full max-w-full mx-auto">
       <p className="mx-auto my-8 text-center text-4xl font-bold font-sans">
-        Here&apos;s what they say about us
+        Here&apos;s what our users say about us
       </p>
       <div className="flex flex-row justify-evenly items-center w-full md:mx-auto h-full">
         <span
@@ -567,7 +567,7 @@ const FeatureCard = ({
 };
 
 /**
- * @param {{data: CourseCardData}} param0
+ * @param {{data: CourseCardData, className: string, onMouseEnter: import("react").MouseEventHandler<HTMLDivElement>, onMouseLeave: import("react").MouseEventHandler<HTMLDivElement>}} param0
  * @returns
  */
 const CourseCard = ({
@@ -581,9 +581,11 @@ const CourseCard = ({
     date_of_release,
   },
   className,
+  onMouseEnter,
+  onMouseLeave
 }) => {
   return (
-    <div className={className}>
+    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={className}>
       {/* Image */}
       <div className="mb-2">
         <Image
@@ -630,6 +632,9 @@ const CourseCard = ({
  * @returns
  */
 const CourseDemo = ({ videoPath, courseCardData }) => {
+
+  const [ hovering, setHovering ] = useState(false);
+
   return (
     <section className="w-full mx-auto py-8 my-16">
       <p className="mx-auto text-center text-3xl my-16 font-bold font-sans">
@@ -637,21 +642,33 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
       </p>
       <div className="h-auto w-full">
         <div className="relative h-full flex overflow-x-hidden">
-          <div className="flex flex-row animate-coursemarquee hover:animate-none">
+          <div className={`flex flex-row animate-coursemarquee ${ hovering ? "pause-animation" : "play-animation" }`}>
             {courseCardData.map((l, i) => (
               <CourseCard
                 key={i}
                 data={l}
+                onMouseEnter={(e) => {
+                  setHovering(true);
+                }}
+                onMouseLeave={(e) => {
+                  setHovering(false);
+                }}
                 className="border-2 mx-4 w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl"
               />
             ))}
           </div>
 
-          <div className="absolute flex flex-row top-0 animate-coursemarquee2 hover:animate-none">
+          <div className={`absolute flex flex-row top-0 animate-coursemarquee2 ${hovering ? "pause-animation" : "play-animation"}`}>
             {courseCardData.map((l, i) => (
               <CourseCard
                 key={i}
                 data={l}
+                onMouseEnter={(e) => {
+                  setHovering(true);
+                }}
+                onMouseLeave={(e) => {
+                  setHovering(false);
+                }}
                 className="border-2 mx-4 w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl"
               />
             ))}
