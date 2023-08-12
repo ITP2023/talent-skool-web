@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-
+import SearchBar from "@/components/searchbar";
 
 const PersonCard = ({ avatar, name, description }) => {
 
@@ -38,18 +38,7 @@ const PersonCard = ({ avatar, name, description }) => {
   );
 }
 
-const SearchBar = () => {
 
-  return (
-    <div className="mx-auto w-full text-center my-8">
-      <input
-        type="text"
-        placeholder="Search"
-        className="bg-white rounded-xl p-4 w-full mx-auto text-lg"
-      />
-    </div>
-  )
-}
 
 const PeopleSection = () => {
 
@@ -66,7 +55,7 @@ const PeopleSection = () => {
     <section className="w-10/12 h-auto px-4 mx-auto mt-32">
       <p className="text-center mx-auto text-3xl text-white">Network with Like Minded People</p>
       <SearchBar />
-      <div className="grid auto-cols-auto auto-rows-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 h-auto w-full auto-rows-auto">
         {
           peopleData.map(({ avatar, name, description }, i) => (
             <PersonCard

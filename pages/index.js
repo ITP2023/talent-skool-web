@@ -13,19 +13,24 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebaseMod";
 import CountUp from "@/components/countup";
 
-const ScrollDownIndicator = () => {
+
+const DeviceMockup = () => {
   return (
-    <svg
-      className="w-6 h-6 text-violet-500"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-    </svg>
+    <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+      <div className="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+      <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
+      <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
+      <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+      <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
+        <Image
+          width={300}
+          height={450}
+          src="/app_home_screen.jpg"
+          className="dark:hidden w-[272px] h-[572px]"
+          alt=""
+        />
+      </div>
+    </div>
   );
 };
 
@@ -214,7 +219,7 @@ const TestimonialsSection = ({ testimonialData }) => {
   const [len, setLen] = useState(testimonialData.length);
   const [isMdScreen, setIsMdScreen] = useState(false);
   const handleNextTab = () => {
-    console.log("length "+len);
+    console.log("length " + len);
     console.log(tab);
     setTab((prev) => (prev !== len ? prev + 1 : 0));
   };
@@ -232,11 +237,11 @@ const TestimonialsSection = ({ testimonialData }) => {
     checkScreenSize(); // Initial check
 
     // Attach an event listener to update the screen size and length when the window is resized
-    window.addEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
 
     // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener('resize', checkScreenSize);
+      window.removeEventListener("resize", checkScreenSize);
     };
   }, [isMdScreen]);
 
@@ -310,7 +315,9 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="bg-black text-white w-full h-screen">
+    <div className="bg-black h-screen">
+    <DesktopHeroBanner/>
+    <section className="lg:hidden bg-black text-white w-full h-screen">
       <div className="relative top-48 opacity-60 w-full h-2/12">
         <div className="relative flex overflow-x-hidden">
           <div className="flex flex-row animate-marquee whitespace-nowrap">
@@ -389,108 +396,48 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-const HeroBanner = () => {
-  const [heroRef, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
-
-  const [heroImageRef, heroImageInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
-
-  return (
-    <div className="bg-white h-screen max-w-screen w-screen">
-      <div className="isolate md:flex md:flex-row justify-evenly mx-auto py-10 px-4 text-[5em] mt-16">
-        {/* Gradient BG */}
-        <div
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-          ></div>
-        </div>
-        {/* End of Gradient BG */}
-        <div className="place-self-center md:flex md:flex-col">
-          <h1
-            ref={heroRef}
-            className={`text-primary max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
-              inView ? "animate-fade-in" : "opacity-0"
-            }`}
-          >
-            ENHANCE &
-          </h1>
-
-          <h1
-            ref={heroRef}
-            className={`text-primary max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
-              inView ? "animate-fade-in" : "opacity-0"
-            }`}
-          >
-            SHOWCASE
-          </h1>
-          <p
-            ref={heroRef}
-            className={`max-w-2xl mb-4 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ${
-              inView ? "animate-fade-in" : "opacity-0"
-            }`}
-          >
-            <span className="text-primary">Conn</span>ect.
-          </p>
-          <div className="mt-16">
-            <a
-              href="http://play.google.com/store/apps/details?id=com.google.android.apps.maps"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="px-3 w-fit py-1.5 flex gap-2 items-center rounded-xl outline outline-2 bg-black mx-auto md:mx-none"
-            >
-              <div className="w-14">
-                <Image
-                  alt="play_icon"
-                  className="h-full w-full"
-                  width={90}
-                  height={90}
-                  src="google-play-store-svgrepo-com.svg"
-                />
-              </div>
-              <div className="w-full">
-                <div className="text-sm font-extrabold text-white">
-                  Download on the
-                </div>
-                <div className="text-2xl text-white">Google Play</div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div className="ml-32 md:block hidden">
-          <Image
-            ref={heroImageRef}
-            width={400}
-            height={100}
-            src="/hero.png"
-            alt="mockup"
-            className={
-              heroImageInView
-                ? "animate-fade-in-right rounded-t-full"
-                : "opacity-0"
-            }
-          />
-        </div>
-      </div>
     </div>
   );
 };
 
+const DesktopHeroBanner = () => {
+  return (
+    <section className="hidden lg:block w-screen h-screen bg-black">
+      <div
+        id="wrapper"
+        className="mt-28 flex flex-row justify-between w-full h-full"
+      >
+        <div className="mt-44 text-white w-1/2 p-4">
+          <p className="text-5xl my-8">
+            A community building <span className="text-primary">talented</span>{" "}
+            people.
+          </p>
+          <div className="flex flex-row space-x-4">
+            <button className="p-4 bg-black shadow-neon rounded-full flex flex-row gap-2">
+              <svg
+                stroke="currentColor"
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 512 512"
+                fontSize="24"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"></path>
+              </svg>
+              Download on the Google Play
+            </button>
+            <button className="p-4 bg-primary text-white rounded-full">
+              Get Started by signing up
+            </button>
+          </div>
+        </div>
+        <DeviceMockup />
+      </div>
+    </section>
+  );
+};
 /**
  *
  * @param {{
@@ -690,7 +637,7 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
       </p>
       <div className="h-auto w-full">
         <div className="relative h-full flex overflow-x-hidden">
-          <div className="flex flex-row animate-coursemarquee">
+          <div className="flex flex-row animate-coursemarquee hover:animate-none">
             {courseCardData.map((l, i) => (
               <CourseCard
                 key={i}
@@ -700,7 +647,7 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
             ))}
           </div>
 
-          <div className="absolute flex flex-row top-0 animate-coursemarquee2">
+          <div className="absolute flex flex-row top-0 animate-coursemarquee2 hover:animate-none">
             {courseCardData.map((l, i) => (
               <CourseCard
                 key={i}
@@ -1263,7 +1210,7 @@ export async function getStaticProps(ctx) {
         "Explore the fundamentals of Artificial Intelligence (AI), including machine learning, neural networks, and natural language processing. Learn how to apply AI techniques to real-world problems and build AI-powered applications.",
       instructor: "Dr. Sarah Johnson",
       job_title: "Senior AI Researcher",
-      thumbnail_url: "/suit_dude.png",
+      thumbnail_url: "/ai_course_banner.jpg",
     },
     {
       date_of_release: "2023-08-15",
@@ -1283,7 +1230,7 @@ export async function getStaticProps(ctx) {
         "Develop a mindfulness meditation practice to reduce stress, increase focus, and enhance overall well-being. Learn various meditation techniques, breathing exercises, and tips for integrating mindfulness into daily life.",
       instructor: "Dr. Emily Roberts",
       job_title: "Mental Health Counselor",
-      thumbnail_url: "/suit_dude.png",
+      thumbnail_url: "/meditation_course_banner.jpg",
     },
     {
       date_of_release: "2023-08-25",
@@ -1293,7 +1240,7 @@ export async function getStaticProps(ctx) {
         "Begin your journey to learn Spanish, one of the most widely spoken languages in the world. Acquire essential vocabulary, grammar, and conversational skills to confidently communicate in everyday situations.",
       instructor: "Maria Gonzalez",
       job_title: "Language Instructor",
-      thumbnail_url: "/suit_dude.png",
+      thumbnail_url: "/spanish_course_banner.jpg",
     },
   ];
 
