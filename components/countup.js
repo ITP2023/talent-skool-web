@@ -29,7 +29,8 @@
 
 import { useState, useEffect, forwardRef } from "react";
 
-const CountUp = forwardRef(({ initial, end, skip, inView }, ref) => {
+
+const CountUpFn = (({ initial, end, skip, inView }, ref) => {
   const [text, setText] = useState(initial);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ const CountUp = forwardRef(({ initial, end, skip, inView }, ref) => {
 
   // Forward the ref to the span element
   return <span ref={ref}>{text}</span>;
-});
+})
+const CountUp = forwardRef(CountUpFn);
 
 export default CountUp;
