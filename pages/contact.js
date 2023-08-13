@@ -117,7 +117,7 @@ const Contact = () => {
     }
   };
   return (
-    <div className="py-14 my-28 ">
+    <div className="py-14 my-114">
       <div className="max-w-screen-xl mx-auto px-4 text-slate-50 md:px-8">
         <div className="max-w-lg mx-auto gap-12 justify-around lg:flex lg:max-w-[80%] p-8 rounded-lg bg-black shadow-neon">
           <div className="flex flex-col items-center justify-center max-w-lg space-y-3 gap-4">

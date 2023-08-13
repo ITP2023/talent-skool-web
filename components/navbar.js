@@ -69,10 +69,10 @@ const Navbar = ({ fixed }) => {
 
   return (
     <header
-      className={`${fixed ? "fixed" : ""} top-0 z-10 inset-x-0 transition-transform duration-300`}
+      className={`top-0 z-10 inset-x-0 transition-transform duration-300`}
     >
       <nav
-        className={`flex items-center lg:justify-between p-6 lg:px-8 bg-black`}
+        className={`flex items-center lg:justify-between p-6 lg:px-8`}
         aria-label="Global"
       >
         <div

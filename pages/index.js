@@ -285,7 +285,9 @@ const TestimonialsSection = ({ testimonialData }) => {
           <div
             className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-24 pl-2 md:gap-20 ml-auto mr-auto`}
             style={{
-              transform: `translateX(-${tab * (isSmScreen ? 370 : (isMdScreen ? 399 : 490))}px)`,
+              transform: `translateX(-${
+                tab * (isSmScreen ? 370 : isMdScreen ? 399 : 490)
+              }px)`,
               // width: `${
               //   Math.ceil(testimonialData.length) * (isMdScreen ? 350 : 32)
               // }px`,
@@ -431,7 +433,7 @@ const DesktopHeroBanner = () => {
       {/* <div className="bg-black w-full h-full"> */}
       <div
         id="wrapper"
-        className="mt-28 flex flex-row justify-between w-full h-full"
+        className="mt-24 flex flex-row justify-between w-full h-full mb-5"
       >
         <div className="mt-32 text-white w-1/2 p-4">
           <p className="text-5xl my-8">
@@ -1167,8 +1169,11 @@ const CTAModal = ({ display, setDisplay }) => {
 
 const CTASection = ({ setDisplay }) => {
   return (
-    <section className="w-full h-auto mt-10 mb-20">
-      <div className="w-11/12 py-8 px-4 rounded-lg bg-black mx-auto flex flex-col">
+    <section className="w-full h-auto mt-10 mb-20 ">
+      <div
+        className="w-11/12 py-8 px-4 rounded-lg bg-cover bg-no-repeat bg-center p-0 m-0 overflow-hidden hide-scrollbar mx-auto flex flex-col"
+        style={{ backgroundImage: `url('/back2.jpeg')` }}
+      >
         <p className="text-2xl text-white text-center">
           Get Notified when we launch
         </p>
@@ -1210,7 +1215,9 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
       </Head>
       {/* <div className="w-screen h-full fixed z-50 inset-0 bg-black opacity-40" /> */}
       <CTAModal display={ctaModalShown} setDisplay={setCTAModalDisplay} />
-      <Navbar fixed={false} />
+      <div className="bg-black">
+        <Navbar />
+      </div>
       <HeroSection />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
