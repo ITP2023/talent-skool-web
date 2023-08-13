@@ -217,19 +217,18 @@ const TestimonialsSection = ({ testimonialData }) => {
   const [tab, setTab] = useState(0);
   const [len, setLen] = useState(testimonialData.length);
   const [isMdScreen, setIsMdScreen] = useState(false);
+  const [isSmScreen, setIsSmScreen] = useState(false);
   const handleNextTab = () => {
-    console.log("length " + len);
-    console.log(tab);
     setTab((prev) => (prev !== len ? prev + 1 : 0));
   };
 
   const handlePrevTab = () => {
-    console.log(tab);
     setTab((prev) => (prev !== 0 ? prev - 1 : len));
   };
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMdScreen(window.innerWidth < 1060);
+      setIsSmScreen(window.innerWidth < 768);
       setLen(testimonialData.length - (isMdScreen ? 1 : 3));
     };
 
@@ -262,7 +261,7 @@ const TestimonialsSection = ({ testimonialData }) => {
         >
           <NextIcon width={15} height={15} />
         </span>
-        <div className="w-full ml-5 mr-5 grow mx-auto overflow-hidden">
+        {/* <div className="w-full ml-5 mr-5 grow mx-auto overflow-hidden">
           <div
             className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-24 p-5 md:gap-14`}
             style={{
@@ -278,6 +277,26 @@ const TestimonialsSection = ({ testimonialData }) => {
                 testimonial={t}
                 id={i}
                 className="w-[300px] h-[400px] md:w-[435px] border flex flex-col flex-shrink-0 items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
+              />
+            ))}
+          </div>
+        </div> */}
+        <div className="w-[325px] md:w-full ml-auto mr-auto overflow-hidden">
+          <div
+            className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-24 pl-2 md:gap-20 ml-auto mr-auto`}
+            style={{
+              transform: `translateX(-${tab * (isSmScreen ? 370 : (isMdScreen ? 399 : 490))}px)`,
+              // width: `${
+              //   Math.ceil(testimonialData.length) * (isMdScreen ? 350 : 32)
+              // }px`,
+            }}
+          >
+            {testimonialData.map((t, i) => (
+              <TestimonialCard
+                key={i}
+                testimonial={t}
+                id={i}
+                className="w-[275px] h-[500px] md:h-[450px] md:w-[400px] border flex flex-col flex-shrink-0 items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl "
               />
             ))}
           </div>
@@ -1191,7 +1210,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
       </Head>
       {/* <div className="w-screen h-full fixed z-50 inset-0 bg-black opacity-40" /> */}
       <CTAModal display={ctaModalShown} setDisplay={setCTAModalDisplay} />
-      <Navbar fixed={true} />
+      <Navbar fixed={false} />
       <HeroSection />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
