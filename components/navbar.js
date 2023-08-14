@@ -69,7 +69,7 @@ const Navbar = ({ fixed }) => {
 
   return (
     <header
-      className={`top-0 z-10 inset-x-0 transition-transform duration-300`}
+      className={`top-0 z-20 inset-x-0 transition-transform duration-300`}
     >
       <nav
         className={`flex items-center lg:justify-between p-6 lg:px-8`}
@@ -155,7 +155,7 @@ const Navbar = ({ fixed }) => {
 
         {/* { backdrop ?  */}
         <div
-          className={`fixed inset-y-0 z-50 max-h-screen w-2/4 overflow-y-auto bg-transparent px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-500 ${
+          className={`fixed inset-y-0 z-50 max-h-screen w-1/4 overflow-y-auto opacity-60 bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 transition-all duration-500 ${
             backdrop ? "translate-y-0" : "translate-y-[-100%]"
           } top-0 right-0 flex flex-col justify-start items-end`}
         >

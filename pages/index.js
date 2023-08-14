@@ -689,7 +689,7 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
                 onMouseLeave={(e) => {
                   setHovering(false);
                 }}
-                className="border-2 mx-4 w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl"
+                className="border-2 mx-4 w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl hover:w-[28rem] "
               />
             ))}
           </div>
