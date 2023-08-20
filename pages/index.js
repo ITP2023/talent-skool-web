@@ -369,8 +369,8 @@ const HeroSection = () => {
           <div className="mx-auto animation-bottom2top w-11/12 my-auto">
             <h1 className="text-3xl text-bold md:text-5xl text-center mx-auto leading-relaxed tracking-tight">
               Community which is full of talents. Making the world filled with{" "}
-              <span class="before:block before:absolute before:-inset-[0.2rem] before:-skew-y-3 before:bg-primary relative inline-block">
-                <span class="relative text-white">talented</span>
+              <span className="before:block before:absolute before:-inset-[0.2rem] before:-skew-y-3 before:bg-primary relative inline-block">
+                <span className="relative text-white">talented</span>
               </span>{" "}
               people.
             </h1>
