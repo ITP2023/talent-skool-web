@@ -368,11 +368,11 @@ const HeroSection = () => {
         <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
           <div className="mx-auto animation-bottom2top w-11/12 my-auto">
             <h1 className="text-3xl text-bold md:text-5xl text-center mx-auto leading-relaxed tracking-tight">
-              Community which is full of talents. Making the world filled with{" "}
+              Join a community that values and harnesses the unique {" "}
               <span className="before:block before:absolute before:-inset-[0.2rem] before:-skew-y-3 before:bg-primary relative inline-block">
-                <span className="relative text-white">talented</span>
+                <span className="relative text-white">talents.</span>
               </span>{" "}
-              people.
+              
             </h1>
           </div>
           <a
@@ -437,8 +437,8 @@ const DesktopHeroBanner = () => {
       >
         <div className="mt-32 text-white w-1/2 p-4">
           <p className="text-5xl my-8">
-            A community building <span className="text-primary">talented</span>{" "}
-            people.
+            Join a community that values and harnesses the unique  <span className="text-primary">talents</span>{""}
+            .
           </p>
           <div className="flex flex-row space-x-4">
             <button className="p-4 bg-black shadow-neon rounded-full flex flex-row gap-2">
