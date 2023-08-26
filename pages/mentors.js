@@ -58,7 +58,7 @@ const Structure = () => {
         <div className="mx-auto flex flex-col w-[250px] md:w-[175px] items-center justify-around gap-5 rounded-md p-4 border-2 border-slate-500 md:gap-0 md:p-0 md:rounded-none md:border-white md:border-0">
           <div className="w-[79px] h-[79px] bg-slate-200 rounded-full"></div>
           <p>2. Sign Up</p>
-          <h3 className="text-center">Once you've found the right matches,</h3>
+          <h3 className="text-center">Once you&apos;ve found the right matches,</h3>
           <div className="w-[37px] h-[13px] hidden md:flex">
             <Arrow />
           </div>
@@ -129,12 +129,12 @@ const OneMentor = () => {
           <h3 className="font-sans">Creative & Proffesional Digital Mentors</h3>
           <p className="text-slate-500">
             Schedule a session instantly with a mentor and work with them
-            directly on Teetors - Whether it's for one-off tatical adviceor
+            directly on Teetors - Whether it&apos;s for one-off tatical adviceor
             multiple sessioins towards a long-term goal.
           </p>
           <p className="text-slate-500">
             Schedule a session instantly with a mentor and work with them
-            directly on Teetors - Whether it's for one-off tatical adviceor
+            directly on Teetors - Whether it&apos;s for one-off tatical adviceor
             multiple sessioins towards a long-term goal.
           </p>
         </div>
