@@ -292,7 +292,7 @@ const MentorsPage = () => {
         <title>Mentors | TalentSkool</title>
       </Head>
       <Navbar />
-      {/* <Hero /> */}
+      <Hero />
       {/* <Structure /> */}
       {/* <OneMentor /> */}
       {/* <BitMap /> */}
