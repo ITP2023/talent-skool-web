@@ -42,7 +42,7 @@ const Structure = () => {
         <h1 className="text-[50px]">How it works</h1>
       </div>
       <div className="flex flex-col md:flex-row md:gap-0 gap-5">
-        <div className="mx-auto flex flex-col w-200px md:w-[160px] items-center justify-around gap-5 rounded-md p-4 border-2 border-slate-500 md:gap-0 md:p-0 md:rounded-none md:border-white md:border-0">
+        <div className="mx-auto flex flex-col w-[250px] md:w-[160px] items-center justify-around gap-5 rounded-md p-4 border-2 border-slate-500 md:gap-0 md:p-0 md:rounded-none md:border-white md:border-0">
           <div className="w-[79px] h-[79px] bg-slate-200 rounded-full"></div>
           <p>1. Find a Mentor</p>
           <h3 className="text-center">
@@ -274,7 +274,7 @@ const CTA = () => {
         <h2 className="font-sans text-[25px] md:text-[50px] text-center">
           Your next chapter, made possible with mentorship.
         </h2>
-        <p className="text-slate-500">
+        <p className="text-slate-500 text-center">
           Explore 4000+ mentors from 60+ countries, to help you to achieve and
           overcoe any challenges you fae.
         </p>
