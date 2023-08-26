@@ -33,6 +33,15 @@ const DeviceMockup = () => {
   );
 };
 
+
+const WhatsAppFAB = () => {
+  return (
+    <a href="https://wa.me/00917550116864" className="fixed bottom-2 right-2 rounded-full w-20 h-20 bg-green-600">
+      
+    </a>
+  )
+}
+
 const FaqsCard = (props) => {
   const answerElRef = useRef();
   const [state, setState] = useState(false);
@@ -261,26 +270,6 @@ const TestimonialsSection = ({ testimonialData }) => {
         >
           <NextIcon width={15} height={15} />
         </span>
-        {/* <div className="w-full ml-5 mr-5 grow mx-auto overflow-hidden">
-          <div
-            className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-24 p-5 md:gap-14`}
-            style={{
-              transform: `translateX(-${tab * (isMdScreen ? 98 : 32)}vw)`,
-              width: `${
-                Math.ceil(testimonialData.length) * (isMdScreen ? 98 : 32)
-              }vw`,
-            }}
-          >
-            {testimonialData.map((t, i) => (
-              <TestimonialCard
-                key={i}
-                testimonial={t}
-                id={i}
-                className="w-[300px] h-[400px] md:w-[435px] border flex flex-col flex-shrink-0 items-center text-center bg-gray-50 dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
-              />
-            ))}
-          </div>
-        </div> */}
         <div className="w-[325px] md:w-full ml-auto mr-auto overflow-hidden">
           <div
             className={`flex flex-row w-[90%] md:w-[90%] items-center transition-transform duration-300 gap-24 pl-2 md:gap-20 ml-auto mr-auto`}
@@ -308,20 +297,7 @@ const TestimonialsSection = ({ testimonialData }) => {
   );
 };
 
-//   return (
-//     <section className="w-full">
-//       <div className="h-full overflow-y-hidden p-4 grid gap-8 auto-cols-fr md:auto-cols-none md:grid-cols-2 auto-rows-max">
-//         {testimonialData.map((t, i) => (
-//           <TestimonialCard
-//             key={i}
-//             testimonial={t}
-//             className="h-full whitespace-normal w-full md:justify-evenly md:mr-[30em] border border-2 flex flex-col text-center dark:bg-gray-800 dark:border-gray-700 p-6 rounded-xl"
-//           />
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
+
 const HeroSection = () => {
   const _SKILL_ICONS = [
     "/piano.png",
@@ -340,31 +316,6 @@ const HeroSection = () => {
     <div className="bg-black h-screen">
       <DesktopHeroBanner />
       <section className="lg:hidden bg-black text-white w-full h-screen">
-        {/* <div className="relative top-48 opacity-60 w-full h-2/12">
-          <div className="relative flex overflow-x-hidden">
-            <div className="flex flex-row animate-marquee whitespace-nowrap">
-              {_SKILL_ICONS.map((l, i) => (
-                <span
-                  key={i}
-                  className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl"
-                >
-                  <Image alt="skill" width={100} height={100} src={l} />
-                </span>
-              ))}
-            </div>
-
-            <div className="absolute flex flex-row top-0 animate-marquee2 whitespace-nowrap">
-              {_SKILL_ICONS.map((l, i) => (
-                <span
-                  key={i}
-                  className="w-[3rem] lg:w-[6rem] h-full mx-4 text-4xl"
-                >
-                  <Image alt="skill" width={100} height={100} src={l} />
-                </span>
-              ))}
-            </div>
-          </div>
-        </div> */}
         <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
           <div className="mx-auto animation-bottom2top w-11/12 my-auto">
             <h1 className="text-3xl text-bold md:text-5xl text-center mx-auto leading-relaxed tracking-tight">
@@ -401,27 +352,6 @@ const HeroSection = () => {
             </button>
           </div>
         </div>
-        {/* <div className="relative top-52 opacity-60 w-full h-2/12">
-          <div className="relative flex overflow-x-hidden">
-            <div
-              className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}
-            >
-              {_SKILL_ICONS.map((l, i) => (
-                <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
-                  <Image alt="skill" width={100} height={100} src={l} />
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-row absolute top-0 animate-marquee2reverse lg:animation-none whitespace-nowrap">
-              {_SKILL_ICONS.map((l, i) => (
-                <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
-                  <Image alt={"skill"} width={100} height={100} src={l} />
-                </span>
-              ))}
-            </div>
-          </div>
-        </div> */}
       </section>
     </div>
   );
@@ -1219,6 +1149,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
         <Navbar />
       </div>
       <HeroSection />
+      <WhatsAppFAB/>
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
       <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-full w-full p-5 overflow-hidden">
