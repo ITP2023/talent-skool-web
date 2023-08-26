@@ -36,8 +36,8 @@ const DeviceMockup = () => {
 
 const WhatsAppFAB = () => {
   return (
-    <a href="https://wa.me/00917550116864" className="fixed bottom-2 right-2 rounded-full w-20 h-20 bg-green-600">
-      
+    <a href="https://wa.me/+917550116864" className="fixed z-50 bottom-2 right-2 bg-green-400 rounded-full w-20 h-20">
+      <Image width={50} height={50} className="text-center my-4 mx-auto" src="/whatsapp.png" alt="Whatsapp" />
     </a>
   )
 }
