@@ -293,7 +293,7 @@ const MentorsPage = () => {
       </Head>
       <Navbar />
       <Hero />
-      {/* <Structure /> */}
+      <Structure />
       {/* <OneMentor /> */}
       {/* <BitMap /> */}
       <MentorsSection />
