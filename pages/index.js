@@ -1177,7 +1177,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
           color="black"
           direction="ltr"
           head="Network with top talent"
-          description="You will encounter top talent whose voices are respoected in the industry"
+          description="You will encounter top talent whose voices are respected in the industry"
           statone="Voices"
           stattwo="Industry Leaders"
           statthree="Researchers"
