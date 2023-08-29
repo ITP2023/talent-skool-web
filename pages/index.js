@@ -359,7 +359,7 @@ const HeroSection = () => {
 
 const DesktopHeroBanner = () => {
   return (
-    <section className="absolute hidden lg:block w-screen h-screen bg-black">
+    <section className="absolute hidden lg:block w-full h-screen bg-black">
       {/* <div className="bg-black w-full h-full"> */}
       <div
         id="wrapper"
