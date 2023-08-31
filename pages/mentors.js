@@ -6,6 +6,7 @@ import SearchBar from "@/components/searchbar";
 import BackStyle from "@/components/about/back_style";
 import Arrow from "@/components/about/arrow";
 import Path from "@/components/about/path";
+import MentorsAvatarGroup from "@/components/MentorAvatarGroup";
 
 const Hero = () => {
   return (
@@ -34,9 +35,9 @@ const Hero = () => {
 
 const Structure = () => {
   return (
-    <div className="flex flex-col items-center justify-around">
+    <div className="mt-12 flex flex-col items-center justify-around">
       <div className="flex items-center justify-center">
-        <p className="text-slate-500">Features</p>
+        <p className="text-slate-500 md:tracking-[.5em] text-2xl">Features</p>
       </div>
       <div className="flex items-center justify-center">
         <h1 className="text-[50px]">How it works</h1>
@@ -58,7 +59,9 @@ const Structure = () => {
         <div className="mx-auto flex flex-col w-[250px] md:w-[175px] items-center justify-around gap-5 rounded-md p-4 border-2 border-slate-500 md:gap-0 md:p-0 md:rounded-none md:border-white md:border-0">
           <div className="w-[79px] h-[79px] bg-slate-200 rounded-full"></div>
           <p>2. Sign Up</p>
-          <h3 className="text-center">Once you&apos;ve found the right matches,</h3>
+          <h3 className="text-center">
+            Once you&apos;ve found the right matches,
+          </h3>
           <div className="w-[37px] h-[13px] hidden md:flex">
             <Arrow />
           </div>
@@ -148,7 +151,12 @@ const OneMentor = () => {
   );
 };
 
-const BitMap = () => {
+/**
+ *
+ * @param {{ mentorBadges: string[] }} param0
+ * @returns
+ */
+const BitMap = ({ mentorBadges }) => {
   return (
     <div className="mt-16 flex flex-col w-full h-[450px] md:h-[900px]">
       <div className="flex flex-col items-center">
@@ -158,22 +166,17 @@ const BitMap = () => {
           no cost
         </h2>
       </div>
-      <div className="relative w-full">
+      <div className="relative w-full h-auto">
         <Image
-          className="absolute"
+          className="relative w-full"
           width={1500}
           height={500}
           src="/bitmap.png"
           alt=""
         />
-        <div className="flex items-center justify-center">
-          <Image
-            className="absolute top-[250px]"
-            width={300}
-            height={300}
-            src="/mentors.png"
-            alt=""
-          />
+        <div className="bg-white p-4 rounded-xl mx-auto w-fit text-center top-20 right-0 left-0 absolute">
+          <p className="text-blue-500 text-xl">Mentors with us</p>
+          <MentorsAvatarGroup mentorImages={mentorBadges} />
         </div>
       </div>
     </div>
@@ -205,45 +208,12 @@ const MentorCard = ({ name, description, avatar }) => {
   );
 };
 
-const MentorsSection = () => {
-  const mentorsData = [
-    {
-      avatar: "/unsplash_X6Uj51n5CE8.png",
-      name: "Arvind Joshi",
-      description: "Lorem ipsum",
-    },
-    {
-      avatar: "/unsplash_X6Uj51n5CE8.png",
-      name: "Alexandra Smith",
-      description:
-        "Passionate about mathematics and eager to help students excel in algebra, calculus, and geometry.",
-    },
-    {
-      avatar: "/unsplash_X6Uj51n5CE8.png",
-      name: "John Davis",
-      description:
-        "Experienced computer science professional ready to guide students in programming, data structures, and algorithms.",
-    },
-    {
-      avatar: "/unsplash_X6Uj51n5CE8.png",
-      name: "Emily Johnson",
-      description:
-        "Language enthusiast excited to teach English grammar, literature, and effective communication skills.",
-    },
-    {
-      avatar: "/unsplash_X6Uj51n5CE8.png",
-      name: "Michael Lee",
-      description:
-        "Biology expert with a deep understanding of genetics, evolution, and ecology, here to support students' scientific curiosity.",
-    },
-    {
-      avatar: "/unsplash_X6Uj51n5CE8.png",
-      name: "Sophia Martinez",
-      description:
-        "History aficionado ready to explore the past with students, focusing on world history, cultures, and civilizations.",
-    },
-  ];
-
+/**
+ *
+ * @param {{mentorsData: {avatar: string, name: string, description: string}[]}} param0
+ * @returns
+ */
+const MentorsSection = ({ mentorsData }) => {
   return (
     <section className="bg-black w-10/12 h-auto p-8 mx-auto my-32 rounded-md">
       <p className="text-center mx-auto text-3xl text-white">
@@ -285,7 +255,7 @@ const CTA = () => {
     </div>
   );
 };
-const MentorsPage = () => {
+const MentorsPage = ({ mentorsData, mentorBadges }) => {
   return (
     <div className="bg-white w-full h-full">
       <Head>
@@ -295,8 +265,8 @@ const MentorsPage = () => {
       <Hero />
       <Structure />
       <OneMentor />
-      <BitMap />
-      <MentorsSection />
+      <BitMap mentorBadges={mentorBadges} />
+      <MentorsSection mentorsData={mentorsData} />
       <CTA />
       <Footer />
     </div>
@@ -304,3 +274,54 @@ const MentorsPage = () => {
 };
 
 export default MentorsPage;
+
+export async function getStaticProps(ctx) {
+
+
+  const fakePeoplePhotos = await fetch("https://randomuser.me/api/?results=5");
+
+  const { results } = await fakePeoplePhotos.json();
+
+  return {
+    props: {
+      mentorBadges: results.map(j => j.picture.medium),
+      mentorsData: [
+        {
+          avatar: "/unsplash_X6Uj51n5CE8.png",
+          name: "Arvind Joshi",
+          description: "Lorem ipsum",
+        },
+        {
+          avatar: "/unsplash_X6Uj51n5CE8.png",
+          name: "Alexandra Smith",
+          description:
+            "Passionate about mathematics and eager to help students excel in algebra, calculus, and geometry.",
+        },
+        {
+          avatar: "/unsplash_X6Uj51n5CE8.png",
+          name: "John Davis",
+          description:
+            "Experienced computer science professional ready to guide students in programming, data structures, and algorithms.",
+        },
+        {
+          avatar: "/unsplash_X6Uj51n5CE8.png",
+          name: "Emily Johnson",
+          description:
+            "Language enthusiast excited to teach English grammar, literature, and effective communication skills.",
+        },
+        {
+          avatar: "/unsplash_X6Uj51n5CE8.png",
+          name: "Michael Lee",
+          description:
+            "Biology expert with a deep understanding of genetics, evolution, and ecology, here to support students' scientific curiosity.",
+        },
+        {
+          avatar: "/unsplash_X6Uj51n5CE8.png",
+          name: "Sophia Martinez",
+          description:
+            "History aficionado ready to explore the past with students, focusing on world history, cultures, and civilizations.",
+        },
+      ],
+    },
+  };
+}
