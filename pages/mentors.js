@@ -11,7 +11,7 @@ import MentorsAvatarGroup from "@/components/MentorAvatarGroup";
 const Hero = () => {
   return (
     <div className="relative bg-white w-full h-[300px] sm:h-[600px] md:h-[925px] overflow-hidden text-left text-26xl text-skyblue font-sans">
-      <div className="flex justify-end w-[1443px] h-[1174px] absolute right-0 md:flex hidden">
+      <div className="flex justify-end w-full absolute right-0 md:flex hidden">
         <BackStyle />
       </div>
       <div className="w-full flex">
@@ -116,7 +116,7 @@ const OneMentor = () => {
   return (
     <div className="flex p-4 mt-16 md:p-16 items-center justify-around flex-col md:flex-row">
       <div className="flex md:hidden">
-        <p className="text-slate-500">ABOUT US</p>
+        <p className="text-slate-500 md:tracking-[.5em] text-2xl">ABOUT US</p>
       </div>
       <div className="w-full md:w-1/2 px-10">
         <Image width={500} height={500} src="/mentor_1.png" alt="" />
@@ -124,7 +124,7 @@ const OneMentor = () => {
       <div className="items-center w-full md:w-1/2 flex flex-col gap-8 px-8">
         <div className="flex flex-col gap-5">
           <div className="hidden md:flex">
-            <p className="text-slate-500">ABOUT US</p>
+            <p className="text-slate-500 md:tracking-[.5em] text-2xl">ABOUT US</p>
           </div>
           <h2 className="font-sans text-[25px] md:text-[50px]">
             Book 1:1 Sessions
@@ -160,9 +160,9 @@ const OneMentor = () => {
  */
 const BitMap = ({ mentorBadges }) => {
   return (
-    <div className="mt-16 flex flex-col w-full h-[450px] md:h-[900px]">
+    <div className="mt-28 flex flex-col w-full h-[450px] md:h-[900px]">
       <div className="flex flex-col items-center">
-        <p className="text-slate-500">GET STARTED</p>
+        <p className="text-slate-500 md:tracking-[.5em] text-2xl">GET STARTED</p>
         <h2 className="font-sans text-[25px] md:text-[50px] w-3/4 text-center">
           Expand your skillset, gain insights, and get support from mentors at
           no cost
@@ -238,11 +238,11 @@ const MentorsSection = ({ mentorsData }) => {
 
 const CTA = () => {
   return (
-    <div className="relative flex h-[280px] md:h-[500px]">
-      <div className="absolute md:left-20">
-        <Image width={1500} height={500} src="/dotmap.png" alt="" />
+    <div className="relative flex h-[280px] md:h-[500px] items-center justify-center">
+      <div className="absolute w-full flex items-center justify-center">
+        <Image width={1000} height={500} src="/dotmap.png" alt="" />
       </div>
-      <div className="absolute flex flex-col items-center justify-center top-[-50px] md:top-20 md:left-60 gap-8 p-8">
+      <div className="absolute flex flex-col items-center justify-center w-3/4 gap-8 p-8">
         <h2 className="font-sans text-[25px] md:text-[50px] text-center">
           Your next chapter, made possible with mentorship.
         </h2>
