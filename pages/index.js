@@ -305,20 +305,20 @@ const TestimonialsSection = ({ testimonialData }) => {
   );
 };
 
-const _SKILL_ICONS = [
-  "/piano.png",
-  "/artandcrafts.png",
-  "/chess.png",
-  "/violin.png",
-  "/writing.png",
-  "/suitcase.png",
-  "/salary.png",
-  "/education.png",
-  "/graphic-design.png",
-  "/film-slate.png",
-];
-const HeroSection = () => {
 
+const HeroSection = () => {
+  const _SKILL_ICONS = [
+    "/piano.png",
+    "/artandcrafts.png",
+    "/chess.png",
+    "/violin.png",
+    "/writing.png",
+    "/suitcase.png",
+    "/salary.png",
+    "/education.png",
+    "/graphic-design.png",
+    "/film-slate.png",
+  ];
   return (
     <div className="bg-black h-[600px] lg:h-[900px]">
       <DesktopHeroBanner />
@@ -384,6 +384,18 @@ const HeroSection = () => {
 };
 
 const DesktopHeroBanner = () => {
+  const _SKILL_ICONS = [
+    "/piano.png",
+    "/artandcrafts.png",
+    "/chess.png",
+    "/violin.png",
+    "/writing.png",
+    "/suitcase.png",
+    "/salary.png",
+    "/education.png",
+    "/graphic-design.png",
+    "/film-slate.png",
+  ];
   return (
     <section className="hidden lg:block w-full h-[900px] bg-black">
       {/* <div className="bg-black w-full h-full"> */}
