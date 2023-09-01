@@ -10,7 +10,7 @@ import MentorsAvatarGroup from "@/components/MentorAvatarGroup";
 
 const Hero = () => {
   return (
-    <div className="relative bg-white w-full h-[300px] sm:h-[600px] md:h-[925px] overflow-hidden text-left text-26xl text-skyblue font-sans">
+    <div className="h-[24em] relative bg-white w-full md:h-screen overflow-hidden text-left text-26xl text-skyblue font-sans">
       <div className="flex justify-end w-full absolute right-0 md:flex hidden">
         <BackStyle />
       </div>
@@ -21,7 +21,7 @@ const Hero = () => {
 
         <div className="flex items-center justify-center absolute w-full h-full">
           <div className="w-[270px] sm:w-1/2 flex flex-col items-center justify-center h-full md:w-full  text-darkslategray font-sans">
-            <b className=" mx-auto w-200px md:leading-[87px] inline-block md:w-[1020px] md:h-[273px] text-center text-[20px] sm:text-[30px] md:top-0 md:top-0 md:text-[70px]">
+            <b className="mx-auto w-200px md:leading-[87px] inline-block md:w-[1020px] md:h-[273px] text-center text-4xl md:top-0 md:top-0 md:text-[70px]">
               Learn and grow with help from world-class mentors
             </b>
             <p className="mx-auto w-[250px] md:w-[1020px] md:h-[273px] text-center md:mt-[-60px]">
