@@ -37,14 +37,14 @@ const Hero = () => {
 
 const Structure = () => {
   return (
-    <div className="mt-12 flex flex-col items-center justify-around">
+    <section className="w-screen mt-12 flex flex-col items-center justify-around">
       <div className="flex items-center justify-center">
         <p className="text-slate-500 md:tracking-[.5em] text-2xl">Features</p>
       </div>
       <div className="flex items-center justify-center">
         <h1 className="text-[50px]">How it works</h1>
       </div>
-      <div className="flex flex-col md:flex-row md:gap-0 gap-5">
+      <div className="w-full px-8 flex flex-col md:flex-row md:gap-0 gap-5">
         <div className="mx-auto flex flex-col w-[250px] md:w-[160px] items-center justify-around gap-5 rounded-md p-4 border-2 border-slate-500 md:gap-0 md:p-0 md:rounded-none md:border-white md:border-0">
           <div className="w-[79px] h-[79px] bg-slate-200 rounded-full"></div>
           <p>1. Find a Mentor</p>
@@ -73,7 +73,7 @@ const Structure = () => {
         </div>
         <div className="mx-auto flex flex-col w-[250px] md:w-[175px] items-center justify-around gap-5 rounded-md p-4 border-2 border-slate-500 md:gap-0 md:p-0 md:rounded-none md:border-white md:border-0">
           <div className="w-[79px] h-[79px] bg-slate-200 rounded-full"></div>
-          <p>3. Send Mentor Request</p>
+          <p className="text-center">3. Send Mentor Request</p>
           <h3 className="text-center">
             Lorem Ipsum is simply dummy simple text
           </h3>
@@ -108,7 +108,7 @@ const Structure = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -181,7 +181,7 @@ const BitMap = ({ mentorBadges }) => {
           alt=""
         />
         <div className="bg-white p-4 rounded-xl mx-auto w-fit text-center top-20 right-0 left-0 absolute">
-          <p className="text-blue-500 text-xl">Mentors with us</p>
+          <p className="text-primary text-xl">Mentors with us</p>
           <MentorsAvatarGroup mentorImages={mentorBadges} />
         </div>
       </div>
