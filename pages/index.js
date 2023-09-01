@@ -258,7 +258,7 @@ const TestimonialsSection = ({ testimonialData }) => {
     return () => {
       window.removeEventListener("resize", checkScreenSize);
     };
-  }, [isMdScreen]);
+  }, [isMdScreen, testimonialData.length]);
 
   return (
     <section className=" mt-24 w-full max-w-full mx-auto">

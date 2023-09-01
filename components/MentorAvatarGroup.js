@@ -10,9 +10,12 @@ export default function MentorsAvatarGroup({mentorImages}) {
     <div className="flex -space-x-2 overflow-hidden">
       {
         mentorImages.map((p, i) => (
-          <img
+          <Image
+          width={10}
+          height={10}
           key={i}
           src={p}
+          alt="mentorbadge"
           className="w-10 h-10 rounded-full border-2 border-white"
         />
         ))

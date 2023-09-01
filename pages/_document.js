@@ -1,39 +1,27 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
+
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
         <link rel="icon" href="/Talent Skool Updated Logo PNG Format 1.png" />
-        <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MFRWV4S"></script>
+        <Script src="https://www.googleoptimize.com/optimize.js?id=OPT-MFRWV4S"></Script>
         {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-R1899FMVK0"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+          <Script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-R1899FMVK0"
+          ></Script>
+        <Script id="google-analytics">
+          {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'G-R1899FMVK0');
-              `,
-          }}
-        />
-        {/* Google Analytics (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-R1899FMVK0"
-        ></script>
-        {/* <script>
-          {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-R1899FMVK0');
-      `}
-        </script> */}
+              `}
+        </Script>
+
         {/* End Google Analytics (gtag.js) */}
         <meta property="og:url" content="https://talentskool.com" />
         <meta property="og:type" content="website" />
