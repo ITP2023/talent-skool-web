@@ -33,14 +33,22 @@ const DeviceMockup = () => {
   );
 };
 
-
 const WhatsAppFAB = () => {
   return (
-    <a href="https://wa.me/+917550116864" className="fixed z-50 bottom-2 right-2 bg-green-400 rounded-full w-20 h-20">
-      <Image width={50} height={50} className="text-center my-4 mx-auto" src="/whatsapp.png" alt="Whatsapp" />
+    <a
+      href="https://wa.me/+917550116864"
+      className="fixed z-50 bottom-2 right-2 bg-green-400 rounded-full w-20 h-20"
+    >
+      <Image
+        width={50}
+        height={50}
+        className="text-center my-4 mx-auto"
+        src="/whatsapp.png"
+        alt="Whatsapp"
+      />
     </a>
-  )
-}
+  );
+};
 
 const FaqsCard = (props) => {
   const answerElRef = useRef();
@@ -297,7 +305,6 @@ const TestimonialsSection = ({ testimonialData }) => {
   );
 };
 
-
 const HeroSection = () => {
   const _SKILL_ICONS = [
     "/piano.png",
@@ -316,14 +323,33 @@ const HeroSection = () => {
     <div className="bg-black h-screen">
       <DesktopHeroBanner />
       <section className="lg:hidden bg-black text-white w-full h-screen">
+        <div className="relative top-52 opacity-60 w-full h-2/12">
+          <div className="relative flex overflow-x-hidden">
+            <div
+              className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}
+            >
+              {_SKILL_ICONS.map((l, i) => (
+                <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
+                  <Image alt="skill" width={100} height={100} src={l} />
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-row absolute top-0 animate-marquee2reverse lg:animation-none whitespace-nowrap">
+              {_SKILL_ICONS.map((l, i) => (
+                <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
+                  <Image alt={"skill"} width={100} height={100} src={l} />
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
         <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
           <div className="mx-auto animation-bottom2top w-11/12 my-auto">
             <h1 className="text-3xl text-bold md:text-5xl text-center mx-auto leading-relaxed tracking-tight">
-              Join a community that values and harnesses the unique {" "}
+              Join a community that values and harnesses the unique{" "}
               <span className="before:block before:absolute before:-inset-[0.2rem] before:-skew-y-3 before:bg-primary relative inline-block">
                 <span className="relative text-white">talents.</span>
               </span>{" "}
-              
             </h1>
           </div>
           <a
@@ -367,8 +393,9 @@ const DesktopHeroBanner = () => {
       >
         <div className="mt-32 text-white w-1/2 p-4">
           <p className="text-5xl my-8">
-            Join a community that values and harnesses the unique  <span className="text-primary">talents</span>{""}
-            .
+            Join a community that values and harnesses the unique{" "}
+            <span className="text-primary">talents</span>
+            {""}.
           </p>
           <div className="flex flex-row space-x-4">
             <button className="p-4 bg-black shadow-neon rounded-full flex flex-row gap-2">
@@ -1149,7 +1176,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
         <Navbar />
       </div>
       <HeroSection />
-      <WhatsAppFAB/>
+      <WhatsAppFAB />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
       <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-full w-full p-5 overflow-hidden">
