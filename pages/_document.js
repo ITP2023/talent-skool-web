@@ -5,6 +5,18 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link rel="icon" href="/Talent Skool Updated Logo PNG Format 1.png" />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R1899FMVK0"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-R1899FMVK0');
+              `,
+            }}
+          />
         <meta property="og:url" content="https://talentskool.com" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Welcome to TalentSkool" />
