@@ -124,7 +124,9 @@ const OneMentor = () => {
       <div className="items-center w-full md:w-1/2 flex flex-col gap-8 px-8">
         <div className="flex flex-col gap-5">
           <div className="hidden md:flex">
-            <p className="text-slate-500 md:tracking-[.5em] text-2xl">ABOUT US</p>
+            <p className="text-slate-500 md:tracking-[.5em] text-2xl">
+              ABOUT US
+            </p>
           </div>
           <h2 className="font-sans text-[25px] md:text-[50px]">
             Book 1:1 Sessions
@@ -162,7 +164,9 @@ const BitMap = ({ mentorBadges }) => {
   return (
     <div className="mt-28 flex flex-col w-full h-[450px] md:h-[900px]">
       <div className="flex flex-col items-center">
-        <p className="text-slate-500 md:tracking-[.5em] text-2xl">GET STARTED</p>
+        <p className="text-slate-500 md:tracking-[.5em] text-2xl">
+          GET STARTED
+        </p>
         <h2 className="font-sans text-[25px] md:text-[50px] w-3/4 text-center">
           Expand your skillset, gain insights, and get support from mentors at
           no cost
@@ -212,25 +216,59 @@ const MentorCard = ({ name, description, avatar }) => {
 
 /**
  *
- * @param {{mentorsData: {avatar: string, name: string, description: string}[]}} param0
+ * @param {{mentorsData: {avatar: string, name: string, title: string}[]}} param0
  * @returns
  */
 const MentorsSection = ({ mentorsData }) => {
+  // return (
+  //   <section className="bg-black w-10/12 h-auto p-8 mx-auto my-32 rounded-md">
+  //     <p className="text-center mx-auto text-3xl text-white">
+  //       Find the best mentors of their craft
+  //     </p>
+  //     <SearchBar />
+  //     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto">
+  //       {mentorsData.map(({ avatar, name, description }, i) => (
+  //         <MentorCard
+  //           key={i}
+  //           name={name}
+  //           description={description}
+  //           avatar={avatar}
+  //         />
+  //       ))}
+  //     </div>
+  //   </section>
+  // );
+
   return (
-    <section className="bg-black w-10/12 h-auto p-8 mx-auto my-32 rounded-md">
-      <p className="text-center mx-auto text-3xl text-white">
-        Find the best mentors of their craft
-      </p>
-      <SearchBar />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto">
-        {mentorsData.map(({ avatar, name, description }, i) => (
-          <MentorCard
-            key={i}
-            name={name}
-            description={description}
-            avatar={avatar}
-          />
+    <section className="mx-auto w-full mt-12">
+      <div className="text-center mx-auto">
+        <p className="text-3xl">Our Mentors</p>
+        <p className="text-xl text-gray-600">
+          We are a communtiy of 1,000+ ambitious proffesionals, going further
+          every day.
+        </p>
+      </div>
+      <div
+        id="mentorcards"
+        className="my-8 px-4 w-full grid gap-2 auto-rows-auto md:grid-rows-1 grid-cols-2 md:grid-cols-4"
+      >
+        {/* Mentors Card */}
+        {mentorsData.map((m, i) => (
+          <div key={i} className="relative flex flex-col justify-end items-left">
+            <Image
+              className="w-full"
+              src={m.avatar}
+              alt="mentorpic"
+              width={200}
+              height={400}
+            />
+            <div className="absolute text-white p-4">
+              <p>{m.name}</p>
+              <p className="tracking-widest text-xs text-gray-50">{m.title}</p>
+            </div>
+          </div>
         ))}
+        {/* End of Mentors Card */}
       </div>
     </section>
   );
@@ -238,7 +276,7 @@ const MentorsSection = ({ mentorsData }) => {
 
 const CTA = () => {
   return (
-    <div className="relative flex h-[280px] md:h-[500px] items-center justify-center">
+    <div className="my-12 relative flex h-[280px] md:h-[500px] items-center justify-center">
       <div className="absolute w-full flex items-center justify-center">
         <Image width={1000} height={500} src="/dotmap.png" alt="" />
       </div>
@@ -282,46 +320,17 @@ export async function getStaticProps(ctx) {
 
   const { results } = await fakePeoplePhotos.json();
 
+  const fakeMentorCardData = await fetch("https://randomuser.me/api/?results=6");
+  const { results: cardResults } = await fakeMentorCardData.json();
+
   return {
     props: {
       mentorBadges: results.map((j) => j.picture.medium),
-      mentorsData: [
-        {
-          avatar: "/unsplash_X6Uj51n5CE8.png",
-          name: "Arvind Joshi",
-          description: "Lorem ipsum",
-        },
-        {
-          avatar: "/unsplash_X6Uj51n5CE8.png",
-          name: "Alexandra Smith",
-          description:
-            "Passionate about mathematics and eager to help students excel in algebra, calculus, and geometry.",
-        },
-        {
-          avatar: "/unsplash_X6Uj51n5CE8.png",
-          name: "John Davis",
-          description:
-            "Experienced computer science professional ready to guide students in programming, data structures, and algorithms.",
-        },
-        {
-          avatar: "/unsplash_X6Uj51n5CE8.png",
-          name: "Emily Johnson",
-          description:
-            "Language enthusiast excited to teach English grammar, literature, and effective communication skills.",
-        },
-        {
-          avatar: "/unsplash_X6Uj51n5CE8.png",
-          name: "Michael Lee",
-          description:
-            "Biology expert with a deep understanding of genetics, evolution, and ecology, here to support students' scientific curiosity.",
-        },
-        {
-          avatar: "/unsplash_X6Uj51n5CE8.png",
-          name: "Sophia Martinez",
-          description:
-            "History aficionado ready to explore the past with students, focusing on world history, cultures, and civilizations.",
-        },
-      ],
+      mentorsData: cardResults.map(cr => ({
+        avatar: cr.picture.large,
+        title: "PRODUCT LEAD",
+        name: cr.name.first + " " + cr.name.last
+      }))
     },
   };
 }

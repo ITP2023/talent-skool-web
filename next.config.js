@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    domains: ["randomuser.me"],
     remotePatterns: [
       {
         protocol: "https",
@@ -15,7 +16,7 @@ const nextConfig = {
         pathname: "/*"
       },
       {
-        protocol: "http",
+        protocol: "https",
         hostname: "randomuser.me",
         pathname: "/api/*"
       }
