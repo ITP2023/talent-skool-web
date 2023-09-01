@@ -305,7 +305,11 @@ const TestimonialsSection = ({ testimonialData }) => {
   );
 };
 
-const HeroSection = () => {
+/**
+ * @param {{ openCTA: import("react").Dispatch<import("react").SetStateAction<boolean>> }} param0
+ * @returns 
+ */
+const HeroSection = ({ openCTA }) => {
   const _SKILL_ICONS = [
     "/piano.png",
     "/artandcrafts.png",
@@ -373,7 +377,7 @@ const HeroSection = () => {
             </div>
           </a>
           <div className="mx-auto w-full text-center">
-            <button className="mx-auto p-4 bg-black border-2 border-primary w-1/2 rounded-lg mt-8 leading-relaxed">
+            <button onClick={_ => openCTA(_2 => true)} className="mx-auto p-4 bg-black border-2 border-primary w-1/2 rounded-lg mt-8 leading-relaxed">
               Get Started
             </button>
           </div>
@@ -1175,7 +1179,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
       <div className="bg-black">
         <Navbar />
       </div>
-      <HeroSection />
+      <HeroSection openCTA={setCTAModalDisplay} />
       <WhatsAppFAB />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
