@@ -305,29 +305,25 @@ const TestimonialsSection = ({ testimonialData }) => {
   );
 };
 
-/**
- * @param {{ openCTA: import("react").Dispatch<import("react").SetStateAction<boolean>> }} param0
- * @returns 
- */
-const HeroSection = ({ openCTA }) => {
-  const _SKILL_ICONS = [
-    "/piano.png",
-    "/artandcrafts.png",
-    "/chess.png",
-    "/violin.png",
-    "/writing.png",
-    "/suitcase.png",
-    "/salary.png",
-    "/education.png",
-    "/graphic-design.png",
-    "/film-slate.png",
-  ];
+const _SKILL_ICONS = [
+  "/piano.png",
+  "/artandcrafts.png",
+  "/chess.png",
+  "/violin.png",
+  "/writing.png",
+  "/suitcase.png",
+  "/salary.png",
+  "/education.png",
+  "/graphic-design.png",
+  "/film-slate.png",
+];
+const HeroSection = () => {
 
   return (
-    <div className="bg-black h-screen">
+    <div className="bg-black h-[600px] lg:h-[900px]">
       <DesktopHeroBanner />
-      <section className="lg:hidden bg-black text-white w-full h-screen">
-        <div className="relative top-52 opacity-60 w-full h-2/12">
+      <section className="lg:hidden bg-black text-white w-full h-full">
+        <div className="relative top-28 opacity-60 w-full h-2/12">
           <div className="relative flex overflow-x-hidden">
             <div
               className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}
@@ -347,7 +343,7 @@ const HeroSection = ({ openCTA }) => {
             </div>
           </div>
         </div>
-        <div className="relative top-48 w-full px-4 py-10 my-auto mx-auto">
+        <div className="relative top-28 w-full px-4 py-10 my-auto mx-auto">
           <div className="mx-auto animation-bottom2top w-11/12 my-auto">
             <h1 className="text-3xl text-bold md:text-5xl text-center mx-auto leading-relaxed tracking-tight">
               Join a community that values and harnesses the unique{" "}
@@ -389,11 +385,12 @@ const HeroSection = ({ openCTA }) => {
 
 const DesktopHeroBanner = () => {
   return (
-    <section className="absolute hidden lg:block w-full h-screen bg-black">
+    <section className="hidden lg:block w-full h-[900px] bg-black">
       {/* <div className="bg-black w-full h-full"> */}
+
       <div
         id="wrapper"
-        className="mt-24 flex flex-row justify-between w-full h-full mb-5"
+        className="flex flex-row justify-between w-full h-full mb-5"
       >
         <div className="mt-32 text-white w-1/2 p-4">
           <p className="text-5xl my-8">
@@ -425,6 +422,26 @@ const DesktopHeroBanner = () => {
         <DeviceMockup />
       </div>
       {/* </div> */}
+      <div className="top-[-200px] relative opacity-60 w-full h-2/12">
+        <div className="relative flex overflow-x-hidden">
+          <div
+            className={`flex flex-row animate-marqueereverse lg:animation-none whitespace-nowrap`}
+          >
+            {_SKILL_ICONS.map((l, i) => (
+              <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
+                <Image alt="skill" width={100} height={100} src={l} />
+              </span>
+            ))}
+          </div>
+          <div className="flex flex-row absolute top-0 animate-marquee2reverse lg:animation-none whitespace-nowrap">
+            {_SKILL_ICONS.map((l, i) => (
+              <span key={i} className="w-[3rem] lg:w-[6rem] mx-4 text-4xl">
+                <Image alt={"skill"} width={100} height={100} src={l} />
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
@@ -1183,7 +1200,7 @@ export default function Home({ videoPath, courseCardData, testimonialData }) {
       <WhatsAppFAB />
       {/* <HeroBanner /> */}
       {/* <AltHero/> */}
-      <div className="flex flex-col my-10 gap-6 items-center flex-grow max-w-full w-full p-5 overflow-hidden">
+      <div className=" flex flex-col my-10 gap-6 items-center flex-grow max-w-full w-full p-5">
         <FeatureCard
           direction="ltr"
           description="You are going to learn from a best teacher with good,environment, facilities, and quality"
