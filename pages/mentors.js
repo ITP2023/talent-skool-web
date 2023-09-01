@@ -14,19 +14,21 @@ const Hero = () => {
       <div className="flex justify-end w-[1443px] h-[1174px] absolute right-0 md:flex hidden">
         <BackStyle />
       </div>
-      <div>
+      <div className="w-full flex">
         <div className="w-full absolute">
           <Image width={1700} height={1100} src="/aboutFrame.png" alt="" />
         </div>
 
-        <div className="left-10 w-[270px] sm:left-16 sm:w-1/2 md:top-[100px] absolute flex flex-col items-center justify-center h-full md:w-full  text-darkslategray font-sans">
-          <b className=" mx-auto w-200px md:leading-[87px] inline-block md:w-[1020px] md:h-[273px] text-center text-[20px] sm:text-[30px] md:top-0 md:top-0 md:text-[70px]">
-            Learn and grow with help from world-class mentors
-          </b>
-          <p className="mx-auto w-[250px] md:w-[1020px] md:h-[273px] text-center md:mt-[-60px]">
-            Book and meet over 100+ mentors for 1:1 mentorship in our global
-            community
-          </p>
+        <div className="flex items-center justify-center absolute w-full h-full">
+          <div className="w-[270px] sm:w-1/2 flex flex-col items-center justify-center h-full md:w-full  text-darkslategray font-sans">
+            <b className=" mx-auto w-200px md:leading-[87px] inline-block md:w-[1020px] md:h-[273px] text-center text-[20px] sm:text-[30px] md:top-0 md:top-0 md:text-[70px]">
+              Learn and grow with help from world-class mentors
+            </b>
+            <p className="mx-auto w-[250px] md:w-[1020px] md:h-[273px] text-center md:mt-[-60px]">
+              Book and meet over 100+ mentors for 1:1 mentorship in our global
+              community
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -276,15 +278,13 @@ const MentorsPage = ({ mentorsData, mentorBadges }) => {
 export default MentorsPage;
 
 export async function getStaticProps(ctx) {
-
-
   const fakePeoplePhotos = await fetch("https://randomuser.me/api/?results=5");
 
   const { results } = await fakePeoplePhotos.json();
 
   return {
     props: {
-      mentorBadges: results.map(j => j.picture.medium),
+      mentorBadges: results.map((j) => j.picture.medium),
       mentorsData: [
         {
           avatar: "/unsplash_X6Uj51n5CE8.png",
