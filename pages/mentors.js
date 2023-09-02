@@ -14,12 +14,12 @@ const Hero = () => {
       <div className="flex justify-end w-full absolute right-0 md:flex hidden">
         <BackStyle />
       </div>
-      <div className="w-full flex">
-        <div className="w-full absolute">
-          <Image width={1700} height={1100} src="/aboutFrame.png" alt="" />
+      <div className="w-full ">
+        <div className="w-full absolute flex items-center justify-center">
+          <Image width={1300} height={900} src="/aboutFrame.png" alt="" />
         </div>
 
-        <div className="flex items-center justify-center absolute w-full h-full">
+        <div className="flex items-center justify-center absolute w-full h-full sm:mt-10 md:mt-36">
           <div className="w-[270px] sm:w-1/2 flex flex-col items-center justify-center h-full md:w-full  text-darkslategray font-sans">
             <b className="mx-auto w-200px md:leading-[87px] inline-block md:w-[1020px] md:h-[273px] text-center text-4xl md:top-0 md:top-0 md:text-[70px]">
               Learn and grow with help from world-class mentors
@@ -37,7 +37,7 @@ const Hero = () => {
 
 const Structure = () => {
   return (
-    <section className="w-screen mt-12 flex flex-col items-center justify-around">
+    <section className="w-full mt-12 flex flex-col items-center justify-around">
       <div className="flex items-center justify-center">
         <p className="text-slate-500 md:tracking-[.5em] text-2xl">Features</p>
       </div>
