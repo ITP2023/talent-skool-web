@@ -1,7 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 
-
 export default function Document() {
   return (
     <Html lang="en">
@@ -9,10 +8,10 @@ export default function Document() {
         <link rel="icon" href="/Talent Skool Updated Logo PNG Format 1.png" />
         <Script src="https://www.googleoptimize.com/optimize.js?id=OPT-MFRWV4S"></Script>
         {/* Google tag (gtag.js) */}
-          <Script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-R1899FMVK0"
-          ></Script>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-R1899FMVK0"
+        ></Script>
         <Script id="google-analytics">
           {`
                 window.dataLayer = window.dataLayer || [];
@@ -23,6 +22,7 @@ export default function Document() {
         </Script>
 
         {/* End Google Analytics (gtag.js) */}
+        <Script src="https://www.googleoptimize.com/optimize.js?id=OPT-MFRWV4S"></Script>
         <meta property="og:url" content="https://talentskool.com" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Welcome to TalentSkool" />
@@ -51,8 +51,17 @@ export default function Document() {
         />
       </Head>
       <body>
-        {/* Google Tag Manager (noscript) 
-        <noscript>
+        {/* Google Tag Manager (noscript) */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NGQWBV4D');
+      `}
+        </Script>
+        {/*<noscript>
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-NGQWBV4D"
               height="0"
