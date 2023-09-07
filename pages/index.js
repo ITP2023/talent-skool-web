@@ -305,7 +305,6 @@ const TestimonialsSection = ({ testimonialData }) => {
   );
 };
 
-
 const HeroSection = () => {
   const _SKILL_ICONS = [
     "/piano.png",
@@ -373,7 +372,10 @@ const HeroSection = () => {
             </div>
           </a>
           <div className="mx-auto w-full text-center">
-            <button onClick={_ => openCTA(_2 => true)} className="mx-auto p-4 bg-black border-2 border-primary w-1/2 rounded-lg mt-8 leading-relaxed">
+            <button
+              onClick={(_) => openCTA((_2) => true)}
+              className="mx-auto p-4 bg-black border-2 border-primary w-1/2 rounded-lg mt-8 leading-relaxed"
+            >
               Get Started
             </button>
           </div>
@@ -604,42 +606,44 @@ const CourseCard = ({
   onMouseLeave,
 }) => {
   return (
-    <div
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className={className}
-    >
-      {/* Image */}
-      <div className="mb-2">
-        <Image
-          width={300}
-          height={170}
-          src={thumbnail_url}
-          alt="Image"
-          className="w-full h-70 rounded-xl"
-        />
-      </div>
-
-      {/* Date and Category */}
-      <div className="flex items-center mb-2 w-full justify-start gap-4 my-4">
-        <div className="mr-2">Mar 20, 2023</div>
-        <div className="bg-gray-100 px-4 py-1 rounded-2xl hover:cursor-pointer hover:bg-gray-300">
-          {category}
+    <div className="w-[28rem]">
+      <div
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        className={className}
+      >
+        {/* Image */}
+        <div className="mb-2">
+          <Image
+            width={300}
+            height={170}
+            src={thumbnail_url}
+            alt="Image"
+            className="w-full h-70 rounded-xl"
+          />
         </div>
-      </div>
 
-      {/* Heading */}
-      <h1 className="text-2xl font-bold mb-2">{title}</h1>
+        {/* Date and Category */}
+        <div className="flex items-center mb-2 w-full justify-start gap-4 my-4">
+          <div className="mr-2">Mar 20, 2023</div>
+          <div className="bg-gray-100 px-4 py-1 rounded-2xl hover:cursor-pointer hover:bg-gray-300">
+            {category}
+          </div>
+        </div>
 
-      {/* Random text paragraph */}
-      <p className="text-left w-full mb-2">{description}</p>
+        {/* Heading */}
+        <h1 className="text-2xl font-bold mb-2">{title}</h1>
 
-      {/* Author */}
-      <div className="flex mt-6">
-        <div className="w-12 h-12 rounded-full bg-gray-400 mr-2"></div>
-        <div className="text-left">
-          <div className="font-semibold">{instructor}</div>
-          <div className="text-gray-600">{job_title}</div>
+        {/* Random text paragraph */}
+        <p className="text-left w-full mb-2">{description}</p>
+
+        {/* Author */}
+        <div className="flex mt-6">
+          <div className="w-12 h-12 rounded-full bg-gray-400 mr-2"></div>
+          <div className="text-left">
+            <div className="font-semibold">{instructor}</div>
+            <div className="text-gray-600">{job_title}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -679,7 +683,7 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
                 onMouseLeave={(e) => {
                   setHovering(false);
                 }}
-                className="border-2 mx-4 w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl hover:w-[28rem] "
+                className="border-2 mx-4 h-[37rem] w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl hover:w-[26rem] "
               />
             ))}
           </div>
@@ -699,7 +703,7 @@ const CourseDemo = ({ videoPath, courseCardData }) => {
                 onMouseLeave={(e) => {
                   setHovering(false);
                 }}
-                className="border-2 mx-4 w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl"
+                className="border-2 mx-4 h-[37rem] w-[25rem] md:justify-evenly border flex flex-col items-center text-center dark:border-gray-700 p-6 rounded-xl hover:w-[26rem]"
               />
             ))}
           </div>
