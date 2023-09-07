@@ -199,7 +199,7 @@ export default function AboutPage() {
     </Head>
     <Navbar />
     <HeroSection/>
-    <TeamSection/>
+    {/* <TeamSection/> */}
     <Footer/>
   </>
   );
