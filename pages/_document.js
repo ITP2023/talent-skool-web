@@ -50,8 +50,8 @@ export default function Document() {
           content="/Talent Skool Updated Logo PNG Format 1.png"
         />
         
-        {/*  <Script src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925"></Script> */}
-         {/* <Script>
+         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925" ></Script>
+         <Script>
           {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -59,7 +59,7 @@ export default function Document() {
               
                 gtag('config', 'G-V22PT6W925');
               `}
-        </Script>  */}
+        </Script> 
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}
