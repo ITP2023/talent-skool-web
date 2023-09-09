@@ -10,14 +10,14 @@ export default function Document() {
         {/* Google tag (gtag.js) */}
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-R1899FMVK0"
+          src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925"
         ></Script>
         <Script id="google-analytics">
           {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-R1899FMVK0');
+                gtag('config', 'G-V22PT6W925');
               `}
         </Script>
 
@@ -49,17 +49,6 @@ export default function Document() {
           name="twitter:image"
           content="/Talent Skool Updated Logo PNG Format 1.png"
         />
-        
-         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925" ></Script>
-         {/* <Script>
-          {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-              
-                gtag('config', 'G-V22PT6W925');
-              `}
-        </Script>  */}
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}
