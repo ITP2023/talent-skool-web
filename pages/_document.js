@@ -49,6 +49,17 @@ export default function Document() {
           name="twitter:image"
           content="/Talent Skool Updated Logo PNG Format 1.png"
         />
+        
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925"></Script>
+        <importScripts>
+          {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+              
+                gtag('config', 'G-V22PT6W925');
+              `}
+        </importScripts>
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}

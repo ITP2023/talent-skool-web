@@ -1261,13 +1261,13 @@ export async function getStaticProps(ctx) {
   const courseCardData = [
     {
       date_of_release: "2023-09-01",
-      category: "Computer Science",
-      title: "Introduction to Artificial Intelligence",
+      category: "Game",
+      title: "Learn to play Chess",
       description:
         "Explore the fundamentals of Artificial Intelligence (AI), including machine learning, neural networks, and natural language processing. Learn how to apply AI techniques to real-world problems and build AI-powered applications.",
       instructor: "Dr. Sarah Johnson",
-      job_title: "Senior AI Researcher",
-      thumbnail_url: "/ai_course_banner.jpg",
+      job_title: "Chess State Champion",
+      thumbnail_url: "/chess_banner.jpg",
     },
     {
       date_of_release: "2023-08-15",
