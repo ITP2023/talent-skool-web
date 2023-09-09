@@ -51,7 +51,7 @@ export default function Document() {
         />
         
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925"></Script>
-        <importScripts>
+        <Scripts>
           {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -59,7 +59,7 @@ export default function Document() {
               
                 gtag('config', 'G-V22PT6W925');
               `}
-        </importScripts>
+        </Scripts>
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}
