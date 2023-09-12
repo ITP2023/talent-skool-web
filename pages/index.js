@@ -1264,7 +1264,7 @@ export async function getStaticProps(ctx) {
       category: "Computer Science",
       title: "Introduction to Artificial Intelligence",
       description:
-        "Explore the fundamentals of Artificial Intelligence (AI), including machine learning, neural networks, and natural language processing. Learn how to apply AI techniques to real-world problems and build AI-powered applications.",
+        "Explore the fundamentals of Artificial Intelligence (AI), including machine learning, neural networks, and natural language processing. Learn how to apply AI, techniques to real-world problems and build AI-powered applications.",
       instructor: "Dr. Sarah Johnson",
       job_title: "Senior AI Researcher",
       thumbnail_url: "/ai_course_banner.jpg",
