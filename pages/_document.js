@@ -7,19 +7,6 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/Talent Skool Updated Logo PNG Format 1.png" />
         <Script src="https://www.googleoptimize.com/optimize.js?id=OPT-MFRWV4S"></Script>
-        {/* Google tag (gtag.js) */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925"
-        ></Script>
-        <Script id="google-analytics">
-          {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-V22PT6W925');
-              `}
-        </Script>
 
         {/* End Google Analytics (gtag.js) */}
         <Script src="https://www.googleoptimize.com/optimize.js?id=OPT-MFRWV4S"></Script>
@@ -49,6 +36,30 @@ export default function Document() {
           name="twitter:image"
           content="/Talent Skool Updated Logo PNG Format 1.png"
         />
+
+        {/* <Script async src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925" ></Script> */}
+        {/* <Script>
+          {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+              
+                gtag('config', 'G-V22PT6W925');
+              `}
+        </Script>  */}
+        {/* Google tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-V22PT6W925"
+        ></Script>
+        <Script id="google-analytics">
+          {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-V22PT6W925');
+              `}
+        </Script>
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}
